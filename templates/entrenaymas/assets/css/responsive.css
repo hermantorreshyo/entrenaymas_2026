@@ -1,0 +1,1143 @@
+/**
+ * Psweb Responsive CSS
+*/
+@media screen and (max-width:1799px) {
+  /* Psweb Plans Page CSS */
+  .plans-wrap, .version-wrap {
+    padding: 0 100px;
+  }
+  .plan-item h2 {
+    font-size: 34px;
+  }
+  .plan-item h2.price {
+    font-size: 55px;
+  }
+  .price sup {
+    top: -18px;
+  }
+}
+
+@media screen and (max-width:1499px) {
+  /* Psweb Plans Page CSS */
+  .plans-wrap, .version-wrap {
+    padding: 0 30px;
+  }
+  .plan-item h2 {
+    font-size: 30px;
+  }
+  .plan-item h2.price {
+    font-size: 42px;
+  }
+  .price sup {
+    top: -15px;
+    font-size: 18px;
+  }
+  .price sub {
+    font-size: 18px;
+  }
+  .plan-item {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .plan-item ul {
+    font-size: 16px;
+  }
+  .table tbody td:first-child {
+    min-width: 250px;
+  }
+}
+
+@media screen and (max-width: 1299px) {
+  .dropdown .dropdown-menu {
+    left: auto;
+    right: 0;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media screen and (min-width:1270px) {
+  .container {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width:1269px) {
+  .newsletter-title h2 {
+    font-size: 36px;
+  }
+  .newsletter-title h3 {
+    font-size: 22px;
+  }
+  .search-form .form .form-spacer-two {
+    width: 310px;
+  }
+  .plan-item h2.web {
+    font-size: 30px;
+  }
+  /* Psweb Blog Details Page CSS */
+  .blog-details .owl-carousel .owl-nav button.owl-prev {
+    left: -10px;
+  }
+  .blog-details .owl-carousel .owl-nav button.owl-next {
+    right: -10px;
+  }
+  /* Psweb Portal Listado Page CSS */
+  .search-style-two .search-form .form .form-spacer-two {
+    width: 340px;
+  }
+}
+
+@media screen and (max-width:1199px) {
+  .psweb-topbar {
+    padding: 25px 5px;
+  }
+  .psweb-topbar .textright {
+    padding-top: 15px;
+    text-align: left;
+  }
+  .topbar-link a, .psweb-topbar .psweb-social a {
+    border-top: 1px solid #626167;
+    border-bottom: 1px solid #626167;
+  }
+  .psweb-header {
+    padding: 30px 0;
+  }
+  .psweb-toggle {
+    display: inline-block;
+  }
+  .psweb-navigation {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-width: 930px;
+    max-height: 50vh;
+    margin: 0 auto;
+    background: #ffffff;
+    text-align: left;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+  .psweb-navigation > ul > li {
+    display: block;
+    padding: 0;
+  }
+  .psweb-navigation > ul > li > a {
+    display: block;
+    padding: 11px 20px;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  .psweb-navigation > ul > li > a:hover {
+    color: #f2a83f;
+  }
+  .psweb-navigation > ul > li > a:after {
+    display: none;
+  }
+  .header-link {
+    padding-left: 0;
+  }
+  .like-icon{
+    margin-left: 20px;
+  }
+  .search-wrap h2 {
+    font-size: 45px;
+  }
+  .search-form .form .form-spacer-two {
+    width: 280px;
+  }
+  .nav-tabs .nav-link:after {
+    border-width: 43px 0 0 22px;
+  }
+  .dropdown .dropdown-menu {
+    right: auto;
+    left: 0;
+  }
+  /* Psweb Home Page CSS */
+  .doctors-info-wrap h2 {
+    font-size: 28px;
+  }
+  .doctors-wrap .owl-carousel .owl-nav {
+    padding-top: 10px;
+  }
+  .banner-wrap {
+    height: 500px;
+  }
+  .banner-caption h1 {
+    font-size: 70px;
+    line-height: 75px;
+  }
+  .section-title h2 {
+    font-size: 45px;
+  }
+  .blog-info {
+    padding: 15px 10px;
+  }
+  .psweb-newsletter .form-group {
+    margin: 40px 0 0;
+  }
+  .footer-spacer {
+    padding-left: 0;
+  }
+  /* Psweb Blog Details Page CSS */
+  .sidebar-item {
+    padding: 20px;
+  }
+  .post-item .psweb-image img {
+    width: 60px;
+  }
+  .psweb-big-btn {
+    min-width: 220px;
+  }
+  .sidebar-item h2 {
+    font-size: 24px;
+  }
+  .blog-title h2 {
+    font-size: 32px;
+  }
+  .sidebar-item h4 {
+    font-size: 15px;
+  }
+  /* Psweb Plans Page CSS */
+  .plan-item {
+    margin-bottom: 30px;
+  }
+  .table tbody td, .table thead th {
+    padding-left: 20px;
+  }
+  .table tbody td:first-child {
+    min-width: 10px;
+  }
+  /* Psweb Portal Listado Page CSS */
+  .psweb-mid-wrap .blog-meta .textright, .psweb-blog-wrap .blog-meta .textright {
+    padding-top: 15px;
+    text-align: left;
+  }
+  .psweb-mid-wrap .blog-meta select.form-control {
+    margin: 0 6px 0 0;
+  }
+  .doctor-style-two .like-icon {
+    right: 0px;
+  }
+  .doctor-direccion {
+    padding-left: 0;
+  }
+  .doctor-tags a {
+    min-width: 125px;
+  }
+  .search-style-two .search-form .form .form-spacer-two {
+    width: 280px;
+  }
+  /* Psweb Portal Detalle Page CSS */
+  .mid-item h3 {
+    padding-left: 25px;
+  }
+  .mid-item-info {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .request-info, .request h3 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width:991px) {
+  .psweb-navigation {
+    max-width: 690px;
+  }
+  .psweb-search {
+    padding: 60px 0 40px;
+  }
+  .search-wrap h2 {
+    font-size: 40px;
+  }
+  .search-link-item {
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+    margin-bottom: 20px;
+  }
+  .search-form .form .form-group {
+    width: 100%;
+    border-right: none;
+  }
+  .search-form .form .form-spacer-two select.form-control {
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    -webkit-border-radius: 10px 10px 0 0;
+    -ms-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+  }
+  .search-form .form .no-border select.form-control {
+    -webkit-border-radius: 0px;
+    -ms-border-radius: 0px;
+    border-radius: 0px;
+  }
+  .search-form select.form-control {
+    height: 55px;
+    -webkit-border-radius: 0 10px 0 0;
+    -ms-border-radius: 0 10px 0 0;
+    border-radius: 0 10px 0 0;
+  }
+  .search-form .form-btn {
+    width: 100%;
+    float: left;
+    margin: 0;
+    display: block;
+  }
+  .search-form .form-btn .psweb-btn {
+    width: 100%;
+    height: 55px;
+    min-width: 100%;
+    -webkit-border-radius: 0 0 10px 10px;
+    -ms-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+  }
+  .psweb-newsletter .form-control {
+    height: 55px;
+    font-size: 16px;
+  }
+  .newsletter-title h2 {
+    font-size: 32px;
+  }
+  .psweb-newsletter input[type="submit"] {
+    height: 55px;
+    font-size: 18px;
+  }
+  .psweb-footer .psweb-social {
+    padding-bottom: 20px;
+  }
+  /* Psweb Home Page CSS */
+  .doctors-info-wrap {
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+  .doctors-wrap {
+    padding: 25px 25px 30px;
+  }
+  .doctors-wrap .owl-carousel .owl-nav {
+    margin: 0;
+    text-align: center;
+  }
+  .banner-caption h1 {
+    font-size: 60px;
+    line-height: 65px;
+  }
+  .section-title h2 {
+    font-size: 40px;
+  }
+  .section-title h3 {
+    font-size: 22px;
+  }
+  /* Psweb Blog Page CSS */
+  .psweb-page-title h2 {
+    font-size: 42px;
+  }
+  /* Psweb Blog Details Page CSS */
+  .right-sidebar {
+    padding: 30px 0 0;
+  }
+  /* Psweb Plans Page CSS */
+  .version-wrap {
+    white-space: nowrap;
+  }
+  /* Psweb Portal Listado Page CSS */
+  .search-style-two {
+    padding-bottom: 70px;
+  }
+  .search-style-two .search-form .form .form-spacer-two {
+    width: 100%;
+  }
+  .psweb-mid-wrap .blog-meta select.form-control {
+    margin-bottom: 10px;
+  }
+  .doctor-style-two .doctor-item {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .doctor-style-two [class*="col-"] {
+    border-right: none;
+  }
+  .doctor-direccion {
+    padding-top: 15px;
+  }
+  /* Psweb Portal Detalle Page CSS */
+  .doctor-meta {
+    padding-bottom: 15px;
+  }
+  .doctor-meta-link {
+    margin-bottom: 25px;
+  }
+  .request {
+    margin-top: 50px;
+  }
+  /* Psweb Registro Page CSS */
+  .nav-tabs .nav-link:after {
+    border-width: 42px 0 0 22px;
+  }
+  .register-item br {
+    display: none;
+  }
+  .register-form {
+    padding: 40px 50px 45px;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .mfp-close {
+    top: 0;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .mfp-close:active {
+    top: 0;
+  }
+  .mfp-close:before, .mfp-close:after {
+    top: 9px;
+    left: 16px;
+  }
+  .mfp-arrow-left {
+    left: 15px;
+  }
+  .mfp-arrow-right {
+    right: 26px;
+  }
+  .mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
+    position: fixed;
+    top: 0;
+    width: 35px;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .doctor-item{
+    max-height: 100%;
+  }
+  .tarifas{
+    background-image: none;
+  }
+  .doctor-style-two .atencion_en_linea{
+    margin-right: 10px;
+  }
+  .doctor-style-two .detalle .atencion_en_linea{
+    margin-right: 10px;
+  }
+  .bcb{
+    display: none;
+  }
+  .tarifas .direccion-info{
+    padding-left: 0px;
+    margin-bottom: 5px;
+  }
+  #turnoclick_submit{
+    max-width: 100%;
+    font-size: 12px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .form-control {
+    padding: 15px 25px;
+  }
+  .psweb-topbar .psweb-social {
+    display: block;
+    margin-top: 15px;
+  }
+  .psweb-logo img {
+    width: 200px;
+  }
+  .displaynonetel{
+    display: none;
+  }
+  .topbar-link a:last-child {
+    border-right: 1px solid #626167;
+  }
+  .psweb-header {
+    padding: 25px 0;
+  }
+  .psweb-navigation {
+    max-width: 510px;
+  }
+  .like-icon {
+    margin: 0 3px 0 10px;
+  }
+  .search-wrap h2 {
+    font-size: 36px;
+  }
+  .search-form select.form-control {
+    height: 50px;
+  }
+  .search-form .form-btn .psweb-btn {
+    height: auto;
+    font-size: 15px;
+    padding: 14px 15px;
+  }
+  .psweb-search {
+    padding: 50px 0 30px;
+  }
+  .search-link-item {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    margin-bottom: 15px;
+  }
+  .owl-carousel .owl-nav button.owl-prev {
+    left: 15px;
+  }
+  .owl-carousel .owl-nav button.owl-next {
+    right: 15px;
+  }
+  .psweb-blog {
+    padding: 50px 0;
+  }
+  .section-title {
+    padding-bottom: 20px;
+  }
+  .section-title h2 {
+    font-size: 36px;
+  }
+  .blog-item {
+    max-width: 367px;
+    margin: 0 auto 25px;
+  }
+  .psweb-blog .psweb-btn-wrap {
+    padding-top: 0;
+  }
+  .newsletter-title h3 {
+    font-size: 20px;
+  }
+  .newsletter-title h2 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+  .newsletter-title {
+    padding-left: 20px;
+  }
+  .psweb-newsletter .psweb-icon {
+    padding-right: 20px;
+  }
+  .psweb-newsletter .psweb-icon img {
+    width: 60px;
+  }
+  .psweb-newsletter .form-group {
+    margin-top: 30px;
+  }
+  .psweb-newsletter .form-control {
+    width: 335px;
+  }
+  .psweb-newsletter input[type="submit"] {
+    min-width: 155px;
+  }
+  .psweb-footer .psweb-social {
+    padding-bottom: 10px;
+  }
+  .psweb-footer {
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  .psweb-footer h4 {
+    padding: 20px 0 10px;
+  }
+  .psweb-copyright .textright {
+    padding-top: 15px;
+    text-align: left;
+  }
+  /* Psweb Home Page CSS */
+  .doctors-info-wrap .psweb-icon {
+    width: 111px;
+    height: 111px;
+    margin-bottom: 20px;
+    line-height: 110px;
+  }
+  .doctors-info-wrap .psweb-icon img {
+    width: 45px;
+  }
+  .doctors-info-wrap .psweb-icon:before {
+    width: 133px;
+    height: 133px;
+  }
+  .banner-wrap {
+    height: auto;
+  }
+  .banner-caption h1 {
+    padding-bottom: 10px;
+    font-size: 50px;
+    line-height: 55px;
+  }
+  .banner-caption h3 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+  /* Psweb Blog Page CSS */
+  .blog-meta {
+    text-align: center;
+  }
+  .blog-meta .textright {
+    padding-top: 20px;
+    text-align: center;
+  }
+  .blog-meta select.form-control {
+    margin: 0 5px;
+  }
+  .blog-meta h2 {
+    font-size: 28px;
+  }
+  .pagination {
+    padding-top: 0;
+    font-size: 15px;
+  }
+  .page-link {
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+  }
+  .page-item:first-child .page-link, .page-item:last-child .page-link {
+    line-height: 32px;
+  }
+  .page-link i {
+    font-size: 16px;
+  }
+  .psweb-page-title h2 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+  .doctors-info-wrap h2 span {
+    font-size: 32px;
+  }
+  .breadcrumb {
+    font-size: 20px;
+  }
+  .breadcrumb:after {
+    background-size: 80px auto;
+  }
+  /* Psweb Blog Details Page CSS */
+  .blog-detail-wrap {
+    padding: 50px 0;
+  }
+  .blog-date {
+    padding-bottom: 20px;
+    font-size: 16px;
+  }
+  .blog-details .owl-carousel .owl-nav button.owl-prev, .blog-details .owl-carousel .owl-nav button.owl-next {
+    width: 43px;
+    height: 43px;
+  }
+  .owl-carousel .owl-dots {
+    bottom: -25px;
+  }
+  .blog-inner-detail {
+    padding-top: 55px;
+  }
+  .blog-title h4 {
+    font-size: 16px;
+  }
+  .blog-title h2 {
+    font-size: 26px;
+  }
+  .blog-title {
+    padding-bottom: 5px;
+  }
+  .blog-detail-meta {
+    padding-top: 20px;
+  }
+  .sidebar-item h2 {
+    padding-bottom: 20px;
+    font-size: 22px;
+  }
+  /* Psweb Plans Page CSS */
+  .psweb-plans {
+    padding: 50px 0 30px;
+  }
+  .plans-title {
+    padding-bottom: 15px;
+  }
+  .plans-title h4 {
+    padding-bottom: 5px;
+    font-size: 16px;
+  }
+  .plans-title h2 {
+    font-size: 30px;
+  }
+  .plan-item {
+    padding: 30px 20px;
+    margin-bottom: 25px;
+  }
+  .plan-item .psweb-icon img {
+    width: 65px;
+  }
+  .plan-item h2 {
+    padding-bottom: 8px;
+    font-size: 26px;
+    line-height: 34px;
+  }
+  .plan-item ul {
+    min-height: 10px;
+  }
+  .plan-item .psweb-btn-wrap {
+    padding-top: 20px;
+  }
+  .psweb-version {
+    padding: 50px 0;
+  }
+  .psweb-version .plans-title {
+    padding-bottom: 0;
+  }
+  .table thead th {
+    font-size: 18px;
+  }
+  .table tbody td {
+    font-size: 16px;
+  }
+  .psweb-version .table tbody td img {
+    width: 20px;
+  }
+  /* Psweb Portal Listado Page CSS */
+  .search-style-two {
+    padding-bottom: 70px;
+  }
+  .psweb-mid-wrap .blog-meta {
+    padding: 20px 0 15px;
+    text-align: left;
+  }
+  .doctor-style-two .doctor-item {
+    margin-bottom: 25px;
+  }
+  .doctor-info {
+    padding-left: 15px;
+  }
+  .psweb-mid-wrap {
+    padding-bottom: 25px;
+  }
+  /* Psweb Portal Detalle Page CSS */
+  .doctor-meta {
+    padding-bottom: 20px;
+  }
+  .mid-item {
+    margin-bottom: 20px;
+  }
+  .mid-item h3 {
+    padding: 14px 60px 14px 20px;
+    font-size: 20px;
+  }
+  .mid-item h3:after {
+    right: 20px;
+  }
+  .loaction-item iframe {
+    margin-top: 15px;
+  }
+  .mid-item-info {
+    padding: 0 20px 15px;
+  }
+  .request {
+    margin-top: 40px;
+  }
+  .request h3 {
+    font-size: 20px;
+  }
+  /* Psweb Registro Page CSS */
+  .custom-control-label {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  .custom-control-label:before, .custom-control-label:after {
+    top: 10px;
+  }
+  label {
+    font-size: 15px;
+  }
+  .psweb-register {
+    padding: 50px 0;
+  }
+  .register-item {
+    padding-bottom: 15px;
+  }
+  .register-item h5 {
+    padding-top: 15px;
+  }
+  .nav-tabs .nav-link:after {
+    border-width: 43px 0 0 22px;
+  }
+  .register-form {
+    padding: 25px 20px;
+    margin-top: 55px;
+  }
+  .register-item .psweb-icon {
+    width: 70px;
+    height: 70px;
+    line-height: 68px;
+  }
+  .register-item .psweb-icon img {
+    width: 35px;
+  }
+  .more-gallery {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width:575px) {
+  .txtcentertel{
+    text-align: center;
+  }
+  .flntel{
+    float: none !important;
+  }
+  .doctors-wrap .owl-nav{
+    display: none !important;
+  }
+  .psweb-navigation {
+    max-width: none;
+  }
+  .header-link {
+    display: block;
+    padding: 20px;
+  }
+  .search-wrap h2 {
+    font-size: 32px;
+  }
+  .section-title h2 {
+    font-size: 32px;
+  }
+  .search-wrap h2:after {
+    background-size: 80px auto;
+  }
+  .section-title h3 {
+    padding-bottom: 5px;
+  }
+  .section-title br {
+    display: none;
+  }
+  .psweb-topbar ul li {
+    display: block;
+    padding: 3px 0;
+  }
+  .psweb-topbar ul li:after {
+    display: none;
+  }
+  .psweb-newsletter {
+    text-align: center;
+  }
+  .psweb-newsletter .psweb-icon {
+    float: none;
+    padding: 0 0 20px;
+    border: none;
+  }
+  .psweb-newsletter .form-group {
+    margin-top: 20px;
+  }
+  .psweb-newsletter input[type="email"] {
+    width: 100%;
+    margin-bottom: 15px;
+    -webkit-border-radius: 30px;
+    -ms-border-radius: 30px;
+    border-radius: 30px;
+  }
+  .psweb-newsletter input[type="submit"] {
+    min-width: 100%;
+    -webkit-border-radius: 30px;
+    -ms-border-radius: 30px;
+    border-radius: 30px;
+  }
+  .newsletter-title {
+    padding-left: 0;
+  }
+  .nav-tabs .nav-link:after {
+    border-width: 42px 0 0 22px;
+  }
+  .dropdown {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .dropdown .dropdown-menu {
+    width: 100%;
+  }
+  /* Psweb Home Page CSS */
+  .doctors-wrap {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .doctors-info-wrap {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .banner-caption h1 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .banner-caption p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  /* Psweb Blog Details Page CSS */
+  .blog-detail-meta .psweb-social {
+    padding-top: 20px;
+    text-align: left;
+  }
+  /* Psweb Plans Page CSS */
+  .plans-wrap, .version-wrap {
+    padding: 0 20px;
+  }
+  /* Psweb Portal Listado Page CSS */
+  .doctor-item .psweb-image img {
+    width: 140px;
+    border-width: 3px;
+  }
+  /* Psweb Portal Detalle Page CSS */
+  .gallery {
+    padding-bottom: 0;
+  }
+  .gallery .gallery-item {
+    margin-bottom: 20px;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+@media screen and (max-width:479px) {
+  .search-wrap h2 {
+    font-size: 26px;
+  }
+  .nav {
+    display: block;
+  }
+  .nav-tabs .nav-item {
+    margin: 0 0 15px;
+  }
+  .nav-tabs .nav-link {
+    width: 100%;
+    -webkit-border-radius: 8px;
+    -ms-border-radius: 8px;
+    border-radius: 8px;
+  }
+  .nav-tabs .nav-link:after {
+    display: none;
+  }
+  .search-link-item {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .doctors-info-wrap h2 {
+    font-size: 26px;
+  }
+  .topbar-link a {
+    float: none;
+    display: block;
+    margin: 10px 0;
+  }
+  .topbar-link a:first-child {
+    border-right: 1px solid #626167;
+  }
+  .section-title h2 {
+    font-size: 28px;
+  }
+  .section-title h2:after {
+    background-size: 80px auto;
+  }
+  .section-title h3, .blog-info h4 {
+    font-size: 20px;
+  }
+  .newsletter-title h2 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+  .newsletter-title h3 {
+    font-size: 18px;
+  }
+  .psweb-newsletter .psweb-icon img {
+    width: 50px;
+  }
+  .search-form select.form-control {
+    padding: 10px 35px 10px 10px;
+    font-size: 14px;
+    background-size: 24px auto;
+  }
+  /* Psweb Home Page CSS */
+  .search-wrap h2 {
+    margin-bottom: 25px;
+  }
+  .psweb-banner .owl-carousel .owl-nav {
+    display: none;
+  }
+  .banner-caption h1 {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  /* Psweb Blog Page CSS */
+  .psweb-page-title h2 {
+    font-size: 28px;
+  }
+  .breadcrumb {
+    font-size: 18px;
+  }
+  .breadcrumb li:after {
+    margin: 0 5px -3px 8px;
+    background-size: 7px auto;
+  }
+  .blog-meta h2 {
+    font-size: 26px;
+  }
+  .blog-meta select.form-control {
+    margin: 5px 1px;
+  }
+  /* Psweb Blog Details Page CSS */
+  .blog-title h2 {
+    font-size: 22px;
+  }
+  .blog-detail-meta {
+    padding-top: 10px;
+  }
+  /* Psweb Plans Page CSS */
+  .plan-label {
+    position: static;
+    margin-bottom: 20px;
+  }
+  .plans-title h2 {
+    font-size: 25px;
+  }
+  .plan-item h4 {
+    padding-bottom: 5px;
+  }
+  /* Psweb Portal Listado Page CSS */
+  .search-style-two {
+    padding-bottom: 50px;
+  }
+  .psweb-mid-wrap {
+    padding-top: 50px;
+    margin-top: 0;
+  }
+  .psweb-mid-wrap .blog-meta {
+    padding-top: 5px;
+  }
+  .nav-tabs.style-two .nav-link {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    -ms-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+  .psweb-mid-wrap .blog-meta select.form-control {
+    margin-right: 0;
+  }
+  .doctor-style-two .doctor-item {
+    padding: 20px 15px;
+  }
+  .duracion_minutos { display: block; }
+  .i-checks .duracion_minutos { display: inline-block; }
+  .doctor-style-two .psweb-image {
+    display: block;
+    width: auto;
+    text-align: center;
+    clear: both;
+  }
+  .doctor-info {
+    display: block;
+    padding: 15px 0 0;
+  }
+  .profesional_detalle .doctor-info {
+    text-align: center;
+  }
+  .profesional_detalle .whatsapp_cont {
+    display: inline-block;
+    margin: 0 auto;
+  }
+  .doctor-tags a {
+    margin: 0 5px 10px 0;
+  }
+  .doctor-direccion {
+    padding-top: 10px;
+  }
+  .direccion-info h4 {
+    font-size: 16px;
+  }
+  .direccion-wrap {
+    padding: 10px 0 15px;
+  }
+  .doctor-item .psweb-social {
+    display: block;
+    padding: 15px 0 0;
+  }
+  /* Psweb Portal Detalle Page CSS */
+  .doctor-style-three .doctor-item .psweb-social {
+    padding-top: 5px;
+  }
+  .gallery .gallery-item {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .loaction-item ul {
+    font-size: 15px;
+  }
+  .mid-item h3 {
+    font-size: 18px;
+  }
+  .register-form {
+    padding: 15px;
+    margin-top: 10px;
+  }
+  .register-form .nav-tabs.style-two {
+    position: static;
+  }
+  .register-form .custom-control.custom-checkbox {
+    padding-top: 0;
+    padding-bottom: 15px;
+  }
+}
+
+@media screen and (max-width:359px) {
+  .search-wrap h2, .doctors-info-wrap h2 {
+    font-size: 24px;
+  }
+  .psweb-copyright .textright a {
+    display: block;
+  }
+  .psweb-copyright a img {
+    margin: 15px 0 0;
+  }
+  .banner-caption h3 {
+    font-size: 20px;
+  }
+  .banner-caption h1 {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  .section-title h2 {
+    font-size: 26px;
+  }
+  /* Psweb Blog Details Page CSS */
+  .blog-title h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-tabs.style-two .nav-link { background: #efefef;color: #233645;}
+  .nav-tabs.style-two .nav-link.active { background: var(--c2); color: black; }
+  .hidden-xs { display: none; }
+  .duracion_minutos { display: inline-block; }
+  .desde_precio p { text-align: center; }
+  .design_by { display: none !important }
+  .psweb-copyright, .psweb-copyright .textright a { text-align: center; }
+}
+@media (max-width: 360px) {
+  .direccion-info h4, .tarifas_costo > span { font-size: 13px }
+  .direccion-info h6 { font-size: 12px; }
+  .tarifas_costo_chica { font-size: 12px; }
+}

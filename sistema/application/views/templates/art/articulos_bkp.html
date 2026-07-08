@@ -1,0 +1,780 @@
+<div class="wrapper-md pb0">
+    <div class="tab-container">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active">
+              <a href="#tab1" role="tab" data-toggle="tab"><i class="fa fa-info"></i>Informacion</a>
+          </li>
+          <li>
+              <a href="#tab7" role="tab" data-toggle="tab"><i class="fa fa-cubes"></i>Paquete</a>
+          </li>
+          <li>
+              <a href="#tab2" role="tab" data-toggle="tab"><i class="fa fa-dollar"></i>Costos</a>
+          </li>          
+          <li>
+              <a href="#tab3" role="tab" data-toggle="tab"><i class="fa fa-dollar"></i>Precios</a>
+          </li>
+          <li>
+              <a href="#tab4" role="tab" data-toggle="tab"><i class="fa fa-align-justify"></i>Texto</a>
+          </li>
+          <li>
+              <a href="#tab6" role="tab" data-toggle="tab"><i class="fa fa-picture-o"></i>Imagenes</a>
+          </li>
+          <li>
+              <a href="#tab9" role="tab" data-toggle="tab"><i class="fa fa-picture-o"></i>Variantes</a>
+          </li>
+          <li>
+              <a href="#tab8" role="tab" data-toggle="tab"><i class="fa fa-exchange"></i>Relacionados</a>
+          </li>
+          <li>
+              <a href="#tab11" role="tab" data-toggle="tab"><i class="fa fa-globe"></i>SEO</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane active panel-body">
+                        
+                <div class="form-horizontal">
+                
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Codigo Interno</label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <input type="text" required name="codigo" id="articulo_codigo" value="<%= codigo %>" class="form-control"/>
+                            <% } else { %>
+                                <span><%= codigo %></span>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Nombre</label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <input type="text" required name="nombre" id="articulo_nombre" value="<%= nombre %>" class="form-control"/>
+                            <% } else { %>
+                                <span><%= nombre %></span>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Descripcion Breve</label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <textarea id="articulo_descripcion" class="form-control" name="descripcion"><%= descripcion %></textarea>
+                            <% } else { %>
+                                <span><%= descripcion %></span>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Tipo</label>
+                        <div class="col-md-10">
+                            <select class="form-control" id="articulo_tipo" name="tipo">
+                                <option <%= (tipo==0)?"selected":"" %> value="0">Producto</option>
+                                <option <%= (tipo==1)?"selected":"" %> value="1">Servicio</option>
+                                <option <%= (tipo==2)?"selected":"" %> value="2">Producto y Servicio</option>
+                            </select>                                    
+                        </div>
+                    </div>                    
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Categoria</label>
+                        <div class="col-md-10">
+                            <select id="articulo_rubros" class="form-control"></select>
+                        </div>
+                    </div>                    
+                    
+                    <% if (control.check("marcas") > 0) { %>
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Marca</label>
+                          <div class="col-md-10">
+                              <select id="articulo_marcas" class="w100p"></select>
+                          </div>
+                      </div>
+                    <% } %>
+                    
+                    <div class="form-group cb">
+                        <label class="col-md-2 control-label">Activo </label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <label class="i-switch i-switch-md bg-info m-t-xs m-r">
+                                  <input type="checkbox" id="articulo_lista_precios" name="lista_precios" class="checkbox" value="1" <%= (lista_precios == 1)?"checked":"" %> >
+                                  <i></i>
+                                </label>
+                            <% } else { %>
+                                <span><%= ((lista_precios==0) ? "No" : "Si") %></span>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group cb">
+                        <label class="col-md-2 control-label">Nuevo </label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <label class="i-switch i-switch-md bg-info m-t-xs m-r">
+                                  <input type="checkbox" id="articulo_nuevo" name="nuevo" class="checkbox" value="1" <%= (nuevo == 1)?"checked":"" %> >
+                                  <i></i>
+                                </label>
+                            <% } else { %>
+                                <span><%= ((nuevo==0) ? "No" : "Si") %></span>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group cb">
+                        <label class="col-md-2 control-label">Destacado </label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <label class="i-switch i-switch-md bg-info m-t-xs m-r">
+                                  <input type="checkbox" id="articulo_destacado" name="destacado" class="checkbox" value="1" <%= (destacado == 1)?"checked":"" %> >
+                                  <i></i>
+                                </label>
+                            <% } else { %>
+                                <span><%= ((destacado==0) ? "No" : "Si") %></span>
+                            <% } %>
+                        </div>
+                    </div>                    
+                    
+                    <?php
+                    single_upload(array(
+                        "name"=>"path",
+                        "label"=>"Imagen Principal",
+                        "url"=>"/sistema/articulos/function/save_image/",
+                        "width"=>(isset($empresa->config["producto_image_width"]) ? $empresa->config["producto_image_width"] : 256),
+                        "height"=>(isset($empresa->config["producto_image_height"]) ? $empresa->config["producto_image_height"] : 256),
+                    )); ?>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Caracteristicas</label>
+                        <div class="col-md-10">
+                          <input class="select2_textarea" type="text" style="width:100%" id="articulo_caracteristicas"/>
+                        </div>
+                    </div>                    
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Etiquetas</label>
+                        <div class="col-md-10">
+                          <input class="select2_textarea" type="text" style="width:100%" id="articulo_etiquetas"/>
+                        </div>
+                    </div>                    
+                    
+                    <% if (control.check("proveedores") > 0) { %>
+                      <div class="form-group cb">
+                          <label class="col-md-2 control-label">Proveedores</label>
+                          <div class="col-md-10">
+                              <select name="proveedores" id="articulo_proveedores" multiple class="form-control"></select>
+                          </div>
+                      </div>
+                    <% } %>
+                    
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <% if (edicion) { %>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button class="btn guardar btn-success">Guardar</button>
+                            </div>
+                        </div>
+                    <% } %>                    
+                    
+                </div>
+            </div>
+            
+            <div id="tab4" class="tab-pane panel-body">
+              <div class="form-horizontal">
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <textarea name="texto" id="articulo_texto"><%= texto %></textarea>
+                  </div>
+                </div>
+                
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <% if (edicion) { %>
+                    <div class="form-group">
+                        <div class="col-xs-12">    
+                            <button class="btn btn-success guardar">Guardar</button>
+                        </div>
+                    </div>
+                <% } %>
+              </div>
+            </div>
+
+            <div id="tab9" class="tab-pane panel-body">
+              <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Propiedad</label>
+                    <div class="col-md-10">
+                        <select id="articulo_propiedades" class="w100p"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <button class="btn btn-success nueva_propiedad">Nueva Propiedad</button>
+                    <button class="btn btn-default modificar_propiedad">Modificar Propiedad</button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <div id="articulo_propiedades_opciones"></div>
+                  </div>
+                </div>   
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <div class="b-a table-responsive">
+                      <table id="articulo_variantes_tabla" class="table table-striped sortable m-b-none default footable">
+                        <thead>
+                          <tr>
+                            <th>Variante</th>
+                            <th>Stock</th>
+                            <th>Precio</th>
+                            <th>Peso</th>
+                            <th>Observacion</th>
+                          </tr>
+                        </thead>
+                        <tbody class="tbody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <% if (edicion) { %>
+                    <div class="form-group">
+                        <div class="col-xs-12">    
+                            <button class="btn btn-success guardar">Guardar</button>
+                        </div>
+                    </div>
+                <% } %>
+              </div>
+            </div>
+
+
+
+            
+            <div id="tab7" class="tab-pane panel-body">
+                <div class="form-horizontal">
+                  
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Forma de Venta</label>
+                        <div class="col-md-10">
+                            <select class="form-control" id="articulo_unidades" name="unidad">
+                                <option <%= (unidad=="U")?"selected":"" %> value="U">Unidades</option>
+                                <option <%= (unidad=="K")?"selected":"" %> value="K">Kilogramos</option>
+                                <option <%= (unidad=="L")?"selected":"" %> value="L">Litros</option>
+                                <option <%= (unidad=="C3")?"selected":"" %> value="C3">Cm 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Unid. x Bulto</label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <input type="text" name="uxb" id="articulo_uxbm" value="<%= uxb %>" class="form-control"/>
+                            <% } else { %>
+                                <span><%= uxb %></span>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Cantidad M&aacute;xima</label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <input type="text" name="maximo_disponible" id="articulo_maximo_disponible" value="<%= maximo_disponible %>" class="form-control"/>
+                            <% } else { %>
+                                <span><%= maximo_disponible %></span>
+                            <% } %>
+                        </div>
+                    </div>                    
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Peso (Kg.)</label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <input type="text" name="peso" id="articulo_peso" value="<%= peso %>" class="form-control"/>
+                            <% } else { %>
+                                <span><%= peso %></span>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Dimensiones (Mts.)</label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                              <div class="form-inline">
+                                <input type="text" name="ancho" placeholder="Ancho" id="articulo_ancho" value="<%= ancho %>" class="form-control w-sm"/>
+                                <input type="text" name="alto" placeholder="Alto" id="articulo_alto" value="<%= alto %>" class="form-control w-sm"/>
+                                <input type="text" name="profundidad" placeholder="Profundidad" id="articulo_profundidad" value="<%= profundidad %>" class="form-control w-sm"/>
+                              </div>
+                            <% } else { %>
+                                <span>Ancho: <%= ancho %> x Alto: <%= alto %> x Profundidad: <%= profundidad %> x </span>
+                            <% } %>
+                        </div>
+                    </div>                     
+                  
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Codigo Barra</label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <input type="text" name="codigo_barra" id="articulo_codigo_barra" value="<%= codigo_barra %>" class="form-control"/>
+                            <% } else { %>
+                                <span><%= codigo_barra %></span>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Codigo Bulto</label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <input type="text" name="codigo_barra_bulto" id="articulo_codigo_barra_bulto" value="<%= codigo_barra_bulto %>" class="form-control"/>
+                            <% } else { %>
+                                <span><%= codigo_barra_bulto %></span>
+                            <% } %>
+                        </div>
+                    </div>                  
+                  
+                    
+                    <% if (control.check("stock") > 0) { %>
+                      <div class="form-group cb">
+                          <label class="col-md-2 control-label">Gestiona Stock </label>
+                          <div class="col-md-10">
+                              <% if (edicion) { %>
+                                  <label class="i-switch i-switch-md bg-info m-t-xs m-r">
+                                    <input type="checkbox" id="articulo_usa_stock" name="usa_stock" class="checkbox" value="1" <%= (usa_stock == 1)?"checked":"" %> >
+                                    <i></i>
+                                  </label>
+                              <% } else { %>
+                                  <span><%= ((usa_stock==0) ? "No" : "Si") %></span>
+                              <% } %>
+                          </div>
+                      </div>
+                    <% } %>
+                    
+                    <div class="form-group cb">
+                        <label class="col-md-2 control-label">Fragil </label>
+                        <div class="col-md-10">
+                            <% if (edicion) { %>
+                                <label class="i-switch i-switch-md bg-info m-t-xs m-r">
+                                  <input type="checkbox" id="articulo_fragil" name="fragil" class="checkbox" value="1" <%= (fragil == 1)?"checked":"" %> >
+                                  <i></i>
+                                </label>
+                            <% } else { %>
+                                <span><%= ((fragil==0) ? "No" : "Si") %></span>
+                            <% } %>
+                        </div>
+                    </div>                    
+                    
+                    <% if (control.check("servicios_envio") > 0) { %>
+                      <div class="form-group cb">
+                          <label class="col-md-2 control-label">Coordinar envio </label>
+                          <div class="col-md-10">
+                              <% if (edicion) { %>
+                                  <label class="i-switch i-switch-md bg-info m-t-xs m-r">
+                                    <input type="checkbox" id="articulo_coordinar_envio" name="coordinar_envio" class="checkbox" value="1" <%= (coordinar_envio == 1)?"checked":"" %> >
+                                    <i></i>
+                                  </label>
+                              <% } else { %>
+                                  <span><%= ((coordinar_envio==0) ? "No" : "Si") %></span>
+                              <% } %>
+                          </div>
+                      </div>
+                    <% } %>                  
+                    
+                
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <% if (edicion) { %>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button class="btn guardar btn-success">Guardar</button>
+                            </div>
+                        </div>
+                    <% } %>                    
+                    
+                </div>
+            </div>
+            
+            
+            <div id="tab2" class="tab-pane panel-body">
+                <div class="form-horizontal">
+                
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Fecha Ultima Modif.</label>
+                        <div class="col-md-2">
+                            <input type="text" disabled class="form-control" id="articulo_fecha" name="fecha_mov" value="<%= fecha_mov %>"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Costo Neto</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control number calc_total" id="articulo_costo_neto" name="costo_neto" value="<%= costo_neto %>"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">% IVA</label>
+                        <div class="col-md-2">
+                            <select id="articulo_tipos_alicuotas_iva" class="form-control">
+                              <% for(var i=0;i<window.alicuotas_iva.length;i++) { %>
+                                <% var o = alicuotas_iva[i]; %>
+                                <option <%= (id_tipo_alicuota_iva == o.id)?"selected":"" %> value="<%= o.id %>" data-porcentaje="<%= o.porcentaje %>"><%= o.nombre %></option>
+                              <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">IVA</label>
+                        <div class="col-md-2">
+                            <input id="articulo_iva" disabled value="<%= Number(costo_neto * porc_iva / 100).toFixed(2) %>" type="text" class="form-control" name="costo_iva"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Costo Final</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control number calc_total" id="articulo_costo_final" name="costo_final" value="<%= Number(costo_final).toFixed(2) %>"/>
+                        </div>
+                    </div>
+
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <% if (edicion) { %>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button class="btn guardar btn-success">Guardar</button>
+                            </div>
+                        </div>
+                    <% } %>                    
+                    
+                </div>
+            </div>
+            
+            <div id="tab3" class="tab-pane panel-body">
+                <div class="form-horizontal">
+                  
+                    <div class="form-group">
+                      <label class="col-md-2 control-label">Moneda</label>
+                      <div class="col-md-2">
+                        <select id="articulo_monedas" class="form-control" name="moneda">
+                          <% for(var i=0;i<window.monedas.length;i++) { %>
+                            <% var o = monedas[i]; %>
+                            <option <%= (o.signo == moneda)?"selected":"" %> value="<%= o.signo %>"><%= o.nombre %></option>
+                          <% } %>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Lista</label>
+                        <div class="col-md-2">
+                          <select id="articulo_lista" class="form-control">
+                            <option value="1">Lista 1</option>
+                            <option value="2">Lista 2</option>
+                            <option value="3">Lista 3</option>
+                          </select>
+                        </div>
+                    </div>                
+                  
+                    <div id="lista_1" class="lista_container" style="display: none">
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Costo Final</label>
+                          <div class="col-md-2">
+                              <input value="<%= costo_final %>" type="text" class="form-control costo_final" disabled />
+                          </div>
+                      </div>                
+                  
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">% Marcado</label>
+                          <div class="col-md-2">
+                              <input id="articulo_porc_ganancia" value="<%= porc_ganancia %>" type="text" class="form-control number calc_total" name="porc_ganancia"/>
+                          </div>
+                      </div>
+                  
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Ganancia</label>
+                          <div class="col-md-2">
+                              <input id="articulo_ganancia" disabled value="<%= ganancia %>" type="text" class="form-control" name="ganancia"/>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Precio Neto</label>
+                          <div class="col-md-2">
+                              <input id="articulo_precio_neto" disabled value="<%= precio_neto %>" type="text" class="form-control" name="precio_neto"/>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Precio Final</label>
+                          <div class="col-md-2">
+                              <input id="articulo_precio_final" value="<%= precio_final %>" type="text" class="form-control number" name="precio_final"/>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">% Descuento</label>
+                          <div class="col-md-2">
+                              <input id="articulo_porc_bonif" value="<%= porc_bonif %>" type="text" class="form-control number" name="porc_bonif"/>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Precio Final c/dto.</label>
+                          <div class="col-md-2">
+                              <input disabled id="articulo_precio_final_dto" value="<%= precio_final_dto %>" type="text" class="form-control number" name="precio_final_dto"/>
+                          </div>
+                      </div>
+                    </div>
+                    <div id="lista_2" class="lista_container" style="display: none">
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Costo Final</label>
+                          <div class="col-md-2">
+                              <input value="<%= costo_final %>" type="text" class="form-control costo_final" disabled />
+                          </div>
+                      </div>
+                  
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">% Marcado</label>
+                          <div class="col-md-2">
+                              <input id="articulo_porc_ganancia_2" value="<%= porc_ganancia_2 %>" type="text" class="form-control number calc_total" name="porc_ganancia_2"/>
+                          </div>
+                      </div>
+                  
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Ganancia</label>
+                          <div class="col-md-2">
+                              <input id="articulo_ganancia_2" disabled value="<%= ganancia_2 %>" type="text" class="form-control" name="ganancia_2"/>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Precio Neto</label>
+                          <div class="col-md-2">
+                              <input id="articulo_precio_neto_2" disabled value="<%= precio_neto_2 %>" type="text" class="form-control" name="precio_neto_2"/>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Precio Final</label>
+                          <div class="col-md-2">
+                              <input id="articulo_precio_final_2" value="<%= precio_final_2 %>" type="text" class="form-control number" name="precio_final_2"/>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">% Descuento</label>
+                          <div class="col-md-2">
+                              <input id="articulo_porc_bonif_2" value="<%= porc_bonif_2 %>" type="text" class="form-control number" name="porc_bonif_2"/>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Precio Final c/dto.</label>
+                          <div class="col-md-2">
+                              <input disabled id="articulo_precio_final_dto_2" value="<%= precio_final_dto_2 %>" type="text" class="form-control number" name="precio_final_dto_2"/>
+                          </div>
+                      </div>
+                      
+                    </div>
+                    <div id="lista_3" class="lista_container" style="display: none">
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Costo Final</label>
+                          <div class="col-md-2">
+                              <input value="<%= costo_final %>" type="text" class="form-control costo_final" disabled />
+                          </div>
+                      </div>
+                  
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">% Marcado</label>
+                          <div class="col-md-2">
+                              <input id="articulo_porc_ganancia_3" value="<%= porc_ganancia_3 %>" type="text" class="form-control number calc_total" name="porc_ganancia_3"/>
+                          </div>
+                      </div>
+                  
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Ganancia</label>
+                          <div class="col-md-2">
+                              <input id="articulo_ganancia_3" disabled value="<%= ganancia_3 %>" type="text" class="form-control" name="ganancia_3"/>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Precio Neto</label>
+                          <div class="col-md-2">
+                              <input id="articulo_precio_neto_3" disabled value="<%= precio_neto_3 %>" type="text" class="form-control" name="precio_neto_3"/>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Precio Final</label>
+                          <div class="col-md-2">
+                              <input id="articulo_precio_final_3" value="<%= precio_final_3 %>" type="text" class="form-control number" name="precio_final_3"/>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">% Descuento</label>
+                          <div class="col-md-2">
+                              <input id="articulo_porc_bonif_3" value="<%= porc_bonif_3 %>" type="text" class="form-control number" name="porc_bonif_3"/>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-md-2 control-label">Precio Final c/dto.</label>
+                          <div class="col-md-2">
+                              <input disabled id="articulo_precio_final_dto_3" value="<%= precio_final_dto_3 %>" type="text" class="form-control number" name="precio_final_dto_3"/>
+                          </div>
+                      </div>
+                      
+                    </div>
+                    
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <% if (edicion) { %>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button class="btn guardar btn-success">Guardar</button>
+                            </div>
+                        </div>
+                    <% } %>                    
+                    
+                </div>
+            </div>
+
+            <div id="tab6" class="tab-pane panel-body">
+                <div class="form-horizontal">
+                  
+                    <?php
+                    multiple_upload(array(
+                      "name"=>"images",
+                      "label"=>"Listado de Fotos",
+                      "url"=>"articulos/function/save_image/",
+                      "width"=>(isset($empresa->config["producto_galeria_image_width"]) ? $empresa->config["producto_galeria_image_width"] : 800),
+                      "height"=>(isset($empresa->config["producto_galeria_image_height"]) ? $empresa->config["producto_galeria_image_height"] : 600),
+                    )); ?>
+                    
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <% if (edicion) { %>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button class="btn guardar btn-success">Guardar</button>
+                            </div>
+                        </div>
+                    <% } %>                    
+                    
+                </div>
+            </div>
+            
+            <div id="tab8" class="tab-pane panel-body">
+                <div class="">
+                  
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                      <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Relaciones con categorias</div>
+                        <div class="panel-body">
+                          <div id="articulos_rubros_tree" style="height: 400px; overflow: auto;"></div>
+                        </div>
+                        <div class="panel-footer bg-light lter">
+                          <div class="form-inline">
+                            <div class="form-group">
+                              <label>Mostrar</label>
+                            </div>
+                            <div class="form-group">
+                              <select class="form-control" name="relacionados_tipo">
+                                <option <%= (relacionados_tipo=="U")?"selected":"" %> value="U">ultimos</option>
+                                <option <%= (relacionados_tipo=="A")?"selected":"" %> value="A">aleatorios</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <select class="form-control" name="relacionados_cantidad">
+                                <% for(j=1;j<=20;j++) { %>
+                                  <option <%= (j==relacionados_cantidad)?"selected":"" %> value="<%= j %>"><%= j %></option>
+                                <% } %>
+                                <option <%= (relacionados_cantidad==0)?"selected":"" %> value="0">Todos</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label>elementos de cada categoria.</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                      <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Relaciones con otros articulos</div>
+                        <div class="panel-body">
+                          <div class="m-b">
+                            <input class="form-control" type="text" id="articulos_buscar_productos" placeholder="Busque los productos especificos con los que desea relacionar..." />
+                          </div>
+                          <div class="b-a table-responsive">
+                            <ul id="articulos_tabla_relacionados" style="height: 384px; overflow-y: auto;" class="list-group gutter list-group-lg list-group-sp">
+                              <% for(var i=0;i<relacionados.length;i++) { %>
+                                <% var a = relacionados[i]; %>
+                                <li class='list-group-item'>
+                                  <span><i class='fa fa-sort text-muted fa m-r-sm'></i> </span>
+                                  <img style='margin-left: 10px; margin-right:10px; max-height:50px' src='/sistema/<%= a.path %>'/>
+                                  <span class='id dn'><%= a.id %></span>
+                                  <span class='nombre'><%= a.nombre %></span>
+                                  <span class='pull-right m-t eliminar_relacionado'><i class='fa fa-fw fa-times'></i> </span>
+                                </li>
+                              <% } %>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <% if (edicion) { %>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button class="btn guardar btn-success">Guardar</button>
+                            </div>
+                        </div>
+                    <% } %>                    
+                    
+                </div>
+            </div>
+            
+            <div id="tab11" class="tab-pane panel-body">
+				<div class="form-horizontal">
+					<div class="form-group">
+					  <label class="col-lg-1 control-label">Titulo</label>
+					  <div class="col-lg-11">
+						<textarea name="seo_title" class="form-control"><%= seo_title %></textarea>
+						<span class="help-block m-b-none">Titulo del navegador cuando se visualice la pagina.</span>
+					  </div>
+					</div>
+					<div class="line line-dashed b-b line-lg pull-in"></div>
+					<div class="form-group">
+					  <label class="col-lg-1 control-label">Descripcion</label>
+					  <div class="col-lg-11">
+						<textarea name="seo_description" class="form-control"><%= seo_description %></textarea>
+						<span class="help-block m-b-none">Escribe una breve descripcion del producto.</span>
+					  </div>
+					</div>
+					<div class="line line-dashed b-b line-lg pull-in"></div>
+					<div class="form-group">
+					  <label class="col-lg-1 control-label">Palabras Clave</label>
+					  <div class="col-lg-11">
+						<textarea name="seo_keywords" class="form-control"><%= seo_keywords %></textarea>
+						<span class="help-block m-b-none">Escribe las palabras clave que describan el articulo.</span>
+					  </div>
+					</div>               
+					<div class="line line-dashed b-b line-lg pull-in"></div>
+					<% if (edicion) { %>
+						<div class="form-group">
+							<div class="col-xs-12">    
+								<button class="btn btn-success guardar">Guardar</button>
+							</div>
+						</div>
+					<% } %>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>

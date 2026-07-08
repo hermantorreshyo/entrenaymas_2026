@@ -1,0 +1,29 @@
+table.sortable thead .sorting,
+table.sortable thead .sorting_asc,
+table.sortable thead .sorting_desc,
+table.sortable thead .sorting_asc_disabled,
+table.sortable thead .sorting_desc_disabled {
+  cursor: pointer;
+}
+
+table.sortable thead .sorting:after,
+table.sortable thead .sorting_asc:after,
+table.sortable thead .sorting_desc:after{
+  font-family: FontAwesome;
+  color: #ccc;
+  position: relative;
+  font-weight: normal;
+  float: right;
+}
+
+table.sortable thead .sorting:after{content:"\f0dc";}
+table.sortable thead .sorting_asc:after{content:"\f0de";}
+table.sortable thead .sorting_desc:after{content:"\f0dd";}
+
+table.sortable thead .sorting_asc_disabled {  }
+table.sortable thead .sorting_desc_disabled {  }
+
+table.sortable th:active {
+  outline: none;
+}
+.sorting:hover {  background-color:#e2eaeb; cursor: pointer; }

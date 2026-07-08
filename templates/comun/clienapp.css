@@ -1,0 +1,190 @@
+.clienapp_container {
+  padding: 15px 30px;
+}
+@media (max-width: 768px) {
+  .clienapp_container {
+    padding: 5px 10px;
+  }  
+}
+.clienapp_checkout_titulo { 
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: #505366;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+.clienapp_checkout_subtitulo {
+  text-align: center;
+  font-weight: normal;
+  font-size: 14px;
+  color: #505366;  
+  margin-bottom: 15px;
+  padding: 0px 15px;
+}
+.clienapp_texto {
+  text-align: center;
+  font-weight: normal;
+  font-size: 15px;
+  font-weight: bold;
+  color: #505366;  
+  margin-bottom: 15px;
+  padding: 0px 15px;  
+}
+.clienapp_label{
+  font-weight: bold;
+  display: block;
+  color: #505366;
+  font-size: 14px;
+}
+.clienapp_precio {
+  font-size: 28px;
+  color: #505366;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+input.clienapp_input, textarea.clienapp_input, select.clienapp_input {
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #dce1e7;
+  color: #505366;
+  height: auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+.clienapp_radio{
+  border: 1px solid #dce1e7;
+  margin-bottom: 10px;
+  padding: 5px 20px 0px 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px grey;
+}
+.clienapp_label_radio{
+  padding-left: 10px;
+}
+.clienapp_table{
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.clienapp_container th, .clienapp_container td{
+  text-align: center;
+}
+.clienapp_container th {
+  background-color: #f7fbfe;
+  color: #a3a5b6;
+  font-weight: normal;
+  font-size: 10px;
+  padding: 10px 5px;
+  width: 25%;
+  border-top: 1px solid #e7edf2;
+  border-bottom: 1px solid #e7edf2;
+}
+.clienapp_container td {
+  border-bottom: 1px solid #e7edf2;
+  font-weight: normal;
+  font-size: 14px;
+  padding: 10px 5px;
+}
+.clienapp_primero{
+  text-align: left;
+  padding-left: 20px;
+}
+.clienapp_ultimo{
+  text-align: right;
+  padding-right: 20px;
+}
+.clienapp_disclaimer{
+  color: grey;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding: 0px;
+}
+.clienapp_boton {
+  text-align: center;
+  background-color: #55a832;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 15px 25px 18px 25px;
+  font-family: 'latobold';
+}
+.clienapp_boton:hover{
+  cursor: pointer;
+  background-color:  #65b742;
+}
+.clienapp_boton .fa-whatsapp {
+  font-size: 26px;
+  margin-right: 5px;
+  position: relative;
+  top: 3px;
+}
+.clienapp_container [type="radio"]:checked,
+.clienapp_container [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+.clienapp_container [type="radio"]:checked + label,
+.clienapp_container [type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+.clienapp_container [type="radio"]:checked + label:before,
+.clienapp_container [type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+.clienapp_container [type="radio"]:checked + label:after,
+.clienapp_container [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #50556b;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.clienapp_container [type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+.clienapp_container [type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+@media only screen and (max-width: 600px){
+  .clienapp_label{
+    font-size: 15px !important;
+  }
+}
+#clienapp_checkout_logo { text-align: center; }
+#clienapp_checkout_logo img { width: 80px; height: 80px; border-radius: 100%; margin-bottom: 20px; object-fit: cover; margin: 0 auto; text-align: center; }
+.clienapp_paso_2 { display: none; }

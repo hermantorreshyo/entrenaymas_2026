@@ -1,0 +1,1 @@
+php -f C:\xampp\htdocs\sistema\application\cronjobs\push\server.php

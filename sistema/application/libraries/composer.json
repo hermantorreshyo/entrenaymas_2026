@@ -1,0 +1,6 @@
+{
+    "require": {
+        "google/cloud-language": "^0.4.0",
+        "phpoffice/phpspreadsheet": "^1.3",
+    }
+}

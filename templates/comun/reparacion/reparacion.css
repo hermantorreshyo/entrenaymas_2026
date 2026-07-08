@@ -1,0 +1,274 @@
+.reparacion-titulo { margin-top: 30px; margin-bottom: 30px; }
+.varcreative-reparaciones .varcreative-checkout .varcreative-panel { max-width: none; width: 100%; margin-top: 20px }
+.varcreative-reparaciones .varcreative-checkout .varcreative-panel-body { padding: 40px 60px }
+.datos-derecha { text-align: right; }
+.datos-izquierda { text-align: left; }
+.barra-container { padding: 40px 0px; }
+.barra-final-full { text-align: right; }
+.progreso-inicio { float: left; }
+.progreso-reparado, .progreso-no-reparado { float: right; }
+@media (max-width: 992px) {
+	.varcreative-reparaciones .varcreative-checkout .varcreative-panel-body { padding: 20px }
+	.datos-derecha, .datos-izquierda { text-align: center; }
+	.datos-izquierda { margin-bottom: 10px; }
+	.reparacion-titulo .status { font-size: 18px; }
+	.barra-container { padding: 10px 0px; }
+	.barra-final-full { text-align: center; }
+	.progreso-inicio, .progreso-reparado, .progreso-no-reparado { float: none; }
+}
+.barra-inicio{
+	background-color: #0058ac;
+	height: 20px;
+}
+#mitad{
+	background-color: #b2cde6;
+	height: 20px;
+}
+.barra-final{
+	background-color: #b2cde6;
+	height: 20px;
+}
+.barra-final-empty{
+	background-color: #b2cde6;
+	height: 20px;
+}
+.barra-final-full{
+	background-color: #0058ac;
+	height: 20px;
+}
+.status{
+	color: #4c4c4c;
+	font-size: 22px;
+	font-family: 'Lato', sans-serif;
+	padding-left: 10px;
+	font-weight: 600;
+}
+.orden{
+	color: #4c4c4c;
+	font-size: 20px;
+	font-family: 'Lato', sans-serif;
+}
+.numero{
+	color: #377cf6;
+	font-size: 20px;
+	font-weight: 600;
+	font-family: 'Lato', sans-serif;
+}
+.cliente{
+	color: #000000;
+	font-size: 20px;
+	text-align: right;
+	font-family: 'Lato', sans-serif;
+}
+.parrafo{
+	padding-left: 84px;
+  margin-top: -19px;
+  font-family: 'Lato', sans-serif;
+}
+.nombre{
+	color: black;
+	font-size: 20px;
+	font-weight: 600;
+	font-family: 'Lato', sans-serif;
+}
+.asunto{
+	color: #377cf6;
+	font-size: 20px;
+	font-weight: 600;
+}
+.fe{
+	color: #4c4c4c;
+	font-size: 20px;
+}
+.fecha{
+	color: black;
+	font-weight: 600;
+	font-size: 20px;
+}
+.progreso{
+	color: #4c4c4c;
+	font-size: 20px;
+	font-weight: 600;
+	margin-left: 15px;
+}
+#row-estado{
+	padding-bottom: 50px;
+	margin-top: 40px;
+}
+#row-datos{
+	overflow: hidden;
+}
+#bottom{
+	padding-top: 45px;
+}
+#fondocol{
+	background-color: black;
+}
+.circle-middle{
+	background-color: #0058ac;
+	width: 50px;
+	height: 50px;
+	border-radius: 40px;
+	margin-top: -15px;
+	margin-left: -17px;
+}
+.circle-inicio{
+	display: inline-block;
+	background-color: #0058ac;
+	width: 50px;
+	height: 50px;
+	border-radius: 40px;
+	margin-top: -15px;
+	margin-left: -17px;
+	text-align: center;
+}
+.circle{
+	text-align: center;
+	background-color: #0058ac;
+	width: 50px;
+	height: 50px;
+	border-radius: 40px;
+	margin-top: -15px;
+	margin-left: -17px;
+	display: inline-block;
+}
+.circle-end{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border-radius: 40px;
+	margin-top: -15px;
+	margin-right: -17px;
+	background-color: #b2cde6;
+}
+.circle-green{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border-radius: 40px;
+	margin-top: -15px;
+	margin-right: -17px;
+	background-color: #4eb836;
+	text-align: center;
+}
+.circle-red{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border-radius: 40px;
+	margin-top: -15px;
+	margin-right: -17px;
+	background-color: #cb1a2f;
+	text-align: center;
+}
+.varcreative-boton-imprimir {
+	display: inline-block;
+	background-color: #377cf6;
+  color: white;
+  border-radius: 5px;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  padding: 15px 35px;
+  font-family: 'Lato', sans-serif;
+}
+.varcreative-boton-imprimir:hover, .varcreative-boton-imprimir:focus {
+	text-decoration: none;
+	color: white;
+	background-color: #377cf6;
+}
+.margin0 {
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+@media (max-width: 992px){
+	.barra-final{
+		background-color: transparent;
+	}
+	.barra-inicio{
+		background-color: transparent;
+	}
+	.barra-final-empty{
+		background-color: transparent;
+	}
+	.circle-middle{
+		margin-top: -22px;
+		margin-left: 41%;
+	}
+	#right{
+		margin-top: 20px;
+	}
+	.barra-final-full{
+		background-color: transparent;
+	}
+	.progreso-inicio{
+		display: none;
+	}
+	.progreso-reparacion{
+		display: none;
+	}
+	.progreso-reparado{
+		text-align: center;
+	}
+	.progreso-no-reparado{
+		text-align: center;
+	}
+	.progreso-repuesto{
+		text-align: center;
+	}
+	#row-estado{
+		padding-bottom: 30px;
+	}
+	#row-datos{
+		padding-bottom: 23px;
+	}
+	.barra-final{
+		background-color: transparent;
+	}
+	.barra-inicio{
+		background-color: transparent;
+	}
+	.barra-final-empty{
+		background-color: transparent;
+	}
+	.circle-middle{
+		margin-top: -22px;
+		margin-left: 35%;
+	}
+	#right{
+		margin-top: 20px;
+	}
+	.barra-final-full{
+		background-color: transparent;
+	}
+	.en-espera{
+		display: block;
+	}
+	.progreso-reparacion{
+		display: none;
+	}
+	.progreso-reparado{
+		text-align: center;
+	}
+	.progreso-no-reparado{
+		text-align: center;
+	}
+	.progreso-repuesto{
+		text-align: center;
+	}
+	#row-estado{
+		padding-bottom: 30px;
+	}
+	#row-datos{
+		padding-bottom: 20px;
+	}
+	.varcreative-boton-imprimir {
+		width: 100%;
+		font-size: 16px;
+	}
+	.barra-final-centrada { text-align: center; }
+}
+
+@media print {
+	header, .footer-widget-area, footer, .reparacion-titulo, .impimir-container { display: none; }
+}

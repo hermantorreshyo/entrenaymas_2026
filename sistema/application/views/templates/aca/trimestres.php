@@ -1,0 +1,111 @@
+<script type="text/template" id="trimestres_panel_template">
+  <div class="bg-light lter b-b wrapper-md ng-scope">
+    <h1 class="m-n font-thin h3"><i class="fa fa-tags icono_principal"></i>Trimestres</h1>
+  </div>
+  <div class="wrapper-md ng-scope">
+    <div class="panel panel-default">
+    
+      <div class="panel-heading oh">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 sm-m-b">
+            <div class="search_container"></div>
+          </div>
+          <div class="col-md-6 col-lg-offset-3 col-lg-6 text-right">
+            <a class="btn btn-info btn-addon" href="app/#trimestre"><i class="fa fa-plus"></i>&nbsp;&nbsp;Nuevo&nbsp;&nbsp;</a>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="b-a table-responsive">
+          <table id="trimestres_table" class="table table-striped sortable m-b-none default footable">
+            <thead>
+              <tr>
+                <th class="sorting" data-sort-by="nombre">Nombre</th>
+                <th class="sorting" data-sort-by="fecha_desde">Inicio</th>
+                <th class="sorting" data-sort-by="fecha_hasta">Fin</th>
+                <% if (permiso > 1) { %>
+                  <th class="th_acciones w120">Acciones</th>
+                <% } %>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot class="pagination_container hide-if-no-paging"></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>  
+</script>
+
+
+<script type="text/template" id="trimestres_item">
+  <td class="ver"><span class='text-info'><%= nombre %></span></td>
+  <td class="ver"><%= fecha_desde %></td>
+  <td class="ver"><%= fecha_hasta %></td>
+  <% if (permiso > 1) { %>
+    <td class="p5 td_acciones">
+      <div class="btn-group dropdown ml10">
+        <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-plus"></i>
+        </button>    
+        <ul class="dropdown-menu pull-right">
+          <li><a href="javascript:void(0)" class="duplicar" data-id="<%= id %>">Duplicar</a></li>
+          <li><a href="javascript:void(0)" class="delete" data-id="<%= id %>">Eliminar</a></li>
+        </ul>
+      </div>
+    </td>
+  <% } %>
+</script>
+
+<script type="text/template" id="trimestres_edit_panel_template">
+<div class="bg-light lter b-b wrapper-md ng-scope">
+  <h1 class="m-n font-thin h3"><i class="fa fa-tags icono_principal"></i>Trimestres
+    / <b><%= (id == undefined) ? 'Nuevo' : nombre %></b>
+  </h1>
+</div>
+<div class="wrapper-md ng-scope">
+  <div class="centrado rform">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="padder">
+              <div class="form-group">
+                <label class="control-label">Nombre</label>
+                <input type="text" name="nombre" class="form-control" id="trimestre_nombre" value="<%= nombre %>"/>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="control-label">Fecha de inicio</label>
+                  <div class="input-group">
+                    <input value="<%= fecha_desde %>" type="text" name="fecha_desde" id="trimestre_fecha_desde" class="form-control">
+                    <span class="input-group-btn">
+                      <button class="btn btn-cal btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="control-label">Fecha de fin</label>
+                  <div class="input-group">
+                    <input value="<%= fecha_hasta %>" type="text" name="fecha_hasta" id="trimestre_fecha_hasta" class="form-control">
+                    <span class="input-group-btn">
+                      <button class="btn btn-cal btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                  </div>                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% if (edicion) { %>
+          <div class="tar">
+            <button class="btn guardar btn-success">Guardar</button>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+</script>

@@ -1,0 +1,126 @@
+@font-face {
+    font-family: "EAN-13";
+    src: url("../fonts/EAN-13.ttf");
+}
+
+.barcode { margin-top: 20px; font-size: 8px; text-align: center; }
+.barcode > div { margin-bottom: 3px; }
+
+.a4 {
+    width: 210mm;
+    height: 280mm;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: white;
+    margin-bottom: 30px;
+}
+.a4p {
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: white;
+}
+.inner { padding: 40px; }
+
+.tar { text-align: right !important; }
+.tal { text-align: left !important; }
+body { font-family: Arial; font-size: 14px; background-color: #EEE; }
+
+.tabla, .table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 5px 0px;
+}
+.tabla th, .table th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: normal;
+}
+.tabla td, .table td {
+    font-size: 11px;
+    text-align: left;
+}
+.totales td {
+    padding: 5px 10px;   
+}
+.tabla tr, .table tr {
+    border-bottom: dashed 1px #CCC;
+}
+.tabla tr td, .table tr td {
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+
+.total_gral {
+    margin-top: 30px;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    padding: 10px;
+}
+.total_gral td {
+    padding: 10px 8px;
+    font-size: 14px;
+    font-weight:bold;
+    font-style: italic;
+    text-align: right;
+}
+
+.tabla tfoot td, .table tfoot td {
+    background-color: #e5e5e5;
+    font-weight:bold;
+    padding: 7px 4px;
+}
+
+.header {
+    margin: 5px 0px;
+    padding: 10px 0px;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+}
+div.page {
+    width: 210mm;
+    height: 297mm;
+}
+div.page.horizontal {
+    width: 297mm;
+    height: 210mm;
+}
+div.p2mm {
+    padding: 2mm;
+}
+div.p3mm {
+    padding: 3mm;
+}
+
+@media print {
+  div.page {
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+  body {-webkit-print-color-adjust: exact; }
+  .inner { padding: 0px; }
+  .a4 { page-break-after: always; margin-bottom: 0px; }
+  .a4:last-child { page-break-after: avoid; }    
+  .a4p {
+    page-break-after: always;
+  }
+}
+
+.subtitulo {
+    font-size: 12px;
+    font-weight: bold;
+}
+.subtitulo2 {
+    font-size: 10px;
+    font-weight: bold;
+}
+.bbs {
+    border-bottom: solid 1px #CCC;
+}
+.bts {
+    border-top: solid 1px #CCC;
+}
+
+.ean13 {
+    font-family: "EAN-13";
+}

@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.makerservicios.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.makerservicios.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.makerservicios.com.ar">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerEmpresas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_idRemisera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerEmpresasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerEmpresasResult" type="tns:ArrayOfEMPRESA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEMPRESA">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EMPRESA" nillable="true" type="tns:EMPRESA" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EMPRESA">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NUMERO" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLAVE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ACCEDE_WEB" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="establecerUsuarioClave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nroEmpresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_clave" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_idRemisera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="establecerUsuarioClaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="establecerUsuarioClaveResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="accesoWebHabilitaDeshabilita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nroEmpresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_habilita" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_idRemisera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="accesoWebHabilitaDeshabilitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accesoWebHabilitaDeshabilitaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validarUsuarioClave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_clave" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_idRemisera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validarUsuarioClaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="validarUsuarioClaveResult" type="tns:EMPRESA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerViajantes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nroEmpresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_idRemisera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerViajantesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerViajantesResult" type="tns:ArrayOfUSUARIOS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUSUARIOS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="USUARIOS" nillable="true" type="tns:USUARIOS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="USUARIOS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LLAVE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERIE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALIAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="obtenerViajesDeViajante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_desde" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_hasta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_llave" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_nroEmpresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_idRemisera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerViajesDeViajanteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerViajesDeViajanteResult" type="tns:ArrayOfVIAJES" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVIAJES">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VIAJES" nillable="true" type="tns:VIAJES" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VIAJES">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NRO_VIAJE" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NRO_CONTROL" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA_HORA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DISTANCIA" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESPERA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VELOCIDAD" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FINALIZADO_EN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NRO_CHOFER" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NRO_MOVIL" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="obtenerDatosViaje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nroViaje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_nroEmpresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_idRemisera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerDatosViajeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerDatosViajeResult" type="tns:ArrayOfDATOS_VIAJES" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDATOS_VIAJES">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DATOS_VIAJES" nillable="true" type="tns:DATOS_VIAJES" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DATOS_VIAJES">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LATITUD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONGITUD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UBICACION" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VELOCIDAD" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA_HORA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EVENTO" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="obtenerViajesDeEmpresa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_desde" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_hasta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_nroEmpresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_idRemisera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerViajesDeEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerViajesDeEmpresaResult" type="tns:ArrayOfVIAJES" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="guardarViaje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_latitud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_longitud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_textoAliasMovil" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_comentario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_fechaHoraEnviar" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_id_empresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_idRemisera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="guardarViajeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarViajeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerEmpresasSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerEmpresas" />
+  </wsdl:message>
+  <wsdl:message name="obtenerEmpresasSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerEmpresasResponse" />
+  </wsdl:message>
+  <wsdl:message name="establecerUsuarioClaveSoapIn">
+    <wsdl:part name="parameters" element="tns:establecerUsuarioClave" />
+  </wsdl:message>
+  <wsdl:message name="establecerUsuarioClaveSoapOut">
+    <wsdl:part name="parameters" element="tns:establecerUsuarioClaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="accesoWebHabilitaDeshabilitaSoapIn">
+    <wsdl:part name="parameters" element="tns:accesoWebHabilitaDeshabilita" />
+  </wsdl:message>
+  <wsdl:message name="accesoWebHabilitaDeshabilitaSoapOut">
+    <wsdl:part name="parameters" element="tns:accesoWebHabilitaDeshabilitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="validarUsuarioClaveSoapIn">
+    <wsdl:part name="parameters" element="tns:validarUsuarioClave" />
+  </wsdl:message>
+  <wsdl:message name="validarUsuarioClaveSoapOut">
+    <wsdl:part name="parameters" element="tns:validarUsuarioClaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerViajantesSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerViajantes" />
+  </wsdl:message>
+  <wsdl:message name="obtenerViajantesSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerViajantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerViajesDeViajanteSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerViajesDeViajante" />
+  </wsdl:message>
+  <wsdl:message name="obtenerViajesDeViajanteSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerViajesDeViajanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDatosViajeSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerDatosViaje" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDatosViajeSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerDatosViajeResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerViajesDeEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerViajesDeEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="obtenerViajesDeEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerViajesDeEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarViajeSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarViaje" />
+  </wsdl:message>
+  <wsdl:message name="guardarViajeSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarViajeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MakerSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerEmpresas">
+      <wsdl:input message="tns:obtenerEmpresasSoapIn" />
+      <wsdl:output message="tns:obtenerEmpresasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="establecerUsuarioClave">
+      <wsdl:input message="tns:establecerUsuarioClaveSoapIn" />
+      <wsdl:output message="tns:establecerUsuarioClaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="accesoWebHabilitaDeshabilita">
+      <wsdl:input message="tns:accesoWebHabilitaDeshabilitaSoapIn" />
+      <wsdl:output message="tns:accesoWebHabilitaDeshabilitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validarUsuarioClave">
+      <wsdl:input message="tns:validarUsuarioClaveSoapIn" />
+      <wsdl:output message="tns:validarUsuarioClaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerViajantes">
+      <wsdl:input message="tns:obtenerViajantesSoapIn" />
+      <wsdl:output message="tns:obtenerViajantesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerViajesDeViajante">
+      <wsdl:input message="tns:obtenerViajesDeViajanteSoapIn" />
+      <wsdl:output message="tns:obtenerViajesDeViajanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosViaje">
+      <wsdl:input message="tns:obtenerDatosViajeSoapIn" />
+      <wsdl:output message="tns:obtenerDatosViajeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerViajesDeEmpresa">
+      <wsdl:input message="tns:obtenerViajesDeEmpresaSoapIn" />
+      <wsdl:output message="tns:obtenerViajesDeEmpresaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarViaje">
+      <wsdl:input message="tns:guardarViajeSoapIn" />
+      <wsdl:output message="tns:guardarViajeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MakerSoap" type="tns:MakerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://www.makerservicios.com.ar/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerEmpresas">
+      <soap:operation soapAction="http://www.makerservicios.com.ar/obtenerEmpresas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="establecerUsuarioClave">
+      <soap:operation soapAction="http://www.makerservicios.com.ar/establecerUsuarioClave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="accesoWebHabilitaDeshabilita">
+      <soap:operation soapAction="http://www.makerservicios.com.ar/accesoWebHabilitaDeshabilita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarUsuarioClave">
+      <soap:operation soapAction="http://www.makerservicios.com.ar/validarUsuarioClave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerViajantes">
+      <soap:operation soapAction="http://www.makerservicios.com.ar/obtenerViajantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerViajesDeViajante">
+      <soap:operation soapAction="http://www.makerservicios.com.ar/obtenerViajesDeViajante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosViaje">
+      <soap:operation soapAction="http://www.makerservicios.com.ar/obtenerDatosViaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerViajesDeEmpresa">
+      <soap:operation soapAction="http://www.makerservicios.com.ar/obtenerViajesDeEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarViaje">
+      <soap:operation soapAction="http://www.makerservicios.com.ar/guardarViaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MakerSoap12" type="tns:MakerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://www.makerservicios.com.ar/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerEmpresas">
+      <soap12:operation soapAction="http://www.makerservicios.com.ar/obtenerEmpresas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="establecerUsuarioClave">
+      <soap12:operation soapAction="http://www.makerservicios.com.ar/establecerUsuarioClave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="accesoWebHabilitaDeshabilita">
+      <soap12:operation soapAction="http://www.makerservicios.com.ar/accesoWebHabilitaDeshabilita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarUsuarioClave">
+      <soap12:operation soapAction="http://www.makerservicios.com.ar/validarUsuarioClave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerViajantes">
+      <soap12:operation soapAction="http://www.makerservicios.com.ar/obtenerViajantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerViajesDeViajante">
+      <soap12:operation soapAction="http://www.makerservicios.com.ar/obtenerViajesDeViajante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosViaje">
+      <soap12:operation soapAction="http://www.makerservicios.com.ar/obtenerDatosViaje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerViajesDeEmpresa">
+      <soap12:operation soapAction="http://www.makerservicios.com.ar/obtenerViajesDeEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarViaje">
+      <soap12:operation soapAction="http://www.makerservicios.com.ar/guardarViaje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Maker">
+    <wsdl:port name="MakerSoap" binding="tns:MakerSoap">
+      <soap:address location="http://www.makerservicios.com.ar:60005/MakerServicios.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MakerSoap12" binding="tns:MakerSoap12">
+      <soap12:address location="http://www.makerservicios.com.ar:60005/MakerServicios.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
