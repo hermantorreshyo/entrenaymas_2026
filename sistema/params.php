@@ -6,7 +6,7 @@ date_default_timezone_set("America/Argentina/Buenos_Aires");
 if (!defined("SERVER_DB")) { DEFINE ("SERVER_DB",(isset($_SERVER["SERVER_DB"]) ? $_SERVER["SERVER_DB"] : "localhost")); }
 if (!defined("DATABASE")) { DEFINE ("DATABASE",(isset($_SERVER["DATABASE"]) ? $_SERVER["DATABASE"] : "servidor")); }
 if (!defined("USER_DB")) { DEFINE ("USER_DB",(isset($_SERVER["USER_DB"]) ? $_SERVER["USER_DB"] : "root")); }
-if (!defined("PASSWORD_DB")) { DEFINE ("PASSWORD_DB",(isset($_SERVER["PASSWORD_DB"]) ? $_SERVER["PASSWORD_DB"] : "qu4r2200")); }
+if (!defined("PASSWORD_DB")) { DEFINE ("PASSWORD_DB",(isset($_SERVER["PASSWORD_DB"]) ? $_SERVER["PASSWORD_DB"] : "ey+db2026@")); }
 if (!defined("FORCE_HTTPS")) { DEFINE ("FORCE_HTTPS",false); }
 
 if (!defined("URL_BASE")) { DEFINE ("URL_BASE",(isset($_SERVER["URL_BASE"]) ? $_SERVER["URL_BASE"] : "https://entrenaymas.com.ar")); }
