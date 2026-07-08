@@ -18,7 +18,8 @@ if (!defined("PAYCOMET_PASSWORD")) { DEFINE ("PAYCOMET_PASSWORD",(isset($_SERVER
 if (!function_exists("get_conex")) {
   function get_conex() {
     // Conectamos con la base de datos
-    $conx = mysqli_connect(SERVER_DB,USER_DB,PASSWORD_DB,DATABASE);
+    //$conx = mysqli_connect(SERVER_DB,USER_DB,PASSWORD_DB,DATABASE);
+	$conx = mysqli_connect("mysql",USER_DB,PASSWORD_DB,DATABASE);
     if ($conx === FALSE) {
       echo "Error al conectar con la base de datos";
       return;
