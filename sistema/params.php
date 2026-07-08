@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 date_default_timezone_set("America/Argentina/Buenos_Aires");
 if (!defined("SERVER_DB")) { DEFINE ("SERVER_DB",(isset($_SERVER["SERVER_DB"]) ? $_SERVER["SERVER_DB"] : "localhost")); }
-if (!defined("DATABASE")) { DEFINE ("DATABASE",(isset($_SERVER["DATABASE"]) ? $_SERVER["DATABASE"] : "servidor")); }
+if (!defined("DATABASE")) { DEFINE ("DATABASE",(isset($_SERVER["DATABASE"]) ? $_SERVER["DATABASE"] : "demo-entrenaymas-mysql")); }
 if (!defined("USER_DB")) { DEFINE ("USER_DB",(isset($_SERVER["USER_DB"]) ? $_SERVER["USER_DB"] : "root")); }
 if (!defined("PASSWORD_DB")) { DEFINE ("PASSWORD_DB",(isset($_SERVER["PASSWORD_DB"]) ? $_SERVER["PASSWORD_DB"] : "ey+db2026@")); }
 if (!defined("FORCE_HTTPS")) { DEFINE ("FORCE_HTTPS",false); }
