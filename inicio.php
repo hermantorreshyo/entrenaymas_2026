@@ -134,6 +134,7 @@ function mklink($url) {
 }
 
 $empresa = get_empresa_by_dominio($dominio);
+print_r($empresa);
 $base = "/";
 
 // Controlamos si tiene configurado un dominio principal
