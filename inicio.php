@@ -58,8 +58,6 @@ function get_empresa_by_dominio($dominio) {
   $sql.= "WHERE ED.dominio = '$dominio' ";
   $dominio = "test.entrenaymas.com";
   if ($dominio_con_www != $dominio) $sql.= "OR ED.dominio = '$dominio_con_www' ";
-  
-  echo $sql;
   $q = mysqli_query($conx,$sql);
   if (mysqli_num_rows($q)>0) {
     $empresa = mysqli_fetch_object($q);
@@ -135,9 +133,7 @@ function mklink($url) {
   return $d.(($url !== "/")?$url:"");
 }
 
-echo "DOMINIO: ".$dominio;
 $empresa = get_empresa_by_dominio($dominio);
-print_r($empresa);
 $base = "/";
 
 // Controlamos si tiene configurado un dominio principal
