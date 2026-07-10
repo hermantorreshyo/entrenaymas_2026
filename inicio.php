@@ -133,7 +133,7 @@ function mklink($url) {
   return $d.(($url !== "/")?$url:"");
 }
 
-echo "DOMINIO: ".dominio;
+echo "DOMINIO: ".$dominio;
 $empresa = get_empresa_by_dominio($dominio);
 print_r($empresa);
 $base = "/";
