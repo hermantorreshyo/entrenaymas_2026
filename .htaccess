@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^index\.php$ - [L]
+RewriteRule ^sistema/inicio\.php$ - [L]
+
+# Panel /sistema (CodeIgniter) -> su propio front controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^sistema(/.*)?$ sistema/inicio.php [L]
+
+# Resto del sitio -> front controller principal
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
