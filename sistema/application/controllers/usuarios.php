@@ -118,7 +118,7 @@ class Usuarios extends REST_Controller {
     $body = str_replace("{{password}}", $password, $body);
     mandrill_send(array(
       "to"=>$email,
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "from_name"=>$empresa->nombre,
       "subject"=>$template->nombre,
       "body"=>$body,
@@ -165,7 +165,7 @@ class Usuarios extends REST_Controller {
       $body = str_replace("{{nombre}}", $usuario->nombre, $body);
       mandrill_send(array(
         "to"=>$usuario->email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>$empresa->nombre,
         "subject"=>$template->nombre,
         "body"=>$body,
@@ -352,7 +352,7 @@ class Usuarios extends REST_Controller {
       mandrill_send(array(
         "to"=>$usuario->email,
         //"to"=>"matuschettino@gmail.com",
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>"Entrenaymas",
         "subject"=>$template->nombre,
         "body"=>$body,
@@ -374,7 +374,7 @@ class Usuarios extends REST_Controller {
       mandrill_send(array(
         "to"=>$email,
         //"to"=>"matuschettino@gmail.com",
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>"Entrenaymas",
         "subject"=>$template->nombre,
         "body"=>utf8_decode($body),

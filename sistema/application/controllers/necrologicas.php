@@ -38,7 +38,7 @@ class Necrologicas extends REST_Controller {
     $body = $texto;
     mandrill_send(array(
       "to"=>"quepensaschacabuco@gmail.com",
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "subject"=>"Nueva participacion funebre",
       "body"=>$body,
     ));

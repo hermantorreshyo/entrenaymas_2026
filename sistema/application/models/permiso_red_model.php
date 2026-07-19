@@ -57,7 +57,7 @@ class Permiso_Red_Model extends Abstract_Model {
       // Enviamos el email a la inmobiliaria con la invitacion de la nueva
       mandrill_send(array(
         "to"=>$emp->email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>"Inmovar",
         "subject"=>$asunto,
         "body"=>$texto,

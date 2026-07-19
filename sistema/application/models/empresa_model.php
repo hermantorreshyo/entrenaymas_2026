@@ -134,11 +134,11 @@ class Empresa_Model extends Abstract_Model {
       $body = str_replace("{{link_factura}}", "https://www.varcreative.com/sistema/facturas/function/ver_pdf/".$factura->id."/".$factura->id_punto_venta."/".$factura->id_empresa."/", $body);
       mandrill_send(array(
         "to"=>$r->email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>$r->proyecto,
         "subject"=>$template->nombre,
         "body"=>$body,
-        "reply_to"=>"no-reply@varcreative.com",
+        "reply_to"=>MAIL_REPLY_TO_ADDRESS,
         "bcc"=>$bcc_array,
       ));
     }    

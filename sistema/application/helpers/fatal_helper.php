@@ -51,7 +51,7 @@ function fatal_handler() {
 
 function error_mail($body) {
   // Me envio un email con el error
-  $headers = "From:info@varcreative.com\r\n";
+  $headers = "From:".MAIL_FROM_ADDRESS."\r\n";
   $headers.= "MIME-Version: 1.0\r\n";
   $headers.= "Content-Type: text/html; charset=ISO-8859-1\r\n";
   @mail("basile.matias99@gmail.com","ERROR VENCIMIENTO EMPRESAS",$body,$headers);

@@ -94,7 +94,7 @@ class Not_Editores extends REST_Controller {
     require APPPATH.'libraries/Mandrill/Mandrill.php';
     mandrill_send(array(
       "to"=>$bcc_array,
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "from_name"=>$empresa->nombre,
       "subject"=>"Nuevo seguidor de $editor->nombre",
       "body"=>$body,

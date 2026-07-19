@@ -126,7 +126,7 @@ class Entradas extends REST_Controller {
     require APPPATH.'libraries/Mandrill/Mandrill.php';
     mandrill_send(array(
       "to"=>$cliente->email,
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "from_name"=>$empresa->nombre,
       "subject"=>$temp->nombre,
       "body"=>$body,
@@ -867,7 +867,7 @@ class Entradas extends REST_Controller {
       require APPPATH.'libraries/Mandrill/Mandrill.php';
       mandrill_send(array(
         "to"=>$empresa->email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>$nombre,
         "subject"=>"Comentario",
         "body"=>$texto,

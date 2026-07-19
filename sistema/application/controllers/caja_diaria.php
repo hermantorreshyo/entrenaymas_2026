@@ -21,7 +21,7 @@ class Caja_Diaria extends REST_Controller {
     $body = "";
     mandrill_send(array(
       "to"=>"basile.matias99@gmail.com",
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "subject"=>"ERROR EN SUBIDA DE VENTAS",
       "body"=>$body,
     ));    

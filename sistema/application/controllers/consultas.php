@@ -151,7 +151,7 @@ class Consultas extends REST_Controller {
 
         mandrill_send(array(
           "to"=>$usuario_asignado->email,
-          "from"=>"no-reply@varcreative.com",
+          "from"=>MAIL_FROM_ADDRESS,
           "from_name"=>$empresa->nombre,
           "subject"=>$asunto,
           "body"=>$texto,
@@ -191,7 +191,7 @@ class Consultas extends REST_Controller {
     require APPPATH.'libraries/Mandrill/Mandrill.php';
     mandrill_send(array(
       "to"=>$empresa->email,
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "from_name"=>$empresa->nombre,
       "subject"=>$asunto,
       "body"=>$texto,
@@ -650,7 +650,7 @@ class Consultas extends REST_Controller {
     require APPPATH.'libraries/Mandrill/Mandrill.php';
     mandrill_send(array(
       "to"=>$para,
-      "from"=>(($id_empresa == 186) ? "info@varcreative.com" : "no-reply@varcreative.com"),
+      "from"=>MAIL_FROM_ADDRESS,
       "from_name"=>$empresa->nombre,
       "subject"=>html_entity_decode($asunto,ENT_QUOTES),
       "body"=>$body,
@@ -670,7 +670,7 @@ class Consultas extends REST_Controller {
         $body = str_replace("{{link_ficha_propiedad}}", $link_ficha_propiedad, $body);
         mandrill_send(array(
           "to"=>$email,
-          "from"=>"no-reply@varcreative.com",
+          "from"=>MAIL_FROM_ADDRESS,
           "from_name"=>$empresa->nombre,
           "subject"=>$temp->nombre,
           "body"=>$body,

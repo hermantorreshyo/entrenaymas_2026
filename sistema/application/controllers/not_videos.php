@@ -73,7 +73,7 @@ class Not_Videos extends REST_Controller {
     require APPPATH.'libraries/Mandrill/Mandrill.php';
     mandrill_send(array(
       "to"=>$cliente->email,
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "from_name"=>$empresa->nombre,
       "subject"=>$temp->nombre,
       "body"=>$body,

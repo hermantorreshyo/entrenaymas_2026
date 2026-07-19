@@ -100,11 +100,11 @@ class Empresas extends REST_Controller {
 
         mandrill_send(array(
           "to"=>$r->email,
-          "from"=>"no-reply@varcreative.com",
+          "from"=>MAIL_FROM_ADDRESS,
           "from_name"=>$r->proyecto,
           "subject"=>$template->nombre,
           "body"=>$body,
-          "reply_to"=>"no-reply@varcreative.com",
+          "reply_to"=>MAIL_REPLY_TO_ADDRESS,
           "bcc"=>$bcc_array,
         ));
       }
@@ -173,11 +173,11 @@ class Empresas extends REST_Controller {
     $body = str_replace("{{nombre}}",htmlentities($empresa->nombre,ENT_QUOTES),$body);
     mandrill_send(array(
       "to"=>$empresa->email,
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "from_name"=>$empresa->proyecto,
       "subject"=>$template->nombre,
       "body"=>$body,
-      "reply_to"=>"info@varcreative.com",
+      "reply_to"=>MAIL_REPLY_TO_ADDRESS,
       "bcc"=>$bcc_array,
     ));
 
@@ -376,11 +376,11 @@ class Empresas extends REST_Controller {
       $body = str_replace("{{password}}",$password,$body);
       mandrill_send(array(
         "to"=>$email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>"TurnoClick",
         "subject"=>$template->nombre,
         "body"=>$body,
-        "reply_to"=>"info@varcreative.com",
+        "reply_to"=>MAIL_REPLY_TO_ADDRESS,
         "bcc"=>$bcc_array,
       ));
     }
@@ -471,7 +471,7 @@ class Empresas extends REST_Controller {
       $body = str_replace("{{telefono}}",htmlentities($telefono,ENT_QUOTES),$body);
       mandrill_send(array(
         "to"=>$email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>$nombre_proyecto,
         "subject"=>$template->nombre,
         "body"=>$body,
@@ -595,11 +595,11 @@ class Empresas extends REST_Controller {
       $body = str_replace("{{telefono}}",htmlentities($telefono,ENT_QUOTES),$body);
       mandrill_send(array(
         "to"=>$email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>"Inmovar",
         "subject"=>$template->nombre,
         "body"=>$body,
-        "reply_to"=>"info@varcreative.com",
+        "reply_to"=>MAIL_REPLY_TO_ADDRESS,
         "bcc"=>$bcc_array,
       ));
     }
@@ -696,11 +696,11 @@ class Empresas extends REST_Controller {
       $body = str_replace("{{password}}",$password,$body);
       mandrill_send(array(
         "to"=>$email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>"ClienApp",
         "subject"=>$template->nombre,
         "body"=>$body,
-        "reply_to"=>"info@varcreative.com",
+        "reply_to"=>MAIL_REPLY_TO_ADDRESS,
         "bcc"=>$bcc_array,
       ));
     }
@@ -794,7 +794,7 @@ class Empresas extends REST_Controller {
       $template = $q->row();
 
       $headers = "MIME-Version: 1.0\r\n";
-      $headers.= "From: info@varcreative.com\r\n";
+      $headers.= "From: ".MAIL_FROM_ADDRESS."\r\n";
       $headers.= "Content-Type: text/html; charset=ISO-8859-1\r\n";
       $headers.= "BCC: basile.matias99@gmail.com,misticastudio@gmail.com\r\n";
       $body = (html_entity_decode($template->texto,ENT_QUOTES));

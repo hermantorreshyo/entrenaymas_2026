@@ -113,7 +113,7 @@ class Contactos extends REST_Controller {
 
       mandrill_send(array(
         "to"=>$cliente->email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>$empresa->nombre,
         "subject"=>$asunto,
         "body"=>$body,

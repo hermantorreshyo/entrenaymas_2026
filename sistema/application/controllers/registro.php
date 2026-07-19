@@ -101,7 +101,7 @@ class Registro extends CI_Controller {
     $body = str_replace("{{nombre}}", $nombre, $body);
     mandrill_send(array(
       "to"=>$email,
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "from_name"=>"Entrena y Mas",
       "subject"=>$template->nombre,
       "body"=>$body,

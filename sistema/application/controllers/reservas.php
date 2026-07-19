@@ -188,7 +188,7 @@ class Reservas extends REST_Controller {
       $bcc_array = array("basile.matias99@gmail.com");
       mandrill_send(array(
         "to"=>$email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>$empresa->nombre,
         "subject"=>$template->nombre,
         "body"=>$body,
@@ -216,7 +216,7 @@ class Reservas extends REST_Controller {
       $body = str_replace("{{mensaje}}",$mensaje,$body);
       mandrill_send(array(
         "to"=>$empresa->email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>$nombre,
         "subject"=>$template->nombre,
         "body"=>$body,

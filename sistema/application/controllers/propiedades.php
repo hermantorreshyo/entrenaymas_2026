@@ -96,7 +96,7 @@ class Propiedades extends REST_Controller {
     mandrill_send(array(
       "to"=>$email,
       "subject"=>$template->nombre,
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "from_name"=>"Inmovar",
       "body"=>$body,
       "bcc"=>$bcc_array,

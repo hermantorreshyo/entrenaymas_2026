@@ -150,7 +150,7 @@ while(($empresa = mysqli_fetch_object($q_empresas))!==NULL) {
       "to"=>$empresa->email,
       "subject"=>$email_template->nombre,
       "body"=>$email_template->texto,
-      "reply_to"=>"info@varcreative.com",
+      "reply_to"=>MAIL_REPLY_TO_ADDRESS,
       "bcc"=>"basile.matias99@gmail.com",
     )); 
     logfile("ENVIAR EMAIL: ".$empresa->email);

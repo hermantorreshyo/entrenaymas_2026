@@ -222,7 +222,7 @@ class Facturas_Periodicas extends REST_Controller {
 
       mandrill_send(array(
         "to"=>$cliente->email,
-        "from"=>"no-reply@varcreative.com",
+        "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>$empresa->nombre,
         "subject"=>$template->nombre,
         "body"=>$body,
@@ -504,7 +504,7 @@ class Facturas_Periodicas extends REST_Controller {
 
         mandrill_send(array(
           "to"=>$email,
-          "from"=>"no-reply@varcreative.com",
+          "from"=>MAIL_FROM_ADDRESS,
           "from_name"=>$empresa->nombre,
           "subject"=>$template->nombre,
           "body"=>$body,

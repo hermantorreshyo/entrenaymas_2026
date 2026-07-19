@@ -373,7 +373,7 @@ class Cipal extends REST_Controller {
           $body = str_replace("{{apellido}}", $apellido, $body);
           mandrill_send(array(
             "to"=>$email,
-            "from"=>"no-reply@varcreative.com",
+            "from"=>MAIL_FROM_ADDRESS,
             "from_name"=>"CIPAL 2019",
             "subject"=>$template->nombre,
             "body"=>$body,

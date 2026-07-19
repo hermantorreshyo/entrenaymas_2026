@@ -1424,7 +1424,7 @@ class App_Pedidos extends REST_Controller {
     $body = str_replace("{{saldo}}", $saldo, $body);
     mandrill_send(array(
       "to"=>$para,
-      "from"=>"no-reply@varcreative.com",
+      "from"=>MAIL_FROM_ADDRESS,
       "from_name"=>$nombre,
       "subject"=>$temp->nombre,
       "body"=>$body,

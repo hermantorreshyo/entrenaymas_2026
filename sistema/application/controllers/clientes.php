@@ -432,7 +432,7 @@ class Clientes extends REST_Controller {
         $body = str_replace("{{nombre}}", $cliente->nombre, $body);
         mandrill_send(array(
           "to"=>$cliente->email,
-          "from"=>"no-reply@varcreative.com",
+          "from"=>MAIL_FROM_ADDRESS,
           "from_name"=>"Toque",
           "subject"=>$template->nombre,
           "body"=>$body,
@@ -465,7 +465,7 @@ class Clientes extends REST_Controller {
 
         mandrill_send(array(
           "to"=>$cliente->email,
-          "from"=>"no-reply@varcreative.com",
+          "from"=>MAIL_FROM_ADDRESS,
           "from_name"=>"Perendale Publishers",
           "subject"=>$template->nombre,
           "body"=>$body,
@@ -504,7 +504,7 @@ class Clientes extends REST_Controller {
 
         mandrill_send(array(
           "to"=>$cliente->email,
-          "from"=>"no-reply@varcreative.com",
+          "from"=>MAIL_FROM_ADDRESS,
           "from_name"=>$empresa->nombre,
           "subject"=>$template->nombre,
           "body"=>$body,
@@ -684,7 +684,7 @@ class Clientes extends REST_Controller {
       $body = str_replace("{{empresa}}",$empresa->nombre,$body);
       $body = str_replace("{{id_empresa}}",$empresa->id,$body);
 
-      $headers = "From: no-reply@varcreative.com\r\n";
+      $headers = "From: ".MAIL_FROM_ADDRESS."\r\n";
       $headers.= "MIME-Version: 1.0\r\n";
       $headers.= "Content-Type: text/html; charset=ISO-8859-1\r\n";
       @mail($email,$asunto,$body,$headers);
@@ -1034,7 +1034,7 @@ class Clientes extends REST_Controller {
         $body = str_replace("{{password}}", $password, $body);
         mandrill_send(array(
           "to"=>$email,
-          "from"=>"no-reply@varcreative.com",
+          "from"=>MAIL_FROM_ADDRESS,
           "from_name"=>$empresa->nombre,
           "subject"=>$template->nombre,
           "body"=>$body,

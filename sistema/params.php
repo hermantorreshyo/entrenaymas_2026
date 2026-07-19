@@ -15,6 +15,13 @@ if (!defined("PAYCOMET_CODE")) { DEFINE ("PAYCOMET_CODE",(isset($_SERVER["PAYCOM
 if (!defined("PAYCOMET_JET_ID")) { DEFINE ("PAYCOMET_JET_ID",(isset($_SERVER["PAYCOMET_JET_ID"]) ? $_SERVER["PAYCOMET_JET_ID"] : "")); }
 if (!defined("PAYCOMET_PASSWORD")) { DEFINE ("PAYCOMET_PASSWORD",(isset($_SERVER["PAYCOMET_PASSWORD"]) ? $_SERVER["PAYCOMET_PASSWORD"] : "")); }
 
+if (!defined("GOOGLE_SMTP_HOST")) { DEFINE ("GOOGLE_SMTP_HOST",(isset($_SERVER["GOOGLE_SMTP_HOST"]) ? $_SERVER["GOOGLE_SMTP_HOST"] : "smtp.gmail.com")); }
+if (!defined("GOOGLE_SMTP_PORT")) { DEFINE ("GOOGLE_SMTP_PORT",(isset($_SERVER["GOOGLE_SMTP_PORT"]) ? $_SERVER["GOOGLE_SMTP_PORT"] : "587")); }
+if (!defined("GOOGLE_SMTP_USER")) { DEFINE ("GOOGLE_SMTP_USER",(isset($_SERVER["GOOGLE_SMTP_USER"]) ? $_SERVER["GOOGLE_SMTP_USER"] : "")); }
+if (!defined("GOOGLE_SMTP_PASSWORD")) { DEFINE ("GOOGLE_SMTP_PASSWORD",(isset($_SERVER["GOOGLE_SMTP_PASSWORD"]) ? $_SERVER["GOOGLE_SMTP_PASSWORD"] : "")); }
+if (!defined("MAIL_FROM_ADDRESS")) { DEFINE ("MAIL_FROM_ADDRESS",(isset($_SERVER["MAIL_FROM_ADDRESS"]) ? $_SERVER["MAIL_FROM_ADDRESS"] : GOOGLE_SMTP_USER)); }
+if (!defined("MAIL_REPLY_TO_ADDRESS")) { DEFINE ("MAIL_REPLY_TO_ADDRESS",(isset($_SERVER["MAIL_REPLY_TO_ADDRESS"]) ? $_SERVER["MAIL_REPLY_TO_ADDRESS"] : GOOGLE_SMTP_USER)); }
+
 if (!function_exists("get_conex")) {
   function get_conex() {
     // Conectamos con la base de datos
@@ -68,7 +75,7 @@ if (!function_exists("send_error")) {
     $subject = (isset($config["subject"]) ? $config["subject"] : "ERROR");
     $message = (isset($config["message"]) ? $config["message"] : "");
     $log_file = (isset($config["log_file"]) ? $config["log_file"] : "");
-    $headers = "From:info@varcreative.com\r\n";
+    $headers = "From:".MAIL_FROM_ADDRESS."\r\n";
     $headers.= "MIME-Version: 1.0\r\n";
     $headers.= "Content-Type: text/html; charset=ISO-8859-1\r\n";
     @mail($to,$subject,$message,$headers);
