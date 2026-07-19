@@ -19,8 +19,10 @@ function get_provincias() {
 <html lang="es">
 <head>
 <?php include("includes/head.php") ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <style type="text/css">
 .modal { background-color: rgba(0,0,0,0.5); }
+.registro-hp { position: absolute; left: -9999px; top: -9999px; }
 </style>
 </head>
 <body>
@@ -232,6 +234,12 @@ function get_provincias() {
                 </div>
               </div>
             </div>
+            <div class="registro-hp" aria-hidden="true">
+              <input type="text" name="direccion_2" id="registro_hp" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <div class="g-recaptcha" data-sitekey="6LeHSTQUAAAAAA5FV121v-M7rnhqdkXZIGmP9N8E"></div>
+            </div>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="registro_condiciones" name="example1">
               <label class="custom-control-label" for="registro_condiciones">Acepto los <a target="_blank" href="<?php echo mklink("entrada/terminos-y-condiciones-41119") ?>">términos y condiciones</a>, la <a target="_blank" href="<?php echo mklink("entrada/politica-de-privacidad-41120") ?>">política de privacidad</a> y el tratamiento de mis datos*</label>
@@ -329,6 +337,12 @@ function get_provincias() {
               </div>
             </div>
 
+            <div class="registro-hp" aria-hidden="true">
+              <input type="text" name="direccion_2" id="registro_centro_hp" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <div class="g-recaptcha" data-sitekey="6LeHSTQUAAAAAA5FV121v-M7rnhqdkXZIGmP9N8E"></div>
+            </div>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="registro_centro_condiciones" name="example1">
               <label class="custom-control-label" for="registro_centro_condiciones">Acepto los <a target="_blank" href="<?php echo mklink("entrada/terminos-y-condiciones-41119") ?>">términos y condiciones</a>, la <a target="_blank" href="<?php echo mklink("entrada/politica-de-privacidad-41120") ?>">política de privacidad</a> y el tratamiento de mis datos*</label>
@@ -543,9 +557,15 @@ function enviar_registro_profesional() {
   var subscription = $("#type-subscription").val();
   var cuota = $("#cuota").val();
   var cupon = $("#cupon-descuento").val();
-  
+
   if (!$("#registro_condiciones").is(":checked")) {
     alert("Por favor acepte los terminos y condiciones.");
+    return false;
+  }
+
+  var captcha = grecaptcha.getResponse(0);
+  if (isEmpty(captcha)) {
+    alert("Por favor complete el captcha.");
     return false;
   }
 
@@ -568,9 +588,12 @@ function enviar_registro_profesional() {
     "cuota":cuota,
     "cupon":cupon,
     "subscription":subscription,
+    "captcha":captcha,
+    "captcha_widget":0,
+    "hp":$("#registro_hp").val(),
   });
 
-  return false;  
+  return false;
 }
 
 function iniciar_enviar_registro(o) {
@@ -607,12 +630,15 @@ function enviar_registro(o) {
       "cuota": o.cuota,
       "cupon": o.cupon,
       "subscription": o.subscription,
+      "g-recaptcha-response": o.captcha,
+      "hp": o.hp,
     },
     "success":function(r) {
       window.enviado = 0;
       if (r.error != 0) {
+        grecaptcha.reset(o.captcha_widget);
         alert(r.mensaje);
-        return;        
+        return;
       }
 
       if (o.subscription == "premium") {
@@ -634,6 +660,7 @@ function enviar_registro(o) {
     },
     "error":function(){
       alert("Ocurrio un error al enviar el registro. Por favor intente nuevamente.");
+      grecaptcha.reset(o.captcha_widget);
       window.enviado = 0;
     }
   });
@@ -695,7 +722,13 @@ function enviar_registro_centro_medico() {
 
   var subscription = $("#type-subscription_centro").val();
   var cuota = $("#cuota_centro").val();
-  var cupon = $("#cupon-descuento_centro").val();  
+  var cupon = $("#cupon-descuento_centro").val();
+
+  var captcha = grecaptcha.getResponse(1);
+  if (isEmpty(captcha)) {
+    alert("Por favor complete el captcha.");
+    return false;
+  }
 
   iniciar_enviar_registro({
     "tipo":"gimnasio",
@@ -713,7 +746,10 @@ function enviar_registro_centro_medico() {
     "sobre_mi": "",
     "cuota":cuota,
     "cupon":cupon,
-    "subscription":subscription,    
+    "subscription":subscription,
+    "captcha":captcha,
+    "captcha_widget":1,
+    "hp":$("#registro_centro_hp").val(),
   });
   return false;
 }

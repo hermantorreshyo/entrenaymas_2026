@@ -7,9 +7,34 @@ class Registro extends CI_Controller {
 	}
 
 	function entrenaymas() {
-		ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);
+
+		// Honeypot: campo trampa que solo un bot completaria.
+		// Respondemos como si hubiera salido bien, sin guardar nada ni enviar mail.
+		$hp = $this->input->post("hp");
+		if (!empty($hp)) {
+			echo json_encode(array(
+				"error"=>0,
+				"id"=>0,
+			));
+			exit();
+		}
+
+		// Verificacion de reCAPTCHA contra la API de Google
+		require APPPATH.'libraries/recaptchalib.php';
+		$captcha = $this->input->post("g-recaptcha-response");
+		$recaptcha_secret = "6LeHSTQUAAAAACG9dCyy6hv24tlRYL8TKtxe4O54";
+		$reCaptcha = new ReCaptcha($recaptcha_secret);
+		$resp = $reCaptcha->verifyResponse(
+			$_SERVER["REMOTE_ADDR"],
+			$captcha
+		);
+		if ($resp == null || !isset($resp->success) || $resp->success === FALSE) {
+			echo json_encode(array(
+				"error"=>1,
+				"mensaje"=>"Por favor verifique el captcha e intente nuevamente.",
+			));
+			exit();
+		}
 
 		$tipo = $this->input->post("tipo");
 		$profesional = $this->input->post("profesional");
