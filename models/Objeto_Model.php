@@ -120,8 +120,8 @@ class Objeto_Model {
     }
 
 	private function encoding($e) {
-		$e->texto = utf8_encode($e->texto);
-		$e->titulo = utf8_encode($e->nombre);
+		$e->texto = mb_convert_encoding($e->texto, 'UTF-8', 'ISO-8859-1');
+		$e->titulo = mb_convert_encoding($e->nombre, 'UTF-8', 'ISO-8859-1');
 		$e->subtitulo = "";
 		$e->tipo = "";
 		return $e;

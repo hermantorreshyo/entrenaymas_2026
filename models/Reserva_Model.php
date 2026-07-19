@@ -111,9 +111,9 @@ class Reserva_Model {
   }
 
   private function encoding($e) {
-    $e->texto = utf8_encode($e->texto);
+    $e->texto = mb_convert_encoding($e->texto, 'UTF-8', 'ISO-8859-1');
     $e->plain_text = str_replace("\n", "", strip_tags(html_entity_decode($e->texto,ENT_QUOTES)));
-    $e->nombre = utf8_encode($e->nombre);
+    $e->nombre = mb_convert_encoding($e->nombre, 'UTF-8', 'ISO-8859-1');
     return $e;
   }
 

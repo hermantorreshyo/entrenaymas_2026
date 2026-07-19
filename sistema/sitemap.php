@@ -19,7 +19,7 @@ while(($r=mysqli_fetch_object($q))!==NULL) {
 $q = mysqli_query($conx,"SELECT * FROM articulos WHERE id_empresa = $empresa->id AND lista_precios >= 1 ORDER BY last_update DESC");
 while(($r=mysqli_fetch_object($q))!==NULL) {
   $url = $xml->addChild("url");
-  $url->addChild("loc",utf8_encode(mklink($r->link)));
+  $url->addChild("loc",mb_convert_encoding(mklink($r->link), 'UTF-8', 'ISO-8859-1'));
   $url->addChild("lastmod",date("Y-m-d H:i:s",$r->last_update));
   $url->addChild("priority","0.6");
 }
@@ -30,7 +30,7 @@ while(($r=mysqli_fetch_object($q))!==NULL) {
 $q = mysqli_query($conx,"SELECT * FROM not_entradas WHERE id_empresa = $empresa->id AND activo = 1 AND seo_ocultar_sitemap = 0 ");
 while(($r=mysqli_fetch_object($q))!==NULL) {
   $url = $xml->addChild("url");
-  $url->addChild("loc",utf8_encode(mklink($r->link)));
+  $url->addChild("loc",mb_convert_encoding(mklink($r->link), 'UTF-8', 'ISO-8859-1'));
   if (!empty($r->seo_sitemap_priority)) $url->addChild("priority",$r->seo_sitemap_priority);
 }
 
@@ -38,7 +38,7 @@ while(($r=mysqli_fetch_object($q))!==NULL) {
 $q = mysqli_query($conx,"SELECT * FROM seo_urls WHERE id_empresa = $empresa->id");
 while(($r=mysqli_fetch_object($q))!==NULL) {
   $url = $xml->addChild("url");
-  $url->addChild("loc",utf8_encode(mklink($r->url)));
+  $url->addChild("loc",mb_convert_encoding(mklink($r->url), 'UTF-8', 'ISO-8859-1'));
 }
 
 echo $xml->asXML();

@@ -129,7 +129,7 @@ function crear_form(config) {
   ?></option>';
   <?php $q_nac = mysqli_query($conx,"SELECT * FROM custom_nacionalidades WHERE id_empresa = $empresa->id ORDER BY orden ASC");
   while(($nac=mysqli_fetch_object($q_nac))!==NULL) { ?>
-  s+='        <option value="<?php echo utf8_encode($nac->nombre) ?>"><?php echo utf8_encode($nac->nombre) ?></option>';
+  s+='        <option value="<?php echo mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1') ?>"><?php echo mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1') ?></option>';
   <?php } ?>
   s+='      </select>';
   s+='      <i class="fa fa-globe" aria-hidden="true"></i>';

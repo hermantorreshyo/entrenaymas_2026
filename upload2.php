@@ -311,7 +311,7 @@ foreach($files as $file) {
   $table = str_replace(".txt", "", $table);
   $salida[] = array(
     "table"=>$table,
-    "data"=>utf8_encode($info),
+    "data"=>mb_convert_encoding($info, 'UTF-8', 'ISO-8859-1'),
   );
 }
 

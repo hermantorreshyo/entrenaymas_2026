@@ -604,8 +604,8 @@ if (isset($empresa->template_path) && !empty($empresa->template_path)) {
 
       $seo_url = mysqli_fetch_object($q);
       $seo_url_id = $seo_url->id;
-      $seo_title = utf8_decode($seo_url->title);
-      $seo_description = utf8_decode($seo_url->description);
+      $seo_title = mb_convert_encoding($seo_url->title, 'ISO-8859-1', 'UTF-8');
+      $seo_description = mb_convert_encoding($seo_url->description, 'ISO-8859-1', 'UTF-8');
       $h1 = $seo_url->h1;
       $h2 = $seo_url->h2;
       $texto_comercial = $seo_url->texto_comercial;

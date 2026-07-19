@@ -99,7 +99,7 @@ class Delivery_Model {
       while(($ing=mysqli_fetch_object($qq))!==NULL) {
         $p->ingredientes[] = $ing;
       }
-      $categoria = utf8_encode($p->categoria);
+      $categoria = mb_convert_encoding($p->categoria, 'UTF-8', 'ISO-8859-1');
 		  $productos[$categoria][] = $p;
 		}
 		$row->productos = $productos;

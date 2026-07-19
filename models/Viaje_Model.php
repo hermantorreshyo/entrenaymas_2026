@@ -12,7 +12,7 @@ class Viaje_Model {
   }
 
   private function encod($r) {
-    return ((mb_check_encoding($r) == "UTF-8") ? $r : utf8_encode($r));
+    return ((mb_check_encoding($r) == "UTF-8") ? $r : mb_convert_encoding($r, 'UTF-8', 'ISO-8859-1'));
   }
 
   function nueva_reserva($config = array()) {
@@ -390,7 +390,7 @@ class Viaje_Model {
     $k=0;
     $q_precio = mysqli_query($this->conx,$sql);
     while(($precio=mysqli_fetch_object($q_precio))!==NULL) {
-      $precio->nombre = utf8_encode($precio->nombre);
+      $precio->nombre = mb_convert_encoding($precio->nombre, 'UTF-8', 'ISO-8859-1');
 
       // Debemos hacer la conversion de monedas
       if ($mostrar_en_moneda == "ARS" && $precio->moneda == 'USD') {
@@ -685,15 +685,15 @@ class Viaje_Model {
   }
 
   private function encoding($entrada) {
-    $entrada->plain_text = (!empty($entrada->observaciones)) ? utf8_encode($entrada->observaciones) : (utf8_encode(strip_tags($entrada->texto,"<a><i><b><br>")));
-    $entrada->texto = utf8_encode($entrada->texto);
-    $entrada->nombre = utf8_encode($entrada->nombre);
-    $entrada->subtitulo = utf8_encode($entrada->subtitulo);
-    $entrada->categoria = utf8_encode($entrada->categoria);
-    $entrada->custom_1 = utf8_encode($entrada->custom_1);
-    $entrada->custom_2 = utf8_encode($entrada->custom_2);
-    $entrada->custom_3 = utf8_encode($entrada->custom_3);
-    $entrada->custom_4 = utf8_encode($entrada->custom_4);
+    $entrada->plain_text = (!empty($entrada->observaciones)) ? mb_convert_encoding($entrada->observaciones, 'UTF-8', 'ISO-8859-1') : (mb_convert_encoding(strip_tags($entrada->texto,"<a><i><b><br>"), 'UTF-8', 'ISO-8859-1'));
+    $entrada->texto = mb_convert_encoding($entrada->texto, 'UTF-8', 'ISO-8859-1');
+    $entrada->nombre = mb_convert_encoding($entrada->nombre, 'UTF-8', 'ISO-8859-1');
+    $entrada->subtitulo = mb_convert_encoding($entrada->subtitulo, 'UTF-8', 'ISO-8859-1');
+    $entrada->categoria = mb_convert_encoding($entrada->categoria, 'UTF-8', 'ISO-8859-1');
+    $entrada->custom_1 = mb_convert_encoding($entrada->custom_1, 'UTF-8', 'ISO-8859-1');
+    $entrada->custom_2 = mb_convert_encoding($entrada->custom_2, 'UTF-8', 'ISO-8859-1');
+    $entrada->custom_3 = mb_convert_encoding($entrada->custom_3, 'UTF-8', 'ISO-8859-1');
+    $entrada->custom_4 = mb_convert_encoding($entrada->custom_4, 'UTF-8', 'ISO-8859-1');
     return $entrada;
   }
 
@@ -764,7 +764,7 @@ class Viaje_Model {
     if (mysqli_num_rows($q)>0) {
       while(($r=mysqli_fetch_object($q))!==NULL) {
         $r->children = $this->get_opcionales_categorias($r->id,$config);
-        $r->nombre = utf8_encode($r->nombre);
+        $r->nombre = mb_convert_encoding($r->nombre, 'UTF-8', 'ISO-8859-1');
         $salida[] = $r;
       }
     }
@@ -781,7 +781,7 @@ class Viaje_Model {
     $q = mysqli_query($this->conx,$sql);
     if (mysqli_num_rows($q)==0) return FALSE;
     $r = mysqli_fetch_object($q);
-    $r->nombre = utf8_encode($r->nombre);
+    $r->nombre = mb_convert_encoding($r->nombre, 'UTF-8', 'ISO-8859-1');
     return $r;
   }
 
@@ -845,9 +845,9 @@ class Viaje_Model {
       if (!empty($r->path)) {
         $r->path = ((strpos($r->path,"http://")===FALSE)) ? "/sistema/".$r->path : $r->path;
       }
-      $r->nombre = utf8_encode($r->nombre);
-      $r->texto = utf8_encode($r->texto);
-      $r->categoria = utf8_encode($r->categoria);
+      $r->nombre = mb_convert_encoding($r->nombre, 'UTF-8', 'ISO-8859-1');
+      $r->texto = mb_convert_encoding($r->texto, 'UTF-8', 'ISO-8859-1');
+      $r->categoria = mb_convert_encoding($r->categoria, 'UTF-8', 'ISO-8859-1');
       $r->precio = 0;
       $r->moneda = "ARS";
       $r->precios = array();
@@ -867,7 +867,7 @@ class Viaje_Model {
       $q_precios = mysqli_query($this->conx,$sql);
       $jj=0;
       while(($precio=mysqli_fetch_object($q_precios))!==NULL) {
-        $precio->nombre = utf8_encode($precio->nombre);
+        $precio->nombre = mb_convert_encoding($precio->nombre, 'UTF-8', 'ISO-8859-1');
         $r->precios[] = $precio;
         if ($jj==0) {
           $r->precio = $precio->precio;

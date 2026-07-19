@@ -132,7 +132,7 @@
                     $sql_nac .= "FROM custom_nacionalidades ORDER BY orden ASC";
                     $q_nac = mysqli_query($conx,$sql_nac);
                     while(($nac=mysqli_fetch_object($q_nac))!==NULL) { ?>
-                      <option <?php echo (utf8_encode($nac->nombre)==$adulto->nacionalidad)?"selected":"" ?> value="<?php echo utf8_encode($nac->nombre) ?>"><?php echo utf8_encode($nac->nombre) ?></option>
+                      <option <?php echo (mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1')==$adulto->nacionalidad)?"selected":"" ?> value="<?php echo mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1') ?>"><?php echo mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1') ?></option>
                     <?php } ?>
                   </select>
                   <i class="fa fa-globe" aria-hidden="true"></i>
@@ -197,7 +197,7 @@
                         </option>
                         <?php $q_nac = mysqli_query($conx,"SELECT * FROM custom_nacionalidades WHERE id_empresa = $empresa->id ORDER BY orden ASC");
                         while(($nac=mysqli_fetch_object($q_nac))!==NULL) { ?>
-                          <option <?php echo (utf8_encode($nac->nombre)==$adulto->nacionalidad)?"selected":"" ?> value="<?php echo utf8_encode($nac->nombre) ?>"><?php echo utf8_encode($nac->nombre) ?></option>
+                          <option <?php echo (mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1')==$adulto->nacionalidad)?"selected":"" ?> value="<?php echo mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1') ?>"><?php echo mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1') ?></option>
                         <?php } ?>
                       </select>
                       <i class="fa fa-globe" aria-hidden="true"></i>
@@ -248,7 +248,7 @@
                         </option>
                         <?php $q_nac = mysqli_query($conx,"SELECT * FROM custom_nacionalidades WHERE id_empresa = $empresa->id ORDER BY orden ASC");
                         while(($nac=mysqli_fetch_object($q_nac))!==NULL) { ?>
-                          <option <?php echo (utf8_encode($nac->nombre)==$adulto->nacionalidad)?"selected":"" ?> value="<?php echo utf8_encode($nac->nombre) ?>"><?php echo utf8_encode($nac->nombre) ?></option>
+                          <option <?php echo (mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1')==$adulto->nacionalidad)?"selected":"" ?> value="<?php echo mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1') ?>"><?php echo mb_convert_encoding($nac->nombre, 'UTF-8', 'ISO-8859-1') ?></option>
                         <?php } ?>
                       </select>
                       <i class="fa fa-globe" aria-hidden="true"></i>
@@ -278,7 +278,7 @@
                       <?php echo ($lang == "pt")?"Hotel de destino":"" ?>
                     </option>
                     <?php while(($r=mysqli_fetch_object($q))!==NULL) { ?>
-                      <option <?php echo ($r->nombre==$pedido->hotel)?"selected":"" ?> value="<?php echo utf8_encode($r->nombre) ?>"><?php echo utf8_encode($r->nombre) ?></option>
+                      <option <?php echo ($r->nombre==$pedido->hotel)?"selected":"" ?> value="<?php echo mb_convert_encoding($r->nombre, 'UTF-8', 'ISO-8859-1') ?>"><?php echo mb_convert_encoding($r->nombre, 'UTF-8', 'ISO-8859-1') ?></option>
                     <?php } ?>
                   </select>
                 </div>

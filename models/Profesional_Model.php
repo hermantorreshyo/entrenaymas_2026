@@ -42,7 +42,7 @@ class Profesional_Model {
     $q = mysqli_query($this->conx,$sql);
     if (mysqli_num_rows($q)==0) return FALSE;
     $row=mysqli_fetch_object($q);
-    $row->nombre = utf8_encode($row->nombre);
+    $row->nombre = mb_convert_encoding($row->nombre, 'UTF-8', 'ISO-8859-1');
     return $row;
   }
 
@@ -201,10 +201,10 @@ class Profesional_Model {
   }
 
   private function encoding($e) {
-    $e->texto = utf8_encode($e->texto);
-    $e->nombre = utf8_encode($e->nombre);
-    $e->apellido = utf8_encode($e->apellido);
-    $e->especialidad = utf8_encode($e->especialidad);
+    $e->texto = mb_convert_encoding($e->texto, 'UTF-8', 'ISO-8859-1');
+    $e->nombre = mb_convert_encoding($e->nombre, 'UTF-8', 'ISO-8859-1');
+    $e->apellido = mb_convert_encoding($e->apellido, 'UTF-8', 'ISO-8859-1');
+    $e->especialidad = mb_convert_encoding($e->especialidad, 'UTF-8', 'ISO-8859-1');
     return $e;
   }
 

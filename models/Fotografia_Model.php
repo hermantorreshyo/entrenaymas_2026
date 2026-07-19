@@ -292,11 +292,11 @@ class Fotografia_Model {
   }
 
 	private function encoding($entrada) {
-		$entrada->plain_text = utf8_encode(strip_tags($entrada->texto,"<a><i><b><br>"));
-		$entrada->texto = utf8_encode($entrada->texto);
-    $entrada->path = utf8_encode($entrada->path);
-		$entrada->titulo = utf8_encode($entrada->titulo);
-		$entrada->categoria = utf8_encode($entrada->categoria);
+		$entrada->plain_text = mb_convert_encoding(strip_tags($entrada->texto,"<a><i><b><br>"), 'UTF-8', 'ISO-8859-1');
+		$entrada->texto = mb_convert_encoding($entrada->texto, 'UTF-8', 'ISO-8859-1');
+    $entrada->path = mb_convert_encoding($entrada->path, 'UTF-8', 'ISO-8859-1');
+		$entrada->titulo = mb_convert_encoding($entrada->titulo, 'UTF-8', 'ISO-8859-1');
+		$entrada->categoria = mb_convert_encoding($entrada->categoria, 'UTF-8', 'ISO-8859-1');
 		return $entrada;
 	}
 

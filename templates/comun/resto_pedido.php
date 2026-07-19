@@ -88,7 +88,7 @@ if (isset($_SESSION["id_cliente"]) && isset($_SESSION["nombre"])) {
                         <div class="col-md-6">
                           <a data-id="<?php echo $p->id ?>" class="modal_pedido menu-list">
                             <span>
-                              <span class="menu-name titulo"><?php echo utf8_encode($p->nombre); ?></span><br/>
+                              <span class="menu-name titulo"><?php echo mb_convert_encoding($p->nombre, 'UTF-8', 'ISO-8859-1'); ?></span><br/>
                               <span class="descripcion"><?php echo (strlen($p->descripcion)>50) ? substr($p->descripcion,0,50)."..." : $p->descripcion ?></span>
                               <span class="descripcion-hidden"><?php echo $p->descripcion ?></span>
                             </span>

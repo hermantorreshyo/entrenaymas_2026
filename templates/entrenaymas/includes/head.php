@@ -2,8 +2,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<title><?php echo (isset($seo_title)) ? utf8_encode(html_entity_decode($seo_title,ENT_QUOTES)) : utf8_encode(html_entity_decode($empresa->seo_title,ENT_QUOTES)); ?></title>
-<meta name="description" content="<?php echo (isset($seo_description)) ? utf8_encode(html_entity_decode($seo_description,ENT_QUOTES)) : utf8_encode(html_entity_decode($empresa->seo_description,ENT_QUOTES)); ?>">
+<title><?php echo (isset($seo_title)) ? mb_convert_encoding(html_entity_decode($seo_title,ENT_QUOTES), 'UTF-8', 'ISO-8859-1') : mb_convert_encoding(html_entity_decode($empresa->seo_title,ENT_QUOTES), 'UTF-8', 'ISO-8859-1'); ?></title>
+<meta name="description" content="<?php echo (isset($seo_description)) ? mb_convert_encoding(html_entity_decode($seo_description,ENT_QUOTES), 'UTF-8', 'ISO-8859-1') : mb_convert_encoding(html_entity_decode($empresa->seo_description,ENT_QUOTES), 'UTF-8', 'ISO-8859-1'); ?>">
 
 <?php 
 $keywords = (isset($seo_keywords)) ? (html_entity_decode($seo_keywords,ENT_QUOTES)) : (html_entity_decode($empresa->seo_keywords,ENT_QUOTES));

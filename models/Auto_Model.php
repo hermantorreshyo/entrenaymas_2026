@@ -11,7 +11,7 @@ class Auto_Model {
   }
 
   private function encod($r) {
-    return ((mb_check_encoding($r) == "UTF-8") ? $r : utf8_encode($r));
+    return ((mb_check_encoding($r) == "UTF-8") ? $r : mb_convert_encoding($r, 'UTF-8', 'ISO-8859-1'));
   }
 
   function get_variables($config = array()) {
@@ -432,7 +432,7 @@ class Auto_Model {
     $e->texto = $this->encod($e->texto);
     $e->plain_text = str_replace("\n", "", strip_tags(html_entity_decode($e->texto,ENT_QUOTES)));
     $e->titulo = ($this->id_empresa == 70) ? $this->encod($e->marca." ".$e->modelo) : $this->encod($e->titulo);
-    $e->subtitulo = $this->encod(((!empty($e->anio)) ? "Año: ".$e->anio : "").((!empty($e->kms)) ? " - ".$e->kms." kms." : ""));
+    $e->subtitulo = $this->encod(((!empty($e->anio)) ? "Aï¿½o: ".$e->anio : "").((!empty($e->kms)) ? " - ".$e->kms." kms." : ""));
     $e->tipo = $this->encod($e->tipo);
     return $e;
   }

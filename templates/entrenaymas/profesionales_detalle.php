@@ -48,8 +48,8 @@ if (sizeof($profesionales_relacionados) <= 2) {
 
 $nombre_pagina = "profesionales";
 $funcion_buscar = "buscar_listado";
-if (isset($profesional->seo_title) && !empty($profesional->seo_title)) $seo_title = utf8_decode($profesional->seo_title);
-if (isset($profesional->seo_description) && !empty($profesional->seo_description)) $seo_description = utf8_decode(str_replace("\n", "", strip_tags($profesional->seo_description)));
+if (isset($profesional->seo_title) && !empty($profesional->seo_title)) $seo_title = mb_convert_encoding($profesional->seo_title, 'ISO-8859-1', 'UTF-8');
+if (isset($profesional->seo_description) && !empty($profesional->seo_description)) $seo_description = mb_convert_encoding(str_replace("\n", "", strip_tags($profesional->seo_description)), 'ISO-8859-1', 'UTF-8');
 
 // Consultamos la tarifa
 $valor = 0.01;

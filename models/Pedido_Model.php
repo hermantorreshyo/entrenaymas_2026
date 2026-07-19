@@ -10,7 +10,7 @@ class Pedido_Model {
   }
 
   private function encod($r) {
-    return ((mb_check_encoding($r) == "UTF-8") ? $r : utf8_encode($r));
+    return ((mb_check_encoding($r) == "UTF-8") ? $r : mb_convert_encoding($r, 'UTF-8', 'ISO-8859-1'));
   }
 
   function get($id_pedido,$config = array()) {

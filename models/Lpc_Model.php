@@ -61,7 +61,7 @@ class Lpc_Model {
         $vc_categoria = $c;
         $vc_id_categoria = $c->id;
         $vc_categorias[] = $c;
-        $vc_categoria_nombre = utf8_encode($c->nombre);
+        $vc_categoria_nombre = mb_convert_encoding($c->nombre, 'UTF-8', 'ISO-8859-1');
         $vc_id_categoria_padre = $c->id;
         $vc_link.=$link_categoria."/";
         if ($i==1) $vc_link_pagina = $c->link;
@@ -252,8 +252,8 @@ class Lpc_Model {
       );
       if (isset($config_lista["tiene_descuento_1"])) $config_lista["tiene_descuento_1"] = 1;
       $barra->lista = $this->get_list($config_lista);
-      $barra->nombre = utf8_encode($barra->nombre);
-      $barra->subtitulo = utf8_encode($barra->subtitulo);
+      $barra->nombre = mb_convert_encoding($barra->nombre, 'UTF-8', 'ISO-8859-1');
+      $barra->subtitulo = mb_convert_encoding($barra->subtitulo, 'UTF-8', 'ISO-8859-1');
       $barra->rubro_path = (!empty($barra->rubro_path)) ? (((strpos($barra->rubro_path,"http://")===FALSE)) ? "/sistema/".$barra->rubro_path : $barra->rubro_path) : "";
       $barra->marca_path = (!empty($barra->marca_path)) ? (((strpos($barra->marca_path,"http://")===FALSE)) ? "/sistema/".$barra->marca_path : $barra->marca_path) : "";
       $salida[] = $barra;
@@ -589,7 +589,7 @@ class Lpc_Model {
       $sql.= "ORDER BY EE.orden ASC, E.nombre ASC ";
       $q = mysqli_query($this->conx,$sql);
       while(($r=mysqli_fetch_object($q))!==NULL) {
-        if (isset($r->nombre)) $r->nombre = utf8_encode($r->nombre);
+        if (isset($r->nombre)) $r->nombre = mb_convert_encoding($r->nombre, 'UTF-8', 'ISO-8859-1');
         $producto->etiquetas[] = $r;
       }
     }
@@ -632,10 +632,10 @@ class Lpc_Model {
       $pv_web = $this->get_punto_venta_web();
       if ($pv_web !== FALSE) {
         while(($r=mysqli_fetch_object($q))!==NULL) {
-          $r->nombre = utf8_encode($r->nombre);
-          $r->etiqueta_opcion_1 = utf8_encode($r->etiqueta_opcion_1);
-          $r->etiqueta_opcion_2 = utf8_encode($r->etiqueta_opcion_2);
-          $r->etiqueta_opcion_3 = utf8_encode($r->etiqueta_opcion_3);
+          $r->nombre = mb_convert_encoding($r->nombre, 'UTF-8', 'ISO-8859-1');
+          $r->etiqueta_opcion_1 = mb_convert_encoding($r->etiqueta_opcion_1, 'UTF-8', 'ISO-8859-1');
+          $r->etiqueta_opcion_2 = mb_convert_encoding($r->etiqueta_opcion_2, 'UTF-8', 'ISO-8859-1');
+          $r->etiqueta_opcion_3 = mb_convert_encoding($r->etiqueta_opcion_3, 'UTF-8', 'ISO-8859-1');
 
           // Buscamos el stock para esa variante
           $sql = "SELECT * ";
@@ -807,8 +807,8 @@ class Lpc_Model {
     $q = mysqli_query($this->conx,$sql);
     if (mysqli_num_rows($q)==0) return FALSE;
     $row=mysqli_fetch_object($q);
-    $row->nombre = utf8_encode($row->nombre);
-    $row->subtitulo = utf8_encode($row->subtitulo);
+    $row->nombre = mb_convert_encoding($row->nombre, 'UTF-8', 'ISO-8859-1');
+    $row->subtitulo = mb_convert_encoding($row->subtitulo, 'UTF-8', 'ISO-8859-1');
     return $row;
   }
 
@@ -819,8 +819,8 @@ class Lpc_Model {
     $q = mysqli_query($this->conx,$sql);
     if (mysqli_num_rows($q)==0) return FALSE;
     $row=mysqli_fetch_object($q);
-    $row->nombre = utf8_encode($row->nombre);
-    $row->subtitulo = utf8_encode($row->subtitulo);
+    $row->nombre = mb_convert_encoding($row->nombre, 'UTF-8', 'ISO-8859-1');
+    $row->subtitulo = mb_convert_encoding($row->subtitulo, 'UTF-8', 'ISO-8859-1');
     return $row;
   }
 
@@ -841,8 +841,8 @@ class Lpc_Model {
       $e = new stdClass();
       $e->id = $row->id;
       $e->id_padre = 0;
-      $e->nombre = utf8_encode($row->nombre);
-      $e->subtitulo = utf8_encode($row->subtitulo);
+      $e->nombre = mb_convert_encoding($row->nombre, 'UTF-8', 'ISO-8859-1');
+      $e->subtitulo = mb_convert_encoding($row->subtitulo, 'UTF-8', 'ISO-8859-1');
       $e->link = $row->link;
       $result[] = $e;
     }
@@ -956,14 +956,14 @@ class Lpc_Model {
 	}
 	
 	private function encoding($entrada) {
-		$entrada->plain_text = (!empty($entrada->descripcion)) ? utf8_encode($entrada->descripcion) : utf8_encode(strip_tags($entrada->texto,"<a><i><b><br>"));
-		if (isset($entrada->texto)) $entrada->texto = utf8_encode($entrada->texto);
-		if (isset($entrada->texto_destacado)) $entrada->texto_destacado = utf8_encode($entrada->texto_destacado);
-		if (isset($entrada->nombre)) $entrada->nombre = utf8_encode($entrada->nombre);
-		if (isset($entrada->caracteristicas)) $entrada->caracteristicas = utf8_encode($entrada->caracteristicas);
-		if (isset($entrada->rubro)) $entrada->rubro = utf8_encode($entrada->rubro);
-    if (isset($entrada->descripcion)) $entrada->descripcion = utf8_encode($entrada->descripcion);
-    if (isset($entrada->marca)) $entrada->marca = utf8_encode($entrada->marca);
+		$entrada->plain_text = (!empty($entrada->descripcion)) ? mb_convert_encoding($entrada->descripcion, 'UTF-8', 'ISO-8859-1') : mb_convert_encoding(strip_tags($entrada->texto,"<a><i><b><br>"), 'UTF-8', 'ISO-8859-1');
+		if (isset($entrada->texto)) $entrada->texto = mb_convert_encoding($entrada->texto, 'UTF-8', 'ISO-8859-1');
+		if (isset($entrada->texto_destacado)) $entrada->texto_destacado = mb_convert_encoding($entrada->texto_destacado, 'UTF-8', 'ISO-8859-1');
+		if (isset($entrada->nombre)) $entrada->nombre = mb_convert_encoding($entrada->nombre, 'UTF-8', 'ISO-8859-1');
+		if (isset($entrada->caracteristicas)) $entrada->caracteristicas = mb_convert_encoding($entrada->caracteristicas, 'UTF-8', 'ISO-8859-1');
+		if (isset($entrada->rubro)) $entrada->rubro = mb_convert_encoding($entrada->rubro, 'UTF-8', 'ISO-8859-1');
+    if (isset($entrada->descripcion)) $entrada->descripcion = mb_convert_encoding($entrada->descripcion, 'UTF-8', 'ISO-8859-1');
+    if (isset($entrada->marca)) $entrada->marca = mb_convert_encoding($entrada->marca, 'UTF-8', 'ISO-8859-1');
 		return $entrada;
 	}	
 
@@ -1259,7 +1259,7 @@ class Lpc_Model {
 
     $salida = array();
     while(($r=mysqli_fetch_object($q))!==NULL) {
-      if (isset($r->nombre)) $r->nombre = utf8_encode($r->nombre);
+      if (isset($r->nombre)) $r->nombre = mb_convert_encoding($r->nombre, 'UTF-8', 'ISO-8859-1');
       $salida[] = $r;
     }
     return $salida;
