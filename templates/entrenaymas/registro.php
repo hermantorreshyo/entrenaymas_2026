@@ -238,7 +238,7 @@ function get_provincias() {
               <input type="text" name="direccion_2" id="registro_hp" tabindex="-1" autocomplete="off">
             </div>
             <div class="form-group">
-              <div class="g-recaptcha" data-sitekey="6LeHSTQUAAAAAA5FV121v-M7rnhqdkXZIGmP9N8E"></div>
+              <div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY ?>"></div>
             </div>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="registro_condiciones" name="example1">
@@ -341,7 +341,7 @@ function get_provincias() {
               <input type="text" name="direccion_2" id="registro_centro_hp" tabindex="-1" autocomplete="off">
             </div>
             <div class="form-group">
-              <div class="g-recaptcha" data-sitekey="6LeHSTQUAAAAAA5FV121v-M7rnhqdkXZIGmP9N8E"></div>
+              <div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY ?>"></div>
             </div>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="registro_centro_condiciones" name="example1">

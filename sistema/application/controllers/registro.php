@@ -22,7 +22,7 @@ class Registro extends CI_Controller {
 		// Verificacion de reCAPTCHA contra la API de Google
 		require APPPATH.'libraries/recaptchalib.php';
 		$captcha = $this->input->post("g-recaptcha-response");
-		$recaptcha_secret = "6LeHSTQUAAAAACG9dCyy6hv24tlRYL8TKtxe4O54";
+		$recaptcha_secret = RECAPTCHA_SECRET_KEY;
 		$reCaptcha = new ReCaptcha($recaptcha_secret);
 		$resp = $reCaptcha->verifyResponse(
 			$_SERVER["REMOTE_ADDR"],

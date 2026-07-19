@@ -22,6 +22,9 @@ if (!defined("GOOGLE_SMTP_PASSWORD")) { DEFINE ("GOOGLE_SMTP_PASSWORD",(isset($_
 if (!defined("MAIL_FROM_ADDRESS")) { DEFINE ("MAIL_FROM_ADDRESS",(isset($_SERVER["MAIL_FROM_ADDRESS"]) ? $_SERVER["MAIL_FROM_ADDRESS"] : GOOGLE_SMTP_USER)); }
 if (!defined("MAIL_REPLY_TO_ADDRESS")) { DEFINE ("MAIL_REPLY_TO_ADDRESS",(isset($_SERVER["MAIL_REPLY_TO_ADDRESS"]) ? $_SERVER["MAIL_REPLY_TO_ADDRESS"] : GOOGLE_SMTP_USER)); }
 
+if (!defined("RECAPTCHA_SITE_KEY")) { DEFINE ("RECAPTCHA_SITE_KEY",(isset($_SERVER["RECAPTCHA_SITE_KEY"]) ? $_SERVER["RECAPTCHA_SITE_KEY"] : "")); }
+if (!defined("RECAPTCHA_SECRET_KEY")) { DEFINE ("RECAPTCHA_SECRET_KEY",(isset($_SERVER["RECAPTCHA_SECRET_KEY"]) ? $_SERVER["RECAPTCHA_SECRET_KEY"] : "")); }
+
 if (!function_exists("get_conex")) {
   function get_conex() {
     // Conectamos con la base de datos
