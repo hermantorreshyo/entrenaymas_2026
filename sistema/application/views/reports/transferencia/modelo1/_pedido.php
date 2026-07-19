@@ -116,7 +116,7 @@ td h1, .invoice-items thead th.col-1 { text-align: left; }
                     <td><?php echo (!empty($i->codigo_barra))? nl2br($i->codigo_barra):""; ?></td>
 										<td>
 											<h1>
-												<?php echo (!empty($i->nombre))? utf8_decode($i->nombre):""; ?>
+												<?php echo (!empty($i->nombre))? mb_convert_encoding($i->nombre, 'ISO-8859-1', 'UTF-8'):""; ?>
 											</h1>
 										</td>
 										<td><?php echo (!empty($i->cantidad))?number_format($i->cantidad,2):"0"; ?></td>

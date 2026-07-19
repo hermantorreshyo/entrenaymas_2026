@@ -20,7 +20,7 @@ function imprimir_tabla($row,$i,$hasta) {
         echo "<td>".(isset($ingreso->codigo_proveedor)?$ingreso->codigo_proveedor:"0")."</td>";
         echo "<td>$ingreso->cantidad</td>";
         echo "<td>$ingreso->uxb</td>";
-        echo "<td>".utf8_decode($ingreso->descripcion)."</td>";
+        echo "<td>".mb_convert_encoding($ingreso->descripcion, 'ISO-8859-1', 'UTF-8')."</td>";
         echo "</tr>";
     }
     echo "</tbody>";
@@ -38,7 +38,7 @@ function imprimir_tabla($row,$i,$hasta) {
   <div class="p3mm">    
     <div class="header oh">
         <div class="subtitulo fl">
-            INGRESO: <?php echo utf8_decode($proveedor->nombre); ?>
+            INGRESO: <?php echo mb_convert_encoding($proveedor->nombre, 'ISO-8859-1', 'UTF-8'); ?>
             <span class="fwn ml10">A: <?php echo $ingreso->sucursal; ?></span>
         </div>
         <div class="fr">
@@ -50,7 +50,7 @@ function imprimir_tabla($row,$i,$hasta) {
     <?php foreach($resultados as $clave => $row) { ?>
         
         <div class="subtitulo">
-            <?php echo utf8_decode($clave); ?>
+            <?php echo mb_convert_encoding($clave, 'ISO-8859-1', 'UTF-8'); ?>
         </div>
         
         <?php

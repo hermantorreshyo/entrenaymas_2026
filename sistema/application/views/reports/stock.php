@@ -87,7 +87,7 @@ body { background-color: white; }
         <div class="subtitulo fl">
             STOCK
             <?php if(!empty($almacen)) { ?>
-                DE <?php echo utf8_decode($almacen->nombre); ?>
+                DE <?php echo mb_convert_encoding($almacen->nombre, 'ISO-8859-1', 'UTF-8'); ?>
             <?php } ?>
             <?php if(!empty($proveedor)) { ?>
                 DE <?php echo ($proveedor->nombre); ?>

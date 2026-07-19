@@ -19,7 +19,7 @@ function imprimir_tabla($row) {
   foreach($row as $stock) {
     $codigo = trim($stock->codigo);
     $codigo_barra = trim($stock->codigo_barra);
-    $movimiento = ($stock->movimiento == "A") ? "Alta" : ($stock->movimiento=="B"?"Baja":($stock->movimiento=="M")?"Ajuste":"Rotura");
+    $movimiento = ($stock->movimiento == "A") ? "Alta" : (($stock->movimiento=="B") ? "Baja" : (($stock->movimiento=="M") ? "Ajuste" : "Rotura"));
     $stock->cantidad = ($stock->movimiento == "B"||$stock->movimiento == "R")? (-$stock->cantidad) : $stock->cantidad;
     $cantidad = str_replace(".00","",$stock->cantidad);
     echo '<tr>';
@@ -74,10 +74,10 @@ body {
     <div class="subtitulo fl">
       MOVIMIENTOS
       <?php if(!empty($almacen)) { ?>
-        EN <?php echo utf8_decode($almacen->nombre); ?>
+        EN <?php echo mb_convert_encoding($almacen->nombre, 'ISO-8859-1', 'UTF-8'); ?>
       <?php } ?>
       <?php if(!empty($proveedor)) { ?>
-        DE <?php echo utf8_decode($proveedor->nombre); ?>
+        DE <?php echo mb_convert_encoding($proveedor->nombre, 'ISO-8859-1', 'UTF-8'); ?>
       <?php } ?>
     </div>
     <div class="fr">

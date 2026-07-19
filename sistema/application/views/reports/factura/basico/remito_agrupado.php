@@ -114,7 +114,7 @@ table td { font-size: 12px; }
             </table>
             <div style="margin-left: 4px;">
               <p>
-                <b>Cliente: </b><span><?php echo utf8_decode($cliente->nombre); ?></span>
+                <b>Cliente: </b><span><?php echo mb_convert_encoding($cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></span>
               </p>
             </div>          
           </div>

@@ -36,7 +36,7 @@ table tr td:last-child { padding-left: 10px; }
 .caracteristicas li:nth-child(even) { background-color: #f5f5f6; }
 i.bullet { background-color: <?php echo $empresa->color_principal ?>; display: inline-block; width: 11px; height: 11px; overflow: hidden; border-radius: 300px; -moz-border-radius: 300px; -webkit-border-radius: 300px; margin-right: 5px; }
 </style>
-<title><?php echo utf8_encode($propiedad->nombre) ?></title>  
+<title><?php echo mb_convert_encoding($propiedad->nombre, 'UTF-8', 'ISO-8859-1') ?></title>  
 </head>
 <body>
 <?php echo $header; ?>
@@ -161,7 +161,7 @@ i.bullet { background-color: <?php echo $empresa->color_principal ?>; display: i
                 </div>
                 <ul class="caracteristicas">
                   <?php foreach($caracteristicas as $c) { ?>
-                    <li><i class="bullet"></i> <?php echo utf8_encode($c) ?></li>
+                    <li><i class="bullet"></i> <?php echo mb_convert_encoding($c, 'UTF-8', 'ISO-8859-1') ?></li>
                   <?php } ?>
                 </ul>
               </div>

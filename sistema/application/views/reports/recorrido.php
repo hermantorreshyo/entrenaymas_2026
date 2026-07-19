@@ -14,8 +14,8 @@ function imprimir_tabla($r,$i,$hasta) {
   $rep = $r[$i];
     $s.= '<tr>';
     $s.= "<td>".($i+1)."</td>";
-    $s.= "<td>".utf8_decode($rep->nombre)."</td>";
-    $s.= "<td>".utf8_decode($rep->direccion)."</td>";
+    $s.= "<td>".mb_convert_encoding($rep->nombre, 'ISO-8859-1', 'UTF-8')."</td>";
+    $s.= "<td>".mb_convert_encoding($rep->direccion, 'ISO-8859-1', 'UTF-8')."</td>";
     $s.= "</tr>";
   }
   $s.= "</tbody>";

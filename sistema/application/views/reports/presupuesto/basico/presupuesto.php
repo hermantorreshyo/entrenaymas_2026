@@ -197,16 +197,16 @@ $piezas_items = array_chunk($presupuesto->items, 20);
           </div>
           <div class="borde" style="padding: 15px 20px; margin-top: 15px;">
             <p>
-              <b>Cliente: </b><span><?php echo utf8_decode($presupuesto->cliente->nombre); ?></span>
+              <b>Cliente: </b><span><?php echo mb_convert_encoding($presupuesto->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></span>
               <?php if(!empty($presupuesto->cliente->cuit)) { ?>
                 <b class="ml30">CUIT: </b><span><?php echo $presupuesto->cliente->cuit; ?></span>
               <?php } ?>
             </p>
             <?php if (!empty($presupuesto->direccion)) { ?>
               <p>
-                <b>Domicilio: </b> <span><?php echo utf8_decode($presupuesto->direccion); ?>
+                <b>Domicilio: </b> <span><?php echo mb_convert_encoding($presupuesto->direccion, 'ISO-8859-1', 'UTF-8'); ?>
                 <?php if (!empty($presupuesto->localidad)) { ?>
-                  - <?php echo utf8_decode($presupuesto->localidad); ?>
+                  - <?php echo mb_convert_encoding($presupuesto->localidad, 'ISO-8859-1', 'UTF-8'); ?>
                 <?php } ?>
                 </span>
               </p>

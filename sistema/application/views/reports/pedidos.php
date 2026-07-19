@@ -42,7 +42,7 @@ function imprimir_tabla($row,$i,$hasta) {
         
         echo "<td style='text-align:left'>$total</td>";
         
-        echo "<td>".utf8_decode($pedido->nombre)."</td>";
+        echo "<td>".mb_convert_encoding($pedido->nombre, 'ISO-8859-1', 'UTF-8')."</td>";
         echo "</tr>";
     }
     echo "</tbody>";
@@ -67,7 +67,7 @@ function imprimir_tabla($row,$i,$hasta) {
     <div class="header oh">
         <div class="subtitulo fl">
             NOTA DE PEDIDO
-            <span class="fwn">Proveedor: </span><?php echo utf8_decode($proveedor->nombre); ?> <span class="fwn">(<?php echo utf8_decode($proveedor->codigo); ?>)</span>
+            <span class="fwn">Proveedor: </span><?php echo mb_convert_encoding($proveedor->nombre, 'ISO-8859-1', 'UTF-8'); ?> <span class="fwn">(<?php echo mb_convert_encoding($proveedor->codigo, 'ISO-8859-1', 'UTF-8'); ?>)</span>
             <span class="fwn ml15">Entrega: </span><?php echo $pedido->sucursal ?>
             <span class="fwn ml15">Domicilio: </span><?php echo $pedido->direccion_sucursal; ?>
         </div>
@@ -80,12 +80,12 @@ function imprimir_tabla($row,$i,$hasta) {
     <?php foreach($resultados as $clave => $row) { ?>
         
         <div class="subtitulo">
-            <?php echo utf8_decode($clave); ?>
+            <?php echo mb_convert_encoding($clave, 'ISO-8859-1', 'UTF-8'); ?>
         </div>
         
         <?php foreach($row as $c => $r) { ?>
             <div class="subtitulo2">
-                <?php echo utf8_decode($c); ?>
+                <?php echo mb_convert_encoding($c, 'ISO-8859-1', 'UTF-8'); ?>
             </div>
             <div class="oh">    
             <?php
@@ -133,7 +133,7 @@ function imprimir_tabla($row,$i,$hasta) {
                     echo "<td>$d->id</td>";
                     echo "<td>".(isset($d->codigo_proveedor)?$d->codigo_proveedor:"0")."</td>";
                     echo "<td style='text-align:left'>$total</td>";
-                    echo "<td>".utf8_decode($d->descripcion)."</td>";
+                    echo "<td>".mb_convert_encoding($d->descripcion, 'ISO-8859-1', 'UTF-8')."</td>";
                     echo "</tr>";                
                 } ?>
                 </tbody>

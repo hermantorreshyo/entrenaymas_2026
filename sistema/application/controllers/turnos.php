@@ -89,7 +89,7 @@ class Turnos extends REST_Controller {
       $this->db->query($sql);
 
       // Avisamos al administrador que el turno se cancelo
-      $body = "El cliente ".$turno->cliente." ha cancelado su turno del servicio ".utf8_encode($turno->servicio)." para la fecha ".$turno->fecha." a las ".$turno->hora;
+      $body = "El cliente ".$turno->cliente." ha cancelado su turno del servicio ".mb_convert_encoding($turno->servicio, 'UTF-8', 'ISO-8859-1')." para la fecha ".$turno->fecha." a las ".$turno->hora;
       require APPPATH.'libraries/Mandrill/Mandrill.php';
       mandrill_send(array(
         "to"=>$empresa->email,
@@ -332,7 +332,7 @@ class Turnos extends REST_Controller {
     $body = str_replace("{{profesional}}",$usuario->nombre,$body);
     $body = str_replace("{{fecha}}",fecha_es($fecha),$body);
     $body = str_replace("{{hora}}",$hora,$body);
-    $body = str_replace("{{servicio}}",utf8_decode($servicio->nombre),$body);
+    $body = str_replace("{{servicio}}",mb_convert_encoding($servicio->nombre, 'ISO-8859-1', 'UTF-8'),$body);
     $body = str_replace("{{empresa}}",($empresa->nombre),$body);
     if (!empty($empresa->dominio_ppal)) $body = str_replace("{{link_web}}",$empresa->dominio_ppal,$body);
     $body = str_replace("{{link_ver_pedido}}","https://www.entrenaymas.com/sistema/turnos/function/ver_pdf/".$id_turno."/".$id_empresa,$body);

@@ -33,7 +33,7 @@ $email = "";
 // Obtenemos el nombre
 $nodes = $finder->query("//*[@id='nombreDetalle']");
 foreach($nodes as $n) {
-	$nombre = utf8_decode($n->nodeValue);
+	$nombre = mb_convert_encoding($n->nodeValue, 'ISO-8859-1', 'UTF-8');
 }
 
 // Si el nombre es VACIO, seguimos
@@ -45,7 +45,7 @@ $nombre = ucfirst(strtolower($nombre));
 // Obtenemos el rubro
 $nodes = $finder->query("//*[@class='rubro']");
 foreach($nodes as $n) {
-	$rubro = utf8_decode($n->nodeValue);
+	$rubro = mb_convert_encoding($n->nodeValue, 'ISO-8859-1', 'UTF-8');
 	$rubro = ucfirst(strtolower($rubro));
 	$rubro_link = filename($rubro,"-",0);
 }
@@ -53,19 +53,19 @@ foreach($nodes as $n) {
 // Obtenemos la direccion
 $nodes = $finder->query("//*[contains(@class,'direccion')]");
 foreach($nodes as $n) {
-	$direccion = utf8_decode($n->nodeValue);
+	$direccion = mb_convert_encoding($n->nodeValue, 'ISO-8859-1', 'UTF-8');
 }
 
 // Obtenemos la email
 $nodes = $finder->query("//*[contains(@class,'email')]");
 foreach($nodes as $n) {
-	$email = utf8_decode($n->nodeValue);
+	$email = mb_convert_encoding($n->nodeValue, 'ISO-8859-1', 'UTF-8');
 }
 
 // Obtenemos la telefono
 $nodes = $finder->query("//*[contains(@class,'telefono')]");
 foreach($nodes as $n) {
-	$telefono = utf8_decode($n->nodeValue);
+	$telefono = mb_convert_encoding($n->nodeValue, 'ISO-8859-1', 'UTF-8');
 }
 
 $sql = "SELECT * FROM clasificados_categorias WHERE id_empresa = $id_empresa and nombre = '$rubro' ";

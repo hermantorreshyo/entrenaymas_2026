@@ -156,7 +156,7 @@ class Cipal extends REST_Controller {
     $data_query = array(
       "nombre"=>$linea,
     );
-    $archivo = utf8_decode(str_replace(" ", "-", $linea));
+    $archivo = mb_convert_encoding(str_replace(" ", "-", $linea), 'ISO-8859-1', 'UTF-8');
     $url = "https://www.cipal.com.ar/web/certificado/?".http_build_query($data_query);
     $html = file_get_contents($url);
     $mpdf->CSSselectMedia='mpdf';

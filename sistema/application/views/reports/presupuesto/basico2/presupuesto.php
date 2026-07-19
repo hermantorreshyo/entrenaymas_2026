@@ -136,15 +136,15 @@ table td { font-size: 12px; }
             </table>
             <div style="margin-left: 4px;">
               <p>
-                <b>Cliente: </b><span><?php echo utf8_decode($presupuesto->cliente->nombre); ?></span>
+                <b>Cliente: </b><span><?php echo mb_convert_encoding($presupuesto->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></span>
               </p>
               <p>
                 <?php if(!empty($presupuesto->direccion)) { ?>
                   <b>Direccion: </b>
                   <span>
-                    <?php echo utf8_decode($presupuesto->direccion); ?>
+                    <?php echo mb_convert_encoding($presupuesto->direccion, 'ISO-8859-1', 'UTF-8'); ?>
                     <?php if (!empty($presupuesto->localidad)) { ?>
-                      - <?php echo utf8_decode($presupuesto->localidad); ?>
+                      - <?php echo mb_convert_encoding($presupuesto->localidad, 'ISO-8859-1', 'UTF-8'); ?>
                     <?php } ?>
                   </span>
                 <?php } ?>

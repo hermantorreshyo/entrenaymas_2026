@@ -52,9 +52,9 @@ while(($row = mysqli_fetch_object($q))!==NULL) {
     if (empty($seg->email)) continue;
 
     $template_real = $template;
-    $template_real = str_replace("{{nombre}}", utf8_decode($seg->nombre), $template_real);
-    $template_real = str_replace("{{titulo}}", utf8_decode($row->titulo), $template_real);
-    $template_real = str_replace("{{categoria}}", utf8_decode($seg->categoria), $template_real);
+    $template_real = str_replace("{{nombre}}", mb_convert_encoding($seg->nombre, 'ISO-8859-1', 'UTF-8'), $template_real);
+    $template_real = str_replace("{{titulo}}", mb_convert_encoding($row->titulo, 'ISO-8859-1', 'UTF-8'), $template_real);
+    $template_real = str_replace("{{categoria}}", mb_convert_encoding($seg->categoria, 'ISO-8859-1', 'UTF-8'), $template_real);
     $template_real = str_replace("{{link}}", "https://www.millingandgrain.com/".$row->link, $template_real);
     // Mandamos el email
     mandrill_send(array(
@@ -75,7 +75,7 @@ while(($row = mysqli_fetch_object($q))!==NULL) {
 $body = "<table>";
 foreach($noticias as $edit) {
   $body.= "<tr>";
-  $body.= "<td>".utf8_decode($edit["nombre"])."</td>";
+  $body.= "<td>".mb_convert_encoding($edit["nombre"], 'ISO-8859-1', 'UTF-8')."</td>";
   $body.= "<td>: Cantidad de Emails: ".$edit["cantidad"]."</td>";
   $body.= "</tr>";
 }

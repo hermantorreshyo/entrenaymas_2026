@@ -185,7 +185,7 @@ body {
       <?php $total_cheques = 0; ?>
       <?php foreach($orden_pago->cheques as $cheque) { ?>
         <div class="bbs oh mt5">
-          Cheque <?php echo utf8_decode($cheque->banco); ?> N&deg; <?php echo $cheque->numero; ?> <?php echo $cheque->fecha_cobro; ?>:
+          Cheque <?php echo mb_convert_encoding($cheque->banco, 'ISO-8859-1', 'UTF-8'); ?> N&deg; <?php echo $cheque->numero; ?> <?php echo $cheque->fecha_cobro; ?>:
           <div class="fr fs14 bold">$ <?php echo number_format(abs($cheque->monto),2,',','.'); ?></div>
           <?php $total_cheques = $total_cheques + $cheque->monto; ?>
         </div>
@@ -219,7 +219,7 @@ body {
           Observaciones:
         </div>
         <div class="oh mt5 mb15">
-          <?php echo utf8_decode(nl2br($orden_pago->observaciones)); ?>
+          <?php echo mb_convert_encoding(nl2br($orden_pago->observaciones), 'ISO-8859-1', 'UTF-8'); ?>
         </div>
       <?php } ?>
       
@@ -414,7 +414,7 @@ body {
       <?php $total_cheques = 0; ?>
       <?php foreach($orden_pago->cheques as $cheque) { ?>
         <div class="bbs oh mt5">
-          Cheque <?php echo utf8_decode($cheque->banco); ?> N&deg; <?php echo $cheque->numero; ?> <?php echo $cheque->fecha_cobro; ?>:
+          Cheque <?php echo mb_convert_encoding($cheque->banco, 'ISO-8859-1', 'UTF-8'); ?> N&deg; <?php echo $cheque->numero; ?> <?php echo $cheque->fecha_cobro; ?>:
           <div class="fr fs14 bold">$ <?php echo number_format(abs($cheque->monto),2,',','.'); ?></div>
           <?php $total_cheques = $total_cheques + $cheque->monto; ?>
         </div>
@@ -448,7 +448,7 @@ body {
           Observaciones:
         </div>
         <div class="oh mt5 mb15">
-          <?php echo utf8_decode(nl2br($orden_pago->observaciones)); ?>
+          <?php echo mb_convert_encoding(nl2br($orden_pago->observaciones), 'ISO-8859-1', 'UTF-8'); ?>
         </div>
       <?php } ?>
       

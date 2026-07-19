@@ -143,9 +143,9 @@ td h1, .invoice-items thead th.col-1 { text-align: left; padding-left: 15px; }
 										<tr>
 											<td>
 												<h1>
-													<?php echo (!empty($i->nombre))? utf8_decode($i->nombre):""; ?>
+													<?php echo (!empty($i->nombre))? mb_convert_encoding($i->nombre, 'ISO-8859-1', 'UTF-8'):""; ?>
 													<?php echo ((isset($i->variante) && !empty($i->variante))?"<br/><span class='fwn'>".($i->variante)."</span>":""); ?>
-													<?php echo (!empty($i->descripcion)?"<br/><span class='fwn'>". utf8_decode($i->descripcion)."</span>":""); ?>
+													<?php echo (!empty($i->descripcion)?"<br/><span class='fwn'>". mb_convert_encoding($i->descripcion, 'ISO-8859-1', 'UTF-8')."</span>":""); ?>
 												</h1>
 											</td>
 	                    <td><?php echo (!empty($i->codigo))? ($i->codigo):""; ?></td>

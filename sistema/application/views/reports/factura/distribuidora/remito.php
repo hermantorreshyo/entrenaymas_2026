@@ -139,7 +139,7 @@ table td { font-size: 11px; }
                           </div>
                         </div>
                         <p>
-                          <b>Cliente: </b><span><?php echo utf8_decode($factura->cliente->nombre); ?></span>
+                          <b>Cliente: </b><span><?php echo mb_convert_encoding($factura->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></span>
                           <b class="ml30">Venta: </b>
                           <span><?php echo ($factura->tipo_pago == "C") ? "Cta. Cte.":"Efectivo"; ?></span>
                         </p>

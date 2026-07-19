@@ -104,7 +104,7 @@ class Contactos extends REST_Controller {
       $telefono = $empresa->telefono;
       $telefono = preg_replace("/[^0-9]/", "", $telefono);
       $body = str_replace("{{empresa_telefono_link}}",$telefono,$body);
-      $body = str_replace("{{empresa_direccion}}",utf8_encode($empresa->direccion),$body);
+      $body = str_replace("{{empresa_direccion}}",mb_convert_encoding($empresa->direccion, 'UTF-8', 'ISO-8859-1'),$body);
       $body = str_replace("{{empresa_email}}",$empresa->email,$body);
 
       $propiedad_link = "https://www.varcreative.com/sistema/contactos/function/registrar_interes_email/?e=".$propiedad->id_empresa."&p=".$propiedad->id."&c=".$id_cliente."&x=".$id_consulta;

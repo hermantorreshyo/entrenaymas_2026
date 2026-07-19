@@ -20,8 +20,8 @@
     <div class="footer-right">
       <div class="col-md-4">
         <h6>Contacto</h6>
-        <div class="contact-info"> <a ><?php echo utf8_encode($empresa->direccion) ?><br>
-          <?php echo utf8_encode($empresa->codigo_postal." ".$empresa->ciudad) ?></a>
+        <div class="contact-info"> <a ><?php echo mb_convert_encoding($empresa->direccion, 'UTF-8', 'ISO-8859-1') ?><br>
+          <?php echo mb_convert_encoding($empresa->codigo_postal." ".$empresa->ciudad, 'UTF-8', 'ISO-8859-1') ?></a>
           <div class="block"> <i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:<?php echo $empresa->telefono ?>"><?php echo $empresa->telefono ?></a> </div>
           <div class="block"> <i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:<?php echo $empresa->email ?>"><?php echo $empresa->email ?></a> </div>
         </div>
@@ -75,7 +75,7 @@
             foreach ($rub as $l) { ?>
               <li>
                 <a href="<?php echo mklink ("productos/$l->link/") ?>">
-                  <?php echo utf8_encode($l->nombre) ?>
+                  <?php echo mb_convert_encoding($l->nombre, 'UTF-8', 'ISO-8859-1') ?>
                 </a>
               </li>
             <?php } ?>

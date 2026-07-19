@@ -18,7 +18,7 @@ function imprimir_tabla($row,$i,$hasta) {
     echo "<td>".(isset($item->codigo_proveedor)?$item->codigo_proveedor:"0")."</td>";
     echo "<td style='text-align:left'>".(($item->tipo_cantidad == "B") ? round($item->cantidad * $item->uxb,2) : $item->cantidad)."</td>";
     echo "<td style='text-align:left'>".(($item->tipo_cantidad == "B") ? $item->cantidad : "")."</td>";
-    echo "<td>".utf8_decode($item->nombre)."</td>";
+    echo "<td>".mb_convert_encoding($item->nombre, 'ISO-8859-1', 'UTF-8')."</td>";
     echo "</tr>";
   }
   echo "</tbody>";
@@ -44,7 +44,7 @@ body { background-color: white; }
     <div class="subtitulo">
       <?php echo $empresa->razon_social ?>
       <span class="fwn">CUIT: <?php echo $empresa->cuit ?></span><br/>
-      <span class="fwn">Proveedor: </span><?php echo utf8_decode($proveedor->nombre); ?> <span class="fwn">(<?php echo utf8_decode($proveedor->codigo); ?>)</span>
+      <span class="fwn">Proveedor: </span><?php echo mb_convert_encoding($proveedor->nombre, 'ISO-8859-1', 'UTF-8'); ?> <span class="fwn">(<?php echo mb_convert_encoding($proveedor->codigo, 'ISO-8859-1', 'UTF-8'); ?>)</span>
       <?php if (!empty($pedido->sucursal_direccion)) { ?>
         <span class="fwn ml15">Entrega en: </span><?php echo $pedido->sucursal_direccion; ?>
       <?php } ?>
@@ -57,11 +57,11 @@ body { background-color: white; }
 
   <?php foreach($resultados as $clave => $row) { ?>
     <div class="subtitulo">
-      <?php echo utf8_decode($clave); ?>
+      <?php echo mb_convert_encoding($clave, 'ISO-8859-1', 'UTF-8'); ?>
     </div>
     <?php foreach($row as $c => $r) { ?>
       <div class="subtitulo2">
-        <?php echo utf8_decode($c); ?>
+        <?php echo mb_convert_encoding($c, 'ISO-8859-1', 'UTF-8'); ?>
       </div>
       <div class="oh">    
         <?php
@@ -106,7 +106,7 @@ body { background-color: white; }
           echo "<td>$d->id</td>";
           echo "<td>".(isset($d->codigo_proveedor)?$d->codigo_proveedor:"0")."</td>";
           echo "<td style='text-align:left'>$total</td>";
-          echo "<td>".utf8_decode($d->descripcion)."</td>";
+          echo "<td>".mb_convert_encoding($d->descripcion, 'ISO-8859-1', 'UTF-8')."</td>";
           echo "</tr>";                
         } ?>
       </tbody>

@@ -115,13 +115,13 @@ while(($rss=mysqli_fetch_object($q_rss))!==NULL) {
       }
 
       /*
-      $contenido = str_replace('“', "&quot;", $contenido);
-      $contenido = str_replace('”', "&quot;", $contenido);
+      $contenido = str_replace('ï¿½', "&quot;", $contenido);
+      $contenido = str_replace('ï¿½', "&quot;", $contenido);
       $contenido = str_replace('"', "&quot;", $contenido);
-      $contenido = str_replace('„', "&quot;", $contenido);
+      $contenido = str_replace('ï¿½', "&quot;", $contenido);
       $contenido = str_replace("'", "&quot;", $contenido);
       
-      $contenido = utf8_decode($contenido);
+      $contenido = mb_convert_encoding($contenido, 'ISO-8859-1', 'UTF-8');
       */
       $contenido = stripcslashes($contenido);
       $titulo = htmlentities($titulo);

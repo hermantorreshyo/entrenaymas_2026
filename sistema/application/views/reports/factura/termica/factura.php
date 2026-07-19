@@ -157,16 +157,16 @@ $piezas_items = (sizeof($factura->items) > 0) ? array_chunk($factura->items, 27)
             <div style="padding-top: 10px; border-top: solid 1px black; margin: 5px 0px;">
               <p>
                 <b>Cliente: </b>
-                <br/><span><?php echo utf8_decode($factura->cliente->nombre); ?></span>
+                <br/><span><?php echo mb_convert_encoding($factura->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></span>
               </p>
               <?php if(!empty($factura->cliente->cuit)) { ?>
                 <p>CUIT: </b><span><?php echo $factura->cliente->cuit; ?></span></p>
               <?php } ?>
               <?php if (!empty($factura->cliente->direccion)) { ?>
                 <p>
-                  <b>Domicilio: </b> <span><?php echo utf8_decode($factura->cliente->direccion); ?>
+                  <b>Domicilio: </b> <span><?php echo mb_convert_encoding($factura->cliente->direccion, 'ISO-8859-1', 'UTF-8'); ?>
                   <?php if (!empty($factura->cliente->localidad)) { ?>
-                    - <?php echo utf8_decode($factura->cliente->localidad); ?>
+                    - <?php echo mb_convert_encoding($factura->cliente->localidad, 'ISO-8859-1', 'UTF-8'); ?>
                   <?php } ?>
                   </span>
                 </p>

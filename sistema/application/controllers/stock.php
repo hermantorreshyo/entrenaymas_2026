@@ -806,9 +806,9 @@ class Stock extends REST_Controller {
     while(($linea = fgets($file)) !== FALSE) {
     
     $campos = explode(";",$linea);
-    $codigo = utf8_decode($campos[0]);
-    $cantidad = utf8_decode($campos[1]);
-    $movimiento = utf8_decode($campos[2]);
+    $codigo = mb_convert_encoding($campos[0], 'ISO-8859-1', 'UTF-8');
+    $cantidad = mb_convert_encoding($campos[1], 'ISO-8859-1', 'UTF-8');
+    $movimiento = mb_convert_encoding($campos[2], 'ISO-8859-1', 'UTF-8');
     $codigo = trim(str_replace("?","",$codigo));
     $cantidad = trim(str_replace("?","",$cantidad));
     $movimiento = trim(str_replace("?","",$movimiento));

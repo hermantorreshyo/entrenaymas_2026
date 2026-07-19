@@ -102,7 +102,7 @@ class Impresor_Fiscal extends CI_Controller {
     $this->impresor->comenzar($comprobante,$cliente);
     $this->impresor->imprimir_item_remito(" ");
     foreach($f->items as $item) {
-      $this->impresor->imprimir_item_remito(number_format($item->cantidad,2)." x ".utf8_decode($item->nombre)." x ".number_format($item->precio,2));
+      $this->impresor->imprimir_item_remito(number_format($item->cantidad,2)." x ".mb_convert_encoding($item->nombre, 'ISO-8859-1', 'UTF-8')." x ".number_format($item->precio,2));
       $this->impresor->imprimir_item_remito("Subtotal: ".number_format($item->total_con_iva,2));
       $this->impresor->imprimir_item_remito(" ");
       $this->impresor->imprimir_item_remito(" ");
@@ -305,7 +305,7 @@ class Impresor_Fiscal extends CI_Controller {
 
         $epson.="imprimir_item".$sep;
         $epson.="200".$sep;
-        $epson.=utf8_decode($item->nombre).$sep;
+        $epson.=mb_convert_encoding($item->nombre, 'ISO-8859-1', 'UTF-8').$sep;
         if ($cliente["razon_social"] != "Consumidor Final") {
           $precio = $item->precio / ((100+$porc_iva) / 100);
         } else {
@@ -338,7 +338,7 @@ class Impresor_Fiscal extends CI_Controller {
         foreach($bonificados as $bonif) {
           $epson.="imprimir_item".$sep;
           $epson.="200".$sep;
-          $epson.="BONIF: ".utf8_decode($bonif->nombre).$sep;
+          $epson.="BONIF: ".mb_convert_encoding($bonif->nombre, 'ISO-8859-1', 'UTF-8').$sep;
           $epson.=number_format($bonif->cantidad,4,".","").$sep;
           $epson.=number_format(0,4,".","").$sep;
           $epson.=$id_alicuota_iva.$sep;
@@ -373,7 +373,7 @@ class Impresor_Fiscal extends CI_Controller {
       // Imprimimos los items
       foreach($f->items as $item) {
       	$precio_unit = ($item->precio * ((100-$item->bonificacion) / 100));
-        $this->impresor->imprimir_item(utf8_decode($item->nombre),((float)$item->cantidad),((float)$precio_unit),((float)$item->porc_iva),0);
+        $this->impresor->imprimir_item(mb_convert_encoding($item->nombre, 'ISO-8859-1', 'UTF-8'),((float)$item->cantidad),((float)$precio_unit),((float)$item->porc_iva),0);
       }
 
       if ($f->interes > 0) {
@@ -530,7 +530,7 @@ class Impresor_Fiscal extends CI_Controller {
 
   function imprimir_item() {
 
-    $descripcion = utf8_decode($this->input->post("nombre"));
+    $descripcion = mb_convert_encoding($this->input->post("nombre"), 'ISO-8859-1', 'UTF-8');
     $cantidad = (float) $this->input->post("cantidad");
     $precio = (float) $this->input->post("precio");
     $porc_iva = (float) $this->input->post("porc_iva");
@@ -578,7 +578,7 @@ class Impresor_Fiscal extends CI_Controller {
 
 
   function descuento_item() {
-    $descripcion = utf8_decode($this->input->post("descripcion"));
+    $descripcion = mb_convert_encoding($this->input->post("descripcion"), 'ISO-8859-1', 'UTF-8');
     $precio = abs((float) $this->input->post("precio"));
     $this->impresor->descuento_item($descripcion,$precio,1);
     echo json_encode(array("result"=>1));
@@ -586,7 +586,7 @@ class Impresor_Fiscal extends CI_Controller {
 
 
   function eliminar_item() {
-    $descripcion = utf8_decode($this->input->post("nombre"));
+    $descripcion = mb_convert_encoding($this->input->post("nombre"), 'ISO-8859-1', 'UTF-8');
     $cantidad = (float) $this->input->post("cantidad");
     $precio = ((float) ($this->input->post("precio")));
     $porc_iva = (float) $this->input->post("porc_iva");

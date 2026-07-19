@@ -16,7 +16,7 @@ function imprimir_tabla($r,$i,$hasta) {
         $s.= '<tr>';
         $s.= "<td>$f->codigo</td>";
         $s.= "<td>".$f->nplu."</td>";
-        $s.= "<td>".utf8_decode($f->nombre)."</td>";
+        $s.= "<td>".mb_convert_encoding($f->nombre, 'ISO-8859-1', 'UTF-8')."</td>";
         $s.= "<td class='tar pr10'>".$f->precio_final."</td>";
         $s.= "</tr>";
     }
@@ -56,12 +56,12 @@ body { background-color: white; }
         <?php foreach($resultados as $clave => $row) { ?>
             
             <div class="subtitulo">
-                <?php echo utf8_decode($clave); ?>
+                <?php echo mb_convert_encoding($clave, 'ISO-8859-1', 'UTF-8'); ?>
             </div>
             
             <?php foreach($row as $c => $r) { ?>
                 <div class="subtitulo2">
-                    <?php echo utf8_decode($c); ?>
+                    <?php echo mb_convert_encoding($c, 'ISO-8859-1', 'UTF-8'); ?>
                 </div>
                 <div class="oh">    
                 <?php

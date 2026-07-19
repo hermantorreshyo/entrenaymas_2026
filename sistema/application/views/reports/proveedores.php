@@ -17,18 +17,18 @@ function imprimir_tabla($r,$i,$hasta) {
         $prov = $r[$i];
         $s.='<tr>';
         $s.=  "<td>$prov->codigo</td>";
-        $s.=  "<td class='bold'>".utf8_decode($prov->nombre)."</td>";
+        $s.=  "<td class='bold'>".mb_convert_encoding($prov->nombre, 'ISO-8859-1', 'UTF-8')."</td>";
         $s.=  "<td>$prov->cuit</td>";
         $s.=  "<td>$prov->telefono<br/>$prov->email</td>";
-        $s.=  "<td>".utf8_decode($prov->direccion)."</td>";
-        $s.=  "<td>".utf8_decode($prov->localidad)."</td>";
+        $s.=  "<td>".mb_convert_encoding($prov->direccion, 'ISO-8859-1', 'UTF-8')."</td>";
+        $s.=  "<td>".mb_convert_encoding($prov->localidad, 'ISO-8859-1', 'UTF-8')."</td>";
         $s.="</tr>";
         $s.='<tr style="border-top: none">';
         $s.=  "<td></td>";
         $s.=  "<td colspan='6'>";
-        $s.=  utf8_decode($prov->tipo_iva);
-        if (!empty($prov->contacto)) $s.=  "&nbsp;&nbsp;&nbsp; Vendedor: ".utf8_decode($prov->contacto);
-        if (!empty($prov->contacto_telefono)) $s.=  "&nbsp;&nbsp;&nbsp; Tel. Vendedor: ".utf8_decode($prov->contacto_telefono);
+        $s.=  mb_convert_encoding($prov->tipo_iva, 'ISO-8859-1', 'UTF-8');
+        if (!empty($prov->contacto)) $s.=  "&nbsp;&nbsp;&nbsp; Vendedor: ".mb_convert_encoding($prov->contacto, 'ISO-8859-1', 'UTF-8');
+        if (!empty($prov->contacto_telefono)) $s.=  "&nbsp;&nbsp;&nbsp; Tel. Vendedor: ".mb_convert_encoding($prov->contacto_telefono, 'ISO-8859-1', 'UTF-8');
         $s.=  "</td>";
         $s.="</tr>";
     }

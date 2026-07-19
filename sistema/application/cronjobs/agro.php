@@ -29,13 +29,13 @@ $contenido = "";
 foreach($nodes as $n) {
   $contenido.= $dom->saveXML($n);
 }
-$contenido = str_replace('“', "&quot;", $contenido);
-$contenido = str_replace('”', "&quot;", $contenido);
+$contenido = str_replace('ï¿½', "&quot;", $contenido);
+$contenido = str_replace('ï¿½', "&quot;", $contenido);
 $contenido = str_replace('"', "&quot;", $contenido);
-$contenido = str_replace('„', "&quot;", $contenido);
+$contenido = str_replace('ï¿½', "&quot;", $contenido);
 $contenido = str_replace("'", "&quot;", $contenido);
 $contenido = stripcslashes($contenido);
-$contenido = utf8_decode($contenido);
+$contenido = mb_convert_encoding($contenido, 'ISO-8859-1', 'UTF-8');
 echo $contenido;
 
 // Guardamos la noticia

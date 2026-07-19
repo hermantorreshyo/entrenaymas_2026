@@ -69,7 +69,7 @@ body {
                 echo ($cod != $i->codigo) ? $cod."<br/>" : "";
               } ?>
             </td>
-            <td><?php echo (!empty($i->nombre))? utf8_encode($i->nombre):""; ?></td>
+            <td><?php echo (!empty($i->nombre))? mb_convert_encoding($i->nombre, 'UTF-8', 'ISO-8859-1'):""; ?></td>
             <td><?php echo (!empty($i->cantidad))?number_format($i->cantidad,2):"0"; ?></td>
             <td><?php echo (!empty($i->precio_final))?"$ ".number_format($i->precio_final,2):"$ 0.00"; ?></td>
             <?php if ($con_precio == 1) { ?>

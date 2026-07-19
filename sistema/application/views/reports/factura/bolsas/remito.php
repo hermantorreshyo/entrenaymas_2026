@@ -132,7 +132,7 @@ table td { font-size: 14px; }
                         </table>
                         <div style="margin-left: 4px;">
                             <p>
-                                <b>Cliente: </b><span><?php echo utf8_decode($factura->cliente->nombre); ?></span>
+                                <b>Cliente: </b><span><?php echo mb_convert_encoding($factura->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></span>
                                 <b class="ml30">Condicion de Venta: </b>
                                 <span><?php echo ($factura->tipo_pago == "C") ? "Cuenta Corriente":"Efectivo"; ?></span>
                             </p>
@@ -140,9 +140,9 @@ table td { font-size: 14px; }
                                 <?php if(!empty($factura->direccion)) { ?>
                                     <b>Direccion: </b>
                                     <span>
-                                        <?php echo utf8_decode($factura->direccion); ?>
+                                        <?php echo mb_convert_encoding($factura->direccion, 'ISO-8859-1', 'UTF-8'); ?>
                                         <?php if (!empty($factura->localidad)) { ?>
-                                            - <?php echo utf8_decode($factura->localidad); ?>
+                                            - <?php echo mb_convert_encoding($factura->localidad, 'ISO-8859-1', 'UTF-8'); ?>
                                         <?php } ?>
                                     </span>
                                 <?php } ?>
@@ -273,7 +273,7 @@ table td { font-size: 14px; }
                         </table>
                         <div style="margin-left: 4px;">
                             <p>
-                                <b>Cliente: </b><span><?php echo utf8_decode($factura->cliente->nombre); ?></span>
+                                <b>Cliente: </b><span><?php echo mb_convert_encoding($factura->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></span>
                                 <b class="ml30">Condicion de Venta: </b>
                                 <span><?php echo ($factura->tipo_pago == "C") ? "Cuenta Corriente":"Efectivo"; ?></span>
                             </p>
@@ -281,9 +281,9 @@ table td { font-size: 14px; }
                                 <?php if(!empty($factura->direccion)) { ?>
                                     <b>Direccion: </b>
                                     <span>
-                                        <?php echo utf8_decode($factura->direccion); ?>
+                                        <?php echo mb_convert_encoding($factura->direccion, 'ISO-8859-1', 'UTF-8'); ?>
                                         <?php if (!empty($factura->localidad)) { ?>
-                                            - <?php echo utf8_decode($factura->localidad); ?>
+                                            - <?php echo mb_convert_encoding($factura->localidad, 'ISO-8859-1', 'UTF-8'); ?>
                                         <?php } ?>
                                     </span>
                                 <?php } ?>

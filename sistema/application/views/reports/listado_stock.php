@@ -35,7 +35,7 @@ function imprimir_tabla($r,$i,$hasta) {
       $s.= ($cod != $faltante->codigo) ? $cod."<br/>" : "";
     }
     $s.= "</td>";
-    $s.= "<td>".utf8_decode($faltante->nombre)."</td>";
+    $s.= "<td>".mb_convert_encoding($faltante->nombre, 'ISO-8859-1', 'UTF-8')."</td>";
     $s.= "<td>x $faltante->uxb</td>";
     $s.= "<td>|</td>";
     $s.= "<td></td>";
@@ -79,14 +79,14 @@ body { background-color: white; }
           LISTADO DE ARTICULOS
           <?php if ($proveedor != null && !empty($proveedor->nombre)) { ?>
             DE <?php echo $proveedor->nombre; ?>
-            (<?php echo utf8_decode($proveedor->codigo); ?>)
+            (<?php echo mb_convert_encoding($proveedor->codigo, 'ISO-8859-1', 'UTF-8'); ?>)
           <?php } ?>
         </span>
       </div>
       <?php if ($proveedor != null && !empty($proveedor->contacto)) { ?>
         <div class="fl" style="clear:left">
-          <?php echo utf8_decode($proveedor->contacto); ?>
-          <?php echo utf8_decode($proveedor->contacto_telefono); ?>
+          <?php echo mb_convert_encoding($proveedor->contacto, 'ISO-8859-1', 'UTF-8'); ?>
+          <?php echo mb_convert_encoding($proveedor->contacto_telefono, 'ISO-8859-1', 'UTF-8'); ?>
         </div>
       <?php } ?>
       <div class="fr">
@@ -97,12 +97,12 @@ body { background-color: white; }
     <?php foreach($resultados as $clave => $row) { ?>
       
       <div class="subtitulo">
-        <?php echo utf8_decode($clave); ?>
+        <?php echo mb_convert_encoding($clave, 'ISO-8859-1', 'UTF-8'); ?>
       </div>
       
       <?php foreach($row as $c => $r) { ?>
         <div class="subtitulo2">
-          <?php echo utf8_decode($c); ?>
+          <?php echo mb_convert_encoding($c, 'ISO-8859-1', 'UTF-8'); ?>
         </div>
         <div class="oh">  
         <?php

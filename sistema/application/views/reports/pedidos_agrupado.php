@@ -35,7 +35,7 @@ function imprimir_tabla($row,$i,$hasta) {
         //echo "<td style='text-align:left'>$uxb</td>";
         //echo "<td style='text-align:left'>$unidades</td>";
         echo "<td style='text-align:left'>$total</td>";
-        echo "<td>".utf8_decode($pedido->descripcion)."</td>";
+        echo "<td>".mb_convert_encoding($pedido->descripcion, 'ISO-8859-1', 'UTF-8')."</td>";
         echo "</tr>";
     }
     echo "</tbody>";
@@ -69,7 +69,7 @@ function imprimir_tabla($row,$i,$hasta) {
     <?php /*foreach($resultados as $clave => $row) { ?>
         
         <div class="subtitulo">
-            <?php echo utf8_decode($clave); ?>
+            <?php echo mb_convert_encoding($clave, 'ISO-8859-1', 'UTF-8'); ?>
         </div>
         
         <?php
@@ -86,12 +86,12 @@ function imprimir_tabla($row,$i,$hasta) {
     <?php foreach($resultados as $clave => $row) { ?>
         
         <div class="subtitulo">
-            <?php echo utf8_decode($clave); ?>
+            <?php echo mb_convert_encoding($clave, 'ISO-8859-1', 'UTF-8'); ?>
         </div>
         
         <?php foreach($row as $c => $r) { ?>
             <div class="subtitulo2">
-                <?php echo utf8_decode($c); ?>
+                <?php echo mb_convert_encoding($c, 'ISO-8859-1', 'UTF-8'); ?>
             </div>
             <div class="oh">    
             <?php

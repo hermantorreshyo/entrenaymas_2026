@@ -196,16 +196,16 @@ th { text-align: left; }
                 </div>
                 <div class="borde" style="padding: 15px 20px; margin-top: 15px;">
                     <p>
-                        <b>Cliente: </b><span><?php echo utf8_decode($factura->cliente->nombre); ?></span>
+                        <b>Cliente: </b><span><?php echo mb_convert_encoding($factura->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></span>
                         <?php if(!empty($factura->cliente->cuit)) { ?>
                             <b class="ml30">CUIT: </b><span><?php echo $factura->cliente->cuit; ?></span>
                         <?php } ?>
                     </p>
                     <?php if (!empty($factura->cliente->direccion)) { ?>
                         <p>
-                            <b>Domicilio: </b> <span><?php echo utf8_decode($factura->cliente->direccion); ?>
+                            <b>Domicilio: </b> <span><?php echo mb_convert_encoding($factura->cliente->direccion, 'ISO-8859-1', 'UTF-8'); ?>
                             <?php if (!empty($factura->cliente->localidad)) { ?>
-                                - <?php echo utf8_decode($factura->cliente->localidad); ?>
+                                - <?php echo mb_convert_encoding($factura->cliente->localidad, 'ISO-8859-1', 'UTF-8'); ?>
                             <?php } ?>
                             </span>
                         </p>

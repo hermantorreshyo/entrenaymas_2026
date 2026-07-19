@@ -65,7 +65,7 @@ function mostrar_iva($id) {
 <?php echo $header; ?>
 <!-- FACTURA/PLANO.PHP -->
 Fecha: <?php echo $factura->fecha; ?><br/>
-Cliente: <?php echo utf8_decode($factura->cliente->nombre); ?> <br/>
+Cliente: <?php echo mb_convert_encoding($factura->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?> <br/>
 <?php echo $factura->comprobante; ?><br/>
 ----------------------<br/>
 <?php foreach($factura->items as $i) { ?>

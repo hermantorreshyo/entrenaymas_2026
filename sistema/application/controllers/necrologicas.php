@@ -16,7 +16,7 @@ class Necrologicas extends REST_Controller {
 
     $this->load->helper("fecha_helper");
     $id_empresa = 70;
-    $nombre = utf8_encode(parent::get_post("nombre",""));
+    $nombre = mb_convert_encoding(parent::get_post("nombre",""), 'UTF-8', 'ISO-8859-1');
     $email = parent::get_post("email","");
     $id_participacion = parent::get_post("id_participacion",0);
 

@@ -110,17 +110,17 @@ b { font-weight: 600; }
 
                     <div class="col-sm-12"><div class="linea"></div></div>
                     <div class="col-sm-6">
-                        Cliente: <b><?php echo utf8_decode($factura->cliente->nombre); ?></b>
+                        Cliente: <b><?php echo mb_convert_encoding($factura->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></b>
                     </div>
                     <div class="col-sm-6">
                         CUIT: <b><?php echo $factura->cliente->cuit; ?></b>
                     </div>
                     <div class="col-sm-12"><div class="linea"></div></div>
                     <div class="col-sm-6">
-                        Domicilio: <b><?php echo utf8_decode($factura->cliente->direccion); ?></b>
+                        Domicilio: <b><?php echo mb_convert_encoding($factura->cliente->direccion, 'ISO-8859-1', 'UTF-8'); ?></b>
                     </div>
                     <div class="col-sm-6">
-                        Localidad: <b><?php echo utf8_decode($factura->cliente->localidad); ?></b>
+                        Localidad: <b><?php echo mb_convert_encoding($factura->cliente->localidad, 'ISO-8859-1', 'UTF-8'); ?></b>
                     </div>
                     <div class="col-sm-12"><div class="linea"></div></div>
                     <div class="col-sm-6">

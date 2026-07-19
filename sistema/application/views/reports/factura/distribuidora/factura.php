@@ -170,7 +170,7 @@ table td { font-size: 11px; }
                         </div>
                       </div>
                       <p>
-                        <b>Cliente: </b><span><?php echo utf8_decode($factura->cliente->nombre); ?></span>
+                        <b>Cliente: </b><span><?php echo mb_convert_encoding($factura->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></span>
                         <b class="ml30">Venta: </b>
                         <span><?php echo ($factura->tipo_pago == "C") ? "Cta. Cte.":"Efectivo"; ?></span>
                       </p>
@@ -361,7 +361,7 @@ table td { font-size: 11px; }
                           $arr = explode(" ",$factura->comprobante);
                           echo (is_array($arr)) ? end($arr) : $arr ?></p>
                           <p><b><?php echo $factura->fecha; ?></b></p>
-                          <p><span><?php echo utf8_decode($factura->cliente->nombre); ?></span></p>
+                          <p><span><?php echo mb_convert_encoding($factura->cliente->nombre, 'ISO-8859-1', 'UTF-8'); ?></span></p>
                           <?php if (!empty($factura->cliente->direccion)) { ?>
                             <p><span><?php echo ($factura->cliente->direccion); ?></span></p>
                           <?php } ?>

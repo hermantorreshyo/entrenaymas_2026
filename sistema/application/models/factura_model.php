@@ -463,7 +463,7 @@ class Factura_Model extends Abstract_Model {
     if ($res !== FALSE) {
       // Contiene errores
       if (isset($res->Errors)) {
-        $error = utf8_decode($res->Errors->Err->Msg);
+        $error = mb_convert_encoding($res->Errors->Err->Msg, 'ISO-8859-1', 'UTF-8');
         $this->Log_Model->imprimir(array(
           "id_empresa"=>$id_empresa,
           "file"=>date("Ymd")."_fe.txt",
@@ -485,7 +485,7 @@ class Factura_Model extends Abstract_Model {
             }
           }
           if (empty($mensaje)) $mensaje = "Comprobante rechazado.";
-          $mensaje = utf8_decode($mensaje);
+          $mensaje = mb_convert_encoding($mensaje, 'ISO-8859-1', 'UTF-8');
           $this->Log_Model->imprimir(array(
             "id_empresa"=>$id_empresa,
             "file"=>date("Ymd")."_fe.txt",
@@ -1151,7 +1151,7 @@ class Factura_Model extends Abstract_Model {
           "error"=>1,
           "id"=>$id,
           "tipo_impresion"=>"E",
-          "mensaje"=>utf8_decode($res->Errors->Err->Msg)
+          "mensaje"=>mb_convert_encoding($res->Errors->Err->Msg, 'ISO-8859-1', 'UTF-8')
         );
       } else {
         
@@ -1170,7 +1170,7 @@ class Factura_Model extends Abstract_Model {
             "error"=>1,
             "id"=>$id,
             "tipo_impresion"=>"E",
-            "mensaje"=>utf8_decode($mensaje)
+            "mensaje"=>mb_convert_encoding($mensaje, 'ISO-8859-1', 'UTF-8')
           );
           
         // La operacin ha sido exitosa
@@ -1280,7 +1280,7 @@ class Factura_Model extends Abstract_Model {
           "error"=>1,
           "id"=>$id,
           "tipo_impresion"=>"E",
-          "mensaje"=>utf8_decode($mensaje)
+          "mensaje"=>mb_convert_encoding($mensaje, 'ISO-8859-1', 'UTF-8')
         );
       } else {
         
@@ -1299,7 +1299,7 @@ class Factura_Model extends Abstract_Model {
             "error"=>1,
             "id"=>$id,
             "tipo_impresion"=>"E",
-            "mensaje"=>utf8_decode($mensaje)
+            "mensaje"=>mb_convert_encoding($mensaje, 'ISO-8859-1', 'UTF-8')
           );
           
         // La operacin ha sido exitosa

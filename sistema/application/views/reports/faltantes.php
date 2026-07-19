@@ -35,7 +35,7 @@ function imprimir_tabla($r,$i,$hasta) {
         //$s.= "<td>$uxb</td>";
         //$s.= "<td>$unidades</td>";
         $s.= "<td>$total</td>";
-        $s.= "<td>".utf8_decode($faltante->descripcion)."</td>";
+        $s.= "<td>".mb_convert_encoding($faltante->descripcion, 'ISO-8859-1', 'UTF-8')."</td>";
         $s.= "</tr>";
     }
     $s.= "</tbody>";
@@ -73,12 +73,12 @@ function imprimir_tabla($r,$i,$hasta) {
     <?php foreach($resultados as $clave => $row) { ?>
         
         <div class="subtitulo">
-            <?php echo utf8_decode($clave); ?>
+            <?php echo mb_convert_encoding($clave, 'ISO-8859-1', 'UTF-8'); ?>
         </div>
         
         <?php foreach($row as $c => $r) { ?>
             <div class="subtitulo2">
-                <?php echo utf8_decode($c); ?>
+                <?php echo mb_convert_encoding($c, 'ISO-8859-1', 'UTF-8'); ?>
             </div>
             <div class="oh">    
             <?php

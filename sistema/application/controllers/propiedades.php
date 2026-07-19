@@ -211,7 +211,7 @@ class Propiedades extends REST_Controller {
     $archivo_web = curl_exec($c);
     var_dump($archivo_web); exit();
     curl_close($c);
-    $archivo = json_decode(utf8_decode($archivo_web));
+    $archivo = json_decode(mb_convert_encoding($archivo_web, 'ISO-8859-1', 'UTF-8'));
     return $archivo->address->city;
     */
   }
@@ -1992,13 +1992,13 @@ class Propiedades extends REST_Controller {
       // Ej: Local en venta
       $p->nombre = $propiedad->nombre_tipo_propiedad->__toString()." en ".$p->operacion;
 
-      $p->calle = utf8_encode($propiedad->calle->__toString());
-      $p->altura = utf8_encode($propiedad->numero_calle->__toString());
+      $p->calle = mb_convert_encoding($propiedad->calle->__toString(), 'UTF-8', 'ISO-8859-1');
+      $p->altura = mb_convert_encoding($propiedad->numero_calle->__toString(), 'UTF-8', 'ISO-8859-1');
       $p->latitud = $propiedad->latitud_propiedad->__toString();
       $p->longitud = $propiedad->longitud_propiedad->__toString();
 
-      $p->texto = utf8_encode((isset($propiedad->datos_enlace_propiedad->texto_web_propiedad)) ? $propiedad->datos_enlace_propiedad->texto_web_propiedad->__toString() : $propiedad->descripcion_web_propiedad->__toString());
-      $p->entre_calles = utf8_encode((isset($propiedad->domicilio_extra_propiedad)) ? $propiedad->domicilio_extra_propiedad->__toString() : "");
+      $p->texto = mb_convert_encoding((isset($propiedad->datos_enlace_propiedad->texto_web_propiedad)) ? $propiedad->datos_enlace_propiedad->texto_web_propiedad->__toString() : $propiedad->descripcion_web_propiedad->__toString(), 'UTF-8', 'ISO-8859-1');
+      $p->entre_calles = mb_convert_encoding((isset($propiedad->domicilio_extra_propiedad)) ? $propiedad->domicilio_extra_propiedad->__toString() : "", 'UTF-8', 'ISO-8859-1');
 
       $p->superficie_total = $propiedad->superficie_total_propiedad->__toString();
       $p->superficie_cubierta = $propiedad->superficie_cubierta_propiedad->__toString();

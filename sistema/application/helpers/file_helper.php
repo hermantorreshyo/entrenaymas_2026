@@ -196,7 +196,7 @@ function filename($name = '', $replace_char = '-', $agregar_fecha = 0) {
 	$name = str_replace("--","-",$name);
 	
   $encoding = mb_detect_encoding($name, mb_detect_order(), false);
-	if ($encoding == "UTF-8") $name = utf8_decode($name);
+	if ($encoding == "UTF-8") $name = mb_convert_encoding($name, 'ISO-8859-1', 'UTF-8');
   //if ($agregar_fecha == 0) $name = str_replace(".","",$name);
 	
 	$name = mb_strtolower($name);

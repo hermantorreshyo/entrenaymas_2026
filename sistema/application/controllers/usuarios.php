@@ -377,7 +377,7 @@ class Usuarios extends REST_Controller {
         "from"=>MAIL_FROM_ADDRESS,
         "from_name"=>"Entrenaymas",
         "subject"=>$template->nombre,
-        "body"=>utf8_decode($body),
+        "body"=>mb_convert_encoding($body, 'ISO-8859-1', 'UTF-8'),
         "bcc"=>$bcc_array,
       ));
     }

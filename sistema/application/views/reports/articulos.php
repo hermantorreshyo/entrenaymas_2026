@@ -80,12 +80,12 @@ body { background-color: white; }
           
         <?php foreach($resultados as $clave => $row) { ?>
           <div class="subtitulo">
-            <?php echo utf8_decode($clave); ?>
+            <?php echo mb_convert_encoding($clave, 'ISO-8859-1', 'UTF-8'); ?>
           </div>
           <?php foreach($row as $c => $r) { ?>
             <?php if (strtolower($c) != "sin definir") { ?>
               <div class="subtitulo2">
-                <?php echo utf8_decode($c); ?>
+                <?php echo mb_convert_encoding($c, 'ISO-8859-1', 'UTF-8'); ?>
               </div>
             <?php } ?>
             <div class="oh">    

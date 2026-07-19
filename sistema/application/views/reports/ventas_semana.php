@@ -15,7 +15,7 @@ function imprimir_tabla($coleccion,$i,$hasta) { ?>
             <?php $articulo = $coleccion[$i]; ?>
             <tr>
                 <td><?php echo $articulo->id; ?></td>
-                <td><?php echo utf8_decode($articulo->descripcion) ?></td>
+                <td><?php echo mb_convert_encoding($articulo->descripcion, 'ISO-8859-1', 'UTF-8') ?></td>
                 <td class="pr10 tar"><?php echo $articulo->cantidad; ?></td>
                 <td class="pr10 tar"><?php echo round($articulo->uxb,0); ?></td>
                 <td class="pr10 tar"><?php echo round($articulo->cantidad / $articulo->uxb,2); ?></td>
@@ -52,12 +52,12 @@ function imprimir_tabla($coleccion,$i,$hasta) { ?>
     <?php foreach($resultados as $clave => $row) { ?>
         
         <div class="subtitulo">
-            <?php echo utf8_decode($clave); ?>
+            <?php echo mb_convert_encoding($clave, 'ISO-8859-1', 'UTF-8'); ?>
         </div>
         
         <?php foreach($row as $c => $r) { ?>
             <div class="subtitulo2">
-                <?php echo utf8_decode($c); ?>
+                <?php echo mb_convert_encoding($c, 'ISO-8859-1', 'UTF-8'); ?>
             </div>
             <div class="oh">    
             <?php

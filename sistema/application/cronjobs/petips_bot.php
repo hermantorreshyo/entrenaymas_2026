@@ -1,13 +1,13 @@
 <?php 
 // ARRAY DE LINKS
-array(
-  "url"=>"https://www.catycan.com/alimentos-perros/royal-canin-maxi-adulto-x-15-kg"
+$link_original = array(
+  "url"=>"https://www.catycan.com/alimentos-perros/royal-canin-maxi-adulto-x-15-kg",
   "pagina"=>"catycan"
-)
+);
 // FOR DE LINKS
 
 // 1) CARGAR EL HTML
-$c = curl_init($link_original);
+$c = curl_init($link_original["url"]);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($c,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
@@ -24,13 +24,13 @@ libxml_use_internal_errors(true);
 $dom->loadHTML($html);
 
 // 3) 
-if (pagina == catycan) {
+if ($link_original["pagina"] == "catycan") {
 
-  foreach ($dom->getElementsById('our_price_display') as $node) {
-    $precio = $node->text
+  $node = $dom->getElementById('our_price_display');
+  if ($node !== null) {
+    $precio = $node->textContent;
 
-    // Guardar en la base de datos
-    
+    // TODO: Guardar en la base de datos
   }
 
 }

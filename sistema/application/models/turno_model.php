@@ -154,7 +154,7 @@ class Turno_Model extends Abstract_Model {
       $body = str_replace("{{cliente}}",$cliente->nombre,$body);
       $body = str_replace("{{fecha}}",fecha_es($data->fecha),$body);
       $body = str_replace("{{hora}}",$data->hora,$body);
-      $body = str_replace("{{servicio}}",utf8_decode($servicio),$body);
+      $body = str_replace("{{servicio}}",mb_convert_encoding($servicio, 'ISO-8859-1', 'UTF-8'),$body);
       $body = str_replace("{{empresa}}",($empresa->nombre),$body);
       if (!empty($empresa->dominio_ppal)) $body = str_replace("{{link_web}}",$empresa->dominio_ppal,$body);
       $body = str_replace("{{link_ver_pedido}}","https://www.varcreative.com/sistema/turnos/function/ver_pdf/".$id."/".$data->id_empresa,$body);    
