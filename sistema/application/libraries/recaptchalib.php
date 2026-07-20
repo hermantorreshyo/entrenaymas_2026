@@ -106,6 +106,9 @@ class ReCaptcha
      */
     public function verifyResponse($remoteIp, $response)
     {
+        // LOG TEMPORAL para diagnosticar por que falla la verificacion (quitar despues)
+        error_log("RECAPTCHA DEBUG - response recibido, longitud: ".strlen((string)$response)." valor: ".var_export($response, true));
+
         // Discard empty solution submissions
         if ($response == null || strlen($response) == 0) {
             $recaptchaResponse = new ReCaptchaResponse();
