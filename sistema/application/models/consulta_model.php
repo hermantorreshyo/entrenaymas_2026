@@ -216,7 +216,8 @@ class Consulta_Model extends Abstract_Model {
     //$id = parent::insert($data);
     $sql = "INSERT INTO crm_consultas (";
     $sql.= "id_contacto,id_empresa_relacion,id_empresa,id_entrada,id_paciente,fecha,asunto,";
-    $sql.= "texto,id_email_respuesta,id_origen,id_usuario,subtitulo,tipo,id_referencia,id_relacion,id_asunto,estado";
+    $sql.= "texto,id_email_respuesta,id_origen,id_usuario,subtitulo,tipo,id_referencia,id_relacion,id_asunto,estado,";
+    $sql.= "fecha_visto,custom_1,canal";
     $sql.= ") VALUES (";
     $sql.= (isset($data->id_contacto)) ? "'$data->id_contacto'," : "0,";
     $sql.= (isset($data->id_empresa_relacion)) ? "'$data->id_empresa_relacion'," : ((isset($data->id_empresa)) ? "'$data->id_empresa'," : "0,");
@@ -234,7 +235,10 @@ class Consulta_Model extends Abstract_Model {
     $sql.= (isset($data->id_referencia)) ? "'$data->id_referencia'," : "0,";
     $sql.= (isset($data->id_relacion)) ? "'$data->id_relacion'," : "0,";
     $sql.= (isset($data->id_asunto)) ? "'$data->id_asunto'," : "0,";
-    $sql.= (isset($data->estado)) ? "'$data->estado'" : "0";
+    $sql.= (isset($data->estado)) ? "'$data->estado'," : "0,";
+    $sql.= (isset($data->fecha_visto)) ? "'$data->fecha_visto'," : "NOW(),";
+    $sql.= (isset($data->custom_1)) ? "'$data->custom_1'," : "'',";
+    $sql.= (isset($data->canal)) ? "'$data->canal'" : "''";
     $sql.= ")";
     file_put_contents("consulta_insertar.txt", date("Y-m-d H:i:s")." - ".$sql."\n", FILE_APPEND);
     $this->db->query($sql);
