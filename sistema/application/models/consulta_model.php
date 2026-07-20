@@ -132,8 +132,10 @@ class Consulta_Model extends Abstract_Model {
     $id_contacto = isset($conf["id_contacto"]) ? $conf["id_contacto"] : 0;
     $fecha = isset($conf["fecha"]) ? $conf["fecha"] : date("Y-m-d H:i:s");
     $id_origen = 20; // CREACION DE USUARIO
-    $sql = "INSERT INTO crm_consultas (id_empresa,fecha,asunto,id_origen,id_referencia,id_contacto,id_empresa_relacion) VALUES(";
-    $sql.= "'$id_empresa','$fecha','Nuevo usuario','$id_origen','0','$id_contacto','$id_empresa')";
+    $sql = "INSERT INTO crm_consultas (id_empresa,fecha,asunto,id_origen,id_referencia,id_contacto,id_empresa_relacion,";
+    $sql.= "id_entrada,id_paciente,texto,id_email_respuesta,id_usuario,subtitulo,tipo,id_relacion,id_asunto,estado,fecha_visto,custom_1,canal) VALUES(";
+    $sql.= "'$id_empresa','$fecha','Nuevo usuario','$id_origen','0','$id_contacto','$id_empresa',";
+    $sql.= "0,0,'',0,0,'',0,0,0,0,'$fecha','','')";
     $this->db->query($sql);
   }
 
