@@ -457,6 +457,7 @@ class Consultas extends REST_Controller {
       $contacto->tipo = $tipo; // 1 = Contacto
       $contacto->activo = 1; // El cliente esta activo por defecto
       $contacto->id_sucursal = 0; // Para que en algunas BD no tire error de default value
+      $contacto->codigo = $this->Cliente_Model->next(array("id_empresa"=>$id_empresa));
       $contacto->id_usuario = $id_usuario;
       $contacto->custom_3 = (($empresa->id_proyecto == 3) ? "1" : "");
       $id = $this->Cliente_Model->insert($contacto);
