@@ -126,6 +126,9 @@ class ReCaptcha
         $answers = json_decode($getResponse, true);
         $recaptchaResponse = new ReCaptchaResponse();
 
+        // LOG TEMPORAL para diagnosticar por que falla la verificacion (quitar despues)
+        error_log("RECAPTCHA DEBUG - raw response: ".var_export($getResponse, true));
+
         if (trim($answers ['success']) == true) {
             $recaptchaResponse->success = true;
         } else {
