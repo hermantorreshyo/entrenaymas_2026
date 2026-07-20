@@ -460,6 +460,49 @@ class Consultas extends REST_Controller {
       $contacto->codigo = $this->Cliente_Model->next(array("id_empresa"=>$id_empresa));
       $contacto->id_usuario = $id_usuario;
       $contacto->custom_3 = (($empresa->id_proyecto == 3) ? "1" : "");
+
+      // Resto de los campos NOT NULL sin default en la tabla clientes
+      $contacto->id_tipo_documento = 96;
+      $contacto->id_tipo_iva = 4;
+      $contacto->forma_pago = "E";
+      $contacto->enviar_email = 1;
+      $contacto->cuit = "";
+      $contacto->percibe_ib = 0;
+      $contacto->descuento = 0;
+      $contacto->percepcion_ib = 0;
+      $contacto->id_provincia = 0;
+      $contacto->lista = 0;
+      $contacto->id_vendedor = 0;
+      $contacto->observaciones = "";
+      $contacto->contacto_nombre = "";
+      $contacto->contacto_telefono = "";
+      $contacto->contacto_celular = "";
+      $contacto->contacto_email = "";
+      $contacto->saldo_inicial = 0;
+      $contacto->saldo_inicial_2 = 0;
+      $contacto->path = "";
+      $contacto->id_plan = 0;
+      $contacto->codigo_postal = "";
+      $contacto->fecha_nac = date("Y-m-d");
+      $contacto->uploaded = 0;
+      $contacto->fecha_vencimiento = date("Y-m-d H:i:s");
+      $contacto->no_leido = 1;
+      $contacto->custom_1 = "";
+      $contacto->custom_2 = "";
+      $contacto->custom_4 = "";
+      $contacto->custom_5 = "";
+      $contacto->facebook = "";
+      $contacto->twitter = "";
+      $contacto->instagram = "";
+      $contacto->youtube = "";
+      $contacto->linkedin = "";
+      $contacto->latitud = 0;
+      $contacto->longitud = 0;
+      $contacto->zoom = 0;
+      $contacto->path_2 = "";
+      $contacto->horario = "";
+      $contacto->nombre_fantasia = "";
+
       $id = $this->Cliente_Model->insert($contacto);
       $contacto->id = $id;
 
