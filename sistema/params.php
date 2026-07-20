@@ -39,6 +39,9 @@ if (!function_exists("get_conex")) {
       return;
     }
     mysqli_set_charset($conx, "utf8");
+    // Esta app fue escrita asumiendo el sql_mode permisivo clasico de MySQL
+    // (columnas NOT NULL sin default se completan con su valor implicito en vez de fallar).
+    mysqli_query($conx, "SET SESSION sql_mode = ''");
     return $conx;
   }
 }
@@ -52,6 +55,7 @@ if (!function_exists("get_mysqli")) {
       return;
     }
     $mysqli->set_charset("utf8");
+    $mysqli->query("SET SESSION sql_mode = ''");
     return $mysqli;
   }
 }
@@ -61,6 +65,7 @@ if (!function_exists("get_conex_local_data")) {
     $connection = mysqli_init();
     mysqli_options($connection,MYSQLI_OPT_LOCAL_INFILE,true);
     mysqli_real_connect($connection,SERVER_DB,USER_DB,PASSWORD_DB,DATABASE);
+    mysqli_query($connection, "SET SESSION sql_mode = ''");
     return $connection;
   }
 }

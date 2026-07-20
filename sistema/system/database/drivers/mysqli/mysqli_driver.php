@@ -69,13 +69,19 @@ class CI_DB_mysqli_driver extends CI_DB {
 	{
 		if ($this->port != '')
 		{
-			return @mysqli_connect($this->hostname, $this->username, $this->password, $this->database, $this->port);
+			$conn_id = @mysqli_connect($this->hostname, $this->username, $this->password, $this->database, $this->port);
 		}
 		else
 		{
-			return @mysqli_connect($this->hostname, $this->username, $this->password, $this->database);
+			$conn_id = @mysqli_connect($this->hostname, $this->username, $this->password, $this->database);
 		}
 
+		// Esta app fue escrita asumiendo el sql_mode permisivo clasico de MySQL
+		// (columnas NOT NULL sin default se completan con su valor implicito en vez de fallar).
+		// Lo restauramos porque los servidores actuales suelen traer STRICT_TRANS_TABLES por defecto.
+		if ($conn_id) mysqli_query($conn_id, "SET SESSION sql_mode = ''");
+
+		return $conn_id;
 	}
 
 	// --------------------------------------------------------------------
