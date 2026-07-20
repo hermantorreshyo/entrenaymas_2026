@@ -45,10 +45,10 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['title'] = (isset($_SERVER["PROJECT_NAME"]) ? $_SERVER["PROJECT_NAME"] : "");
-$db['default']['hostname'] = (isset($_SERVER["SERVER_DB"]) ? $_SERVER["SERVER_DB"] : "entrenaymas-mysql");
-$db['default']['username'] = (isset($_SERVER["USER_DB"]) ? $_SERVER["USER_DB"] : "root");
-$db['default']['password'] = (isset($_SERVER["PASSWORD_DB"]) ? $_SERVER["PASSWORD_DB"] : "qu4r2200");
-$db['default']['database'] = (isset($_SERVER["DATABASE"]) ? $_SERVER["DATABASE"] : "servidor");
+$db['default']['hostname'] = (isset($_SERVER["SERVER_DB"]) ? $_SERVER["SERVER_DB"] : "localhost");
+$db['default']['username'] = (isset($_SERVER["USER_DB"]) ? $_SERVER["USER_DB"] : "entrenaymas_mysql");
+$db['default']['password'] = (isset($_SERVER["PASSWORD_DB"]) ? $_SERVER["PASSWORD_DB"] : "ey+db2026@");
+$db['default']['database'] = (isset($_SERVER["DATABASE"]) ? $_SERVER["DATABASE"] : "demo-entrenaymas-mysql");
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

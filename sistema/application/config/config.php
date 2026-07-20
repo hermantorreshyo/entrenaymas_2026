@@ -1,7 +1,9 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 // No mostramos errores al usuario, pero SI los logueamos (antes quedaban invisibles con error_reporting(0)).
-error_reporting(E_ALL);
+// Excluimos E_DEPRECATED/E_STRICT/E_NOTICE: CodeIgniter 2 usa propiedades dinamicas en todos lados
+// y en PHP 8.2+ eso genera cientos de avisos de deprecacion que no aportan nada util aca.
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 /*
