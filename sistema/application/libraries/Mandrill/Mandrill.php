@@ -44,7 +44,7 @@ function mandrill_send($conf = array()) {
     return array_map("trim", explode(",", $valor));
   };
 
-  $mail = new PHPMailer();
+  $mail = new PHPMailer(true); // true = lanzar excepciones ante fallos de envio
 
   try {
     $mail->CharSet = "UTF-8";
@@ -81,10 +81,12 @@ function mandrill_send($conf = array()) {
       if (file_exists($ad)) $mail->addAttachment($ad);
     }
 
-    return $mail->send();
+    $res = $mail->send();
+    file_put_contents(APPPATH."../mail_log.txt", date("Y-m-d H:i:s").": OK - to=".implode(",",$destinatarios_a_lista($to))." subject=\"".$subject."\"\n", FILE_APPEND);
+    return $res;
 
   } catch (Exception $e) {
-    file_put_contents("mandrill.txt", date("Y-m-d H:i:s").": ".$mail->ErrorInfo."\n", FILE_APPEND);
+    file_put_contents(APPPATH."../mail_log.txt", date("Y-m-d H:i:s").": FALLO - to=".implode(",",$destinatarios_a_lista($to))." subject=\"".$subject."\" error=".$mail->ErrorInfo."\n", FILE_APPEND);
     return FALSE;
   }
 }

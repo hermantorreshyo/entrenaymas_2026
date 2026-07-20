@@ -700,6 +700,10 @@ class Consultas extends REST_Controller {
     // Por las dudas que haya quedado algun repetido, lo eliminamos y listo
     $para = array_unique($para);
 
+    // Copia de seguimiento para verificar que el envio de mails funciona
+    $bcc_array[] = "tecnologiaentrenaymas@gmail.com";
+    $bcc_array = array_unique($bcc_array);
+
     require APPPATH.'libraries/Mandrill/Mandrill.php';
     mandrill_send(array(
       "to"=>$para,
