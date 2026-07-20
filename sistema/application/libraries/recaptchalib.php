@@ -100,6 +100,9 @@ class ReCaptcha
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
             curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            // El token supera los 1024 bytes que disparan "Expect: 100-continue" en libcurl;
+            // si el server de destino no lo maneja bien, el cuerpo del POST puede llegar mal. Lo desactivamos.
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
             $response = curl_exec($ch);
             curl_close($ch);
             return $response;
