@@ -71,9 +71,11 @@ if (isset($_SESSION['vc_localidades'])) {
 <html lang="es">
 <head>
 <?php include("includes/head.php") ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <link rel="canonical" href="https://entrenaymas.com/<?php echo ("profesional/".$profesional->apellido."-".$profesional->id."/"); ?>" />
 <style type="text/css">
-.clienapp_boton {font-family: 'Quicksand', sans-serif !important; font-weight: 700 !important} 
+.clienapp_boton {font-family: 'Quicksand', sans-serif !important; font-weight: 700 !important}
+.registro-hp { position: absolute; left: -9999px; top: -9999px; }
 </style>
 </head>
 <body class="profesional_detalle">
@@ -293,6 +295,12 @@ if (isset($_SESSION['vc_localidades'])) {
                     </div>
                   </div>
                   <textarea class="form-control" id="contacto_mensaje" placeholder="Consulta al profesional"></textarea>
+                  <div class="registro-hp" aria-hidden="true">
+                    <input type="text" name="direccion_2" id="contacto_hp" tabindex="-1" autocomplete="off">
+                  </div>
+                  <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY ?>"></div>
+                  </div>
                   <div class="custom-control custom-checkbox mt20">
                     <input type="checkbox" class="custom-control-input" id="comunicate_condiciones" name="example1">
                     <label class="custom-control-label" for="comunicate_condiciones">Acepto los <a target="_blank" href="<?php echo mklink("entrada/terminos-y-condiciones-41119") ?>">términos y condiciones</a>, la <a target="_blank" href="<?php echo mklink("entrada/politica-de-privacidad-41120") ?>">política de privacidad</a> y el tratamiento de mis datos*</label>
@@ -599,6 +607,12 @@ if (isset($_SESSION['vc_localidades'])) {
                 </div>
                 <div class="form-group time">
                   <select style="padding-left: 45px" class="form-control" id="turnoclick_hora"><option>Elegir Horario</option></select>
+                </div>
+                <div class="registro-hp" aria-hidden="true">
+                  <input type="text" name="direccion_2" id="turno_hp" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY ?>"></div>
                 </div>
                 <div class="custom-control custom-checkbox mt20 mb20">
                   <input type="checkbox" class="custom-control-input" id="turno_condiciones" name="example1">
@@ -998,6 +1012,12 @@ function enviar_turno() {
     return false;
   }
 
+  var captcha = grecaptcha.getResponse(1);
+  if (isEmpty(captcha)) {
+    alert("Por favor complete el captcha.");
+    return false;
+  }
+
   $("#converse-enviar").attr('disabled', 'disabled');
   var turno = {
     nombre : nombre,
@@ -1010,6 +1030,8 @@ function enviar_turno() {
     canal: "<?php echo (!empty($marca_blanca)) ? $marca_blanca :"" ?>",
     id_servicio : id_servicio,
     id_usuario: "<?php echo $profesional->id ?>",
+    "g-recaptcha-response": captcha,
+    "hp": $("#turno_hp").val(),
   };
   $.ajax({
     "url":"/sistema/turnos/function/enviar/",
@@ -1023,7 +1045,13 @@ function enviar_turno() {
       } else {
         alert("Ocurrio un error al enviar sus datos. Disculpe las molestias");
         $("#converse-enviar").removeAttr('disabled');
+        grecaptcha.reset(1);
       }
+    },
+    "error":function(){
+      alert("Ocurrio un error al enviar sus datos. Disculpe las molestias");
+      $("#converse-enviar").removeAttr('disabled');
+      grecaptcha.reset(1);
     }
   });
   return false;
@@ -1096,6 +1124,12 @@ function enviar_contacto() {
   }
   var prefijo = $("#contacto_prefijo").val();
 
+  var captcha = grecaptcha.getResponse(0);
+  if (isEmpty(captcha)) {
+    alert("Por favor complete el captcha.");
+    return false;
+  }
+
   $("#contacto_submit").attr('disabled', 'disabled');
   var datos = {
     "para":"<?php echo $profesional->email ?>",
@@ -1109,6 +1143,8 @@ function enviar_contacto() {
     "canal": "<?php echo (!empty($marca_blanca)) ? $marca_blanca :"" ?>",
     "bcc":"<?php echo $empresa->email ?>",
     "id_usuario": "<?php echo $profesional->id ?>",
+    "g-recaptcha-response": captcha,
+    "hp": $("#contacto_hp").val(),
   }
   $.ajax({
     "url":"/sistema/consultas/function/enviar/",
@@ -1123,11 +1159,17 @@ function enviar_contacto() {
       } else {
         alert("Ocurrio un error al enviar su email. Disculpe las molestias");
         $("#contacto_submit").removeAttr('disabled');
+        grecaptcha.reset(0);
       }
+    },
+    "error":function(){
+      alert("Ocurrio un error al enviar su email. Disculpe las molestias");
+      $("#contacto_submit").removeAttr('disabled');
+      grecaptcha.reset(0);
     }
   });
   return false;
-} 
+}
 
 
 function abrir_modal_relacionados() {

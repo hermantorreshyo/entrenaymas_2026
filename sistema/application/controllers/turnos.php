@@ -122,11 +122,34 @@ class Turnos extends REST_Controller {
 
   // Metodo utilizado en las webs
   function enviar() {
-    
+
     header('Access-Control-Allow-Origin: *');
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+
+    // Honeypot: campo trampa que solo un bot completaria.
+    // Respondemos como si hubiera salido bien, sin guardar nada ni enviar mail.
+    $hp = $this->input->post("hp");
+    if (!empty($hp)) {
+      echo json_encode(array(
+        "error"=>0,
+      ));
+      exit();
+    }
+
+    // Verificacion de reCAPTCHA contra la API de Google
+    require APPPATH.'libraries/recaptchalib.php';
+    $captcha = $this->input->post("g-recaptcha-response");
+    $reCaptcha = new ReCaptcha(RECAPTCHA_SECRET_KEY);
+    $resp = $reCaptcha->verifyResponse(
+      $_SERVER["REMOTE_ADDR"],
+      $captcha
+    );
+    if ($resp == null || !isset($resp->success) || $resp->success === FALSE) {
+      echo json_encode(array(
+        "error"=>1,
+        "mensaje"=>"Por favor verifique el captcha e intente nuevamente.",
+      ));
+      exit();
+    }
 
     $this->load->helper("fecha_helper");
     $this->load->model("Cliente_Model");
