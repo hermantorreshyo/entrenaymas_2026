@@ -1,4 +1,8 @@
 <?php
+// Desde PHP 8.1, mysqli lanza excepciones ante errores de consulta por defecto.
+// Todo este codigo asume el comportamiento clasico (devolver FALSE), asi que lo restauramos.
+mysqli_report(MYSQLI_REPORT_OFF);
+
 if (session_status() == PHP_SESSION_NONE) {
   @session_start();
 }

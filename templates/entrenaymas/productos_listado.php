@@ -105,8 +105,8 @@ $seo_title = $empresa->seo_title." | ".$vc_titulo;
         <div class="row">
           <?php $listado = $articulo_model->get_list(array(
             "offset"=>2,
-          )); 
-          array_push($listado,array_shift($listado));
+          ));
+          if (!empty($listado)) array_push($listado,array_shift($listado));
           foreach($listado as $r) { ?>
             <div class="col-sm-6">
               <div class="venta1">

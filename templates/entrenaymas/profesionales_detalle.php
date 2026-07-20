@@ -4,6 +4,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include("includes/init.php");
 $profesional = $usuario_model->get($id);
+if (empty($profesional)) {
+  header("Location: 404.php");
+  exit();
+}
 
 $categorias_profe = array();
 foreach ($profesional->categorias as $cat) {
