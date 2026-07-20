@@ -90,8 +90,31 @@ class ReCaptcha
      */
     private function _submitHTTPGet($path, $data)
     {
+        // Usamos POST (recomendado por Google) en vez de GET: el token de
+        // respuesta puede superar los 2000-3000 caracteres, y con GET corre
+        // riesgo de truncarse en algun proxy/firewall de salida por el camino.
+        if (is_callable('curl_init')) {
+            $ch = curl_init(rtrim($path, '?'));
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            $response = curl_exec($ch);
+            curl_close($ch);
+            return $response;
+        }
+
         $req = $this->_encodeQS($data);
-        $response = file_get_contents($path . $req);
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "POST",
+                "header" => "Content-Type: application/x-www-form-urlencoded\r\n",
+                "content" => $req,
+                "timeout" => 10,
+            ),
+        ));
+        $response = file_get_contents(rtrim($path, '?'), false, $context);
         return $response;
     }
 
