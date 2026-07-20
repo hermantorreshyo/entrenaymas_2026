@@ -132,9 +132,6 @@ class ReCaptcha
      */
     public function verifyResponse($remoteIp, $response)
     {
-        // LOG TEMPORAL para diagnosticar por que falla la verificacion (quitar despues)
-        error_log("RECAPTCHA DEBUG - response recibido, longitud: ".strlen((string)$response)." valor: ".var_export($response, true));
-
         // Discard empty solution submissions
         if ($response == null || strlen($response) == 0) {
             $recaptchaResponse = new ReCaptchaResponse();
@@ -154,9 +151,6 @@ class ReCaptcha
         );
         $answers = json_decode($getResponse, true);
         $recaptchaResponse = new ReCaptchaResponse();
-
-        // LOG TEMPORAL para diagnosticar por que falla la verificacion (quitar despues)
-        error_log("RECAPTCHA DEBUG - raw response: ".var_export($getResponse, true));
 
         if (trim($answers ['success']) == true) {
             $recaptchaResponse->success = true;

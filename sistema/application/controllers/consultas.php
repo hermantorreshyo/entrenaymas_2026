@@ -269,7 +269,7 @@ class Consultas extends REST_Controller {
     }
 
     // Verificacion de reCAPTCHA contra la API de Google
-    require APPPATH.'libraries/recaptchalib.php';
+    require_once APPPATH.'libraries/recaptchalib.php';
     $captcha = $this->input->post("g-recaptcha-response");
     $reCaptcha = new ReCaptcha(RECAPTCHA_SECRET_KEY);
     $resp = $reCaptcha->verifyResponse(
@@ -380,26 +380,8 @@ class Consultas extends REST_Controller {
     // 1 = Manda solo el campo mensaje
     $solo_mensaje = ($this->input->post("solo_mensaje") !== FALSE) ? ((int) $this->input->post("solo_mensaje")) : 0;
 
-    // Si estamos usando reCAPTCHA
-    $captcha = $this->input->post("g-recaptcha-response");
-    if ($captcha !== FALSE) {
-      require APPPATH.'libraries/recaptchalib.php';
-      $site_key = "6LeHSTQUAAAAAA5FV121v-M7rnhqdkXZIGmP9N8E";
-      $secret = "6LeHSTQUAAAAACG9dCyy6hv24tlRYL8TKtxe4O54";
-      $reCaptcha = new ReCaptcha($secret);
-      $resp = $reCaptcha->verifyResponse(
-        $_SERVER["REMOTE_ADDR"],
-        $captcha
-      );
-      if ($resp == null || !isset($resp->success) || $resp->success === FALSE) {
-        $salida = array(
-          "mensaje"=>"El codigo de validacion es incorrecto.",
-          "error"=>1,
-        );
-        echo json_encode($salida);
-        exit();
-      }
-    }
+    // Nota: la verificacion de reCAPTCHA para este endpoint ya se hace
+    // al principio de enviar(), antes de llegar hasta aca.
 
     // Si no esta definida la empresa, tiene que estar si o si el parametro DOMINIO
     $id_empresa = $this->input->post("id_empresa");

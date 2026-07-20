@@ -136,7 +136,7 @@ class Turnos extends REST_Controller {
     }
 
     // Verificacion de reCAPTCHA contra la API de Google
-    require APPPATH.'libraries/recaptchalib.php';
+    require_once APPPATH.'libraries/recaptchalib.php';
     $captcha = $this->input->post("g-recaptcha-response");
     $reCaptcha = new ReCaptcha(RECAPTCHA_SECRET_KEY);
     $resp = $reCaptcha->verifyResponse(

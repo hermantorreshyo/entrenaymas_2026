@@ -536,7 +536,7 @@ class Empresas extends REST_Controller {
     // Si estamos usando reCAPTCHA
     $captcha = $this->input->post("g-recaptcha-response");
     if ($captcha !== FALSE) {
-      require APPPATH.'libraries/recaptchalib.php';
+      require_once APPPATH.'libraries/recaptchalib.php';
       $site_key = "6LeHSTQUAAAAAA5FV121v-M7rnhqdkXZIGmP9N8E";
       $secret = "6LeHSTQUAAAAACG9dCyy6hv24tlRYL8TKtxe4O54";
       $reCaptcha = new ReCaptcha($secret);
