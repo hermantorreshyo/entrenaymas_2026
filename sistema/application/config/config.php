@@ -1,6 +1,9 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-error_reporting(0);
+// No mostramos errores al usuario, pero SI los logueamos (antes quedaban invisibles con error_reporting(0)).
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -183,7 +186,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------
