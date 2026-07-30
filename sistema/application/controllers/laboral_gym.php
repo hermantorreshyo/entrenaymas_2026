@@ -12,9 +12,7 @@ class Laboral_Gym extends REST_Controller {
   }
 
   function guardar_configuracion() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     header('Access-Control-Allow-Origin: *');
     if ($this->input->post("id") === FALSE) {
@@ -47,9 +45,7 @@ class Laboral_Gym extends REST_Controller {
   function notificar_activo() {
 
     set_time_limit(0);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_cliente = parent::get_post("id_cliente",0);
     $activo = parent::get_post("activo",0);
@@ -125,9 +121,7 @@ class Laboral_Gym extends REST_Controller {
   function notificar() {
 
     set_time_limit(0);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_empresa = $this->id_empresa;
     $id_entrada = parent::get_post("id_entrada",0);

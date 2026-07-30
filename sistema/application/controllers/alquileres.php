@@ -12,9 +12,7 @@ class Alquileres extends REST_Controller {
   // ENVIAMOS LOS EMAILS DE LOS CUPONES DE PAGO DE LOS ALQUILERES
   function enviar_emails() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $this->load->helper("fecha_helper");
     $mes = parent::get_get("mes",date("m"));

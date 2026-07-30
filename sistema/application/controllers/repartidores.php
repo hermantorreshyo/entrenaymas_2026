@@ -13,9 +13,7 @@ class Repartidores extends REST_Controller {
 
   function depositar_en_comercio() {
     header('Access-Control-Allow-Origin: *');
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_post("id_empresa");
     $id_repartidor = parent::get_post("id_repartidor");
     $id_usuario = parent::get_post("id_usuario");

@@ -40,9 +40,7 @@ class Ingresos_Proveedores extends REST_Controller {
 
   function imprimir_remito($id) {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     
     $id_empresa = parent::get_empresa();
     $ingreso_proveedor = $this->modelo->get($id);

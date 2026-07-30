@@ -12,9 +12,7 @@ class Impresor_Fiscal extends CI_Controller {
   }
 
   function test() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     echo $this->impresor->ultima_factura_a();
   }
 

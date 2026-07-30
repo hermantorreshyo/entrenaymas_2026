@@ -10,9 +10,7 @@ class Propiedades extends REST_Controller {
   }
 
   function crear_video() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_empresa = parent::get_empresa();
     $id = parent::get_get("id");
@@ -77,9 +75,7 @@ class Propiedades extends REST_Controller {
   }
 
   function invitar_colega() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_post("id_empresa",parent::get_empresa());
     $email = parent::get_post("email");
     $inmobiliaria = parent::get_post("inmobiliaria");
@@ -131,9 +127,7 @@ class Propiedades extends REST_Controller {
   }
 
   function sincronizar_calendario() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id = parent::get_get("id",0);
     $id_empresa = parent::get_get("id_empresa",0);
     // Tenemos que sincronizar una propiedad en particular
@@ -217,9 +211,7 @@ class Propiedades extends REST_Controller {
   }
 
   function revisar_localidades() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $propiedades = $this->modelo->buscar(array(
       "id_empresa"=>108, // YACOUB
       "id_tipo_estado"=>1, // Estado Activo
@@ -300,9 +292,7 @@ class Propiedades extends REST_Controller {
 
   function save_file() {
     /*
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     */
     $this->load->helper("file_helper");
     $this->load->helper("imagen_helper");
@@ -1290,9 +1280,7 @@ class Propiedades extends REST_Controller {
   }
 
   function procesar_olx() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     try {
       $archivo_olx = file_get_contents("https://production-feeds.s3.amazonaws.com/feedFiles/3ebc3e1edfddd975f36d206f3acd4ada.csv");  
       $array = explode("\n", $archivo_olx);
@@ -2467,9 +2455,7 @@ class Propiedades extends REST_Controller {
   function importar_inmobusqueda() {
 
     set_time_limit(0);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_empresa = 1392;
     $cant_insert = 0;

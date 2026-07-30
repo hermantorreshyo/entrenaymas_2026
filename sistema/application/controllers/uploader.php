@@ -607,10 +607,8 @@ class Uploader extends REST_Controller {
     // Si se imprime 0, ERROR
     // Si se imprime 1, OK
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
     ini_set('mysqli.allow_local_infile', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $input = file_get_contents("php://input");
     file_put_contents("put.txt", $input);
@@ -696,9 +694,7 @@ class Uploader extends REST_Controller {
   }
 
   function test() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = 1021;
     $punto_venta = 2;
     $this->load->model("Stock_Model");
@@ -711,9 +707,7 @@ class Uploader extends REST_Controller {
     // Si se imprime 0, ERROR
     // Si se imprime 1, OK
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     file_put_contents("post.txt", print_r($_POST,TRUE));
 
     $id_empresa = parent::get_post("id_empresa",0);
@@ -787,9 +781,7 @@ class Uploader extends REST_Controller {
 	// Procesa los scripts de un determinado ZIP
 	function procesar($folder="") {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
 		if (empty($folder)) exit();
 
@@ -856,9 +848,7 @@ class Uploader extends REST_Controller {
 
   function procesar_stock() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     set_time_limit(0);
 
     $id_empresa = 134;

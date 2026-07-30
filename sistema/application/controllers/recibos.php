@@ -280,9 +280,7 @@ class Recibos extends REST_Controller {
 	}
     
 	function borrar_recibo($id = null,$id_punto_venta = 0) {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     
 		$id_empresa = parent::get_empresa();
     $this->db->query("UPDATE facturas F INNER JOIN facturas_pagos FP ON (F.id = FP.id_factura AND F.id_empresa = FP.id_empresa AND F.id_punto_venta = FP.id_punto_venta) SET F.pagada = 0 WHERE FP.id_empresa = $id_empresa AND FP.id_pago = $id AND FP.id_punto_venta = $id_punto_venta ");

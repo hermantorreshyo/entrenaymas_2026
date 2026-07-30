@@ -24,9 +24,7 @@ class Reservas extends REST_Controller {
 
   function enviar() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $this->load->model("Cliente_Model");
     $this->load->helper("fecha_helper");

@@ -6,9 +6,7 @@ class Propiedades_Reservas extends REST_Controller {
 
   function __construct() {
     
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     parent::__construct();
     $this->load->model('Propiedad_Reserva_Model', 'modelo',"fecha ASC",1);
@@ -135,9 +133,7 @@ class Propiedades_Reservas extends REST_Controller {
   // Registra una reserva para esa propiedad
   function reservar() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $this->load->model("Cliente_Model");
     $this->load->helper("fecha_helper");

@@ -55,9 +55,7 @@ class Compras extends REST_Controller {
 
   function imprimir_remito($id) {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     
     $id_empresa = parent::get_empresa();
     $compra = $this->modelo->get($id);
@@ -446,9 +444,7 @@ class Compras extends REST_Controller {
 
   // Reemplaza a la funcion resumen_compras_arbol
   function imprimir_resumen_arbol_compras() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $movimiento = parent::get_get("movimiento","");
     $id_sucursal = parent::get_get("id_sucursal",0);
     $id_razon_social = parent::get_get("id_razon_social",0);
@@ -482,9 +478,7 @@ class Compras extends REST_Controller {
 
   // Reemplaza a la funcion resumen_compras_arbol
   function resumen_arbol_compras() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $movimiento = parent::get_post("movimiento","");
     $id_sucursal = parent::get_post("id_sucursal",0);
     $id_razon_social = parent::get_post("id_razon_social",0);

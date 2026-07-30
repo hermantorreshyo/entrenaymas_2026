@@ -17,9 +17,7 @@ class Articulos_Propiedades extends REST_Controller {
   }
 
   function eliminar() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id = parent::get_post("id");
     $id_empresa = parent::get_empresa();
     $sql = "SELECT * FROM articulos_propiedades_opciones WHERE id_empresa = $id_empresa AND id_propiedad = $id ";

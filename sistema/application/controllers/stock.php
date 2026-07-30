@@ -44,9 +44,7 @@ class Stock extends REST_Controller {
   }
 
   function recalcular_de_ventas() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     set_time_limit(0);
     $this->load->helper("fecha_helper");
     $id_sucursal = 702;
@@ -454,9 +452,7 @@ class Stock extends REST_Controller {
   
   function recalcular() {
     set_time_limit(0);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = 249;
     $sucursales = array(7,18,17,16,15,14,12,11,8,23,22,20,21,19,56,223,224);
     $sql = "SELECT id FROM articulos WHERE id_empresa = $id_empresa ";
@@ -476,9 +472,7 @@ class Stock extends REST_Controller {
 
   function ingresar_vendidos() {
     set_time_limit(0);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = 249;
     $id_articulo = "10213586";
 

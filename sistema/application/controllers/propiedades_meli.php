@@ -10,9 +10,7 @@ class Propiedades_Meli extends REST_Controller {
 
   function __construct() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     parent::__construct();
     $this->load->model('Propiedad_Model', 'modelo');
@@ -440,9 +438,7 @@ class Propiedades_Meli extends REST_Controller {
 
   function publicar() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $this->connect();
     $id_propiedad = parent::get_post("id_propiedad",0);

@@ -10,9 +10,7 @@ class Consultas_Tipos extends REST_Controller {
   }
 
   function calcular() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $sql = "SELECT * FROM empresas";
     $q = $this->db->query($sql);
     $salida = "";

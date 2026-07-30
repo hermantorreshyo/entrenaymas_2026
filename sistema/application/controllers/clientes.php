@@ -114,9 +114,7 @@ class Clientes extends REST_Controller {
   }
 
   function ver_calendario_pagos() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_empresa();
     $desde = parent::get_post("desde");
     $hasta = parent::get_post("hasta");
@@ -379,9 +377,7 @@ class Clientes extends REST_Controller {
   }
 
   function enviar_sms_verificacion() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     header('Access-Control-Allow-Origin: *');
     $id_cliente = parent::get_post("id_cliente",0);
@@ -584,9 +580,7 @@ class Clientes extends REST_Controller {
   }
 
   function importar_excel() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_empresa();
     $tabla = "clientes";
     try {
@@ -600,9 +594,7 @@ class Clientes extends REST_Controller {
   }
 
   function eliminar_repetidos() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     set_time_limit(0);
     $id_empresa = 133;
     $sql = "SELECT DISTINCT nombre FROM clientes WHERE id_empresa = $id_empresa ";
@@ -990,9 +982,7 @@ class Clientes extends REST_Controller {
     header('Access-Control-Allow-Origin: *');
     header('Content-Type:application/json; charset=UTF-8');
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $email = parent::get_post("email","");
     $id_empresa = parent::get_post("id_empresa",0);
@@ -1064,9 +1054,7 @@ class Clientes extends REST_Controller {
 
   function editar() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_empresa = $this->input->post("id_empresa");
     $email = $this->input->post("email");
@@ -1688,9 +1676,7 @@ class Clientes extends REST_Controller {
   function exportar() {
 
     set_time_limit(0);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $this->load->model("Empresa_Model");
     $this->load->helper("excel_helper.php");

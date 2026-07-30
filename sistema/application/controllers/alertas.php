@@ -59,9 +59,7 @@ class Alertas extends REST_Controller {
 	    header('Access-Control-Allow-Credentials: true');
 	    header('Access-Control-Max-Age: 86400');    // cache for 1 day    	
 
-		ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);
+		error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
 		// Obtenemos los datos enviados por el usuario
     	$usuario = new stdClass();

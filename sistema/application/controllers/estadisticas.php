@@ -1333,9 +1333,7 @@ class Estadisticas extends REST_Controller {
 
   function resumen_sucursal() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     @session_start();
     $id_empresa = $this->get_empresa();
@@ -1840,9 +1838,7 @@ class Estadisticas extends REST_Controller {
   }
 
   function test22() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = 249;
     $fecha = "2020-05-01";
     $sql = "select * from estadisticas_sucursales_valores where fecha = '$fecha' AND id_empresa = $id_empresa ";
@@ -2327,9 +2323,7 @@ function ventas() {
 
   function test() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     
     @session_start();
     $id_empresa = $this->get_empresa();
@@ -2387,9 +2381,7 @@ function ventas() {
   }
 
   function consultas() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta JSON
     $id_empresa = $this->get_empresa();
     $this->load->model("Consulta_Model");
     $this->load->helper("fecha_helper");
@@ -2607,9 +2599,7 @@ function ventas() {
 
   function web($fecha_desde = "",$fecha_hasta = "") {
     /*
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     */
     @session_start();
     $id_empresa = $this->get_empresa();
@@ -3011,9 +3001,7 @@ function ventas() {
 
   function ventas_por_sucursal() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_empresa = parent::get_empresa();
     $desde = parent::get_get("desde",date("d-m-Y"));

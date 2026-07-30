@@ -22,9 +22,7 @@ class Facturas extends REST_Controller {
   }
 
   function comparar_precios_maximos($id_factura,$id_punto_venta) {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_empresa();
     $this->load->model("Articulo_Model");
     $factura = $this->modelo->get($id_factura,$id_punto_venta);
@@ -69,9 +67,7 @@ class Facturas extends REST_Controller {
   }
 
   function test() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_empresa();
     $id_factura = parent::get_post("id_factura",0);
     $id_punto_venta = parent::get_post("id_punto_venta",0);
@@ -110,9 +106,7 @@ class Facturas extends REST_Controller {
   }  
 
   function consultar_afip() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = 229;
     $this->load->model("Empresa_Model");
     $empresa = $this->Empresa_Model->get($id_empresa);
@@ -1190,9 +1184,7 @@ class Facturas extends REST_Controller {
 
   // TODO: FALTA TERMINAR LO GENERA MAL
   function generar_pdf() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_factura = parent::get_get("id_factura");
     $id_punto_venta = parent::get_get("id_punto_venta");
     $id_empresa = parent::get_get("id_empresa");
@@ -1213,9 +1205,7 @@ class Facturas extends REST_Controller {
   
   function ver_pdf($id_factura,$id_punto_venta = 0, $id_empresa = 0) {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $this->load->helper("fecha_helper");
     $this->load->helper("numero_letra_helper");
@@ -1413,9 +1403,7 @@ class Facturas extends REST_Controller {
    */
   function ver($hash) {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     
     $this->load->helper("fecha_helper");
     $this->load->helper("numero_letra_helper");
@@ -2105,9 +2093,7 @@ class Facturas extends REST_Controller {
   /*
   function test_tipos_tributos() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     // Tomamos los datos de la empresa
     $this->load->model("Empresa_Model");
@@ -2124,9 +2110,7 @@ class Facturas extends REST_Controller {
   */
   
   function sincronizar_numero($punto_venta = 3,$id_tipo_comprobante = 1) {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_empresa();
     $this->load->model("Empresa_Model");
     $empresa = $this->Empresa_Model->get($id_empresa);
@@ -2152,9 +2136,7 @@ class Facturas extends REST_Controller {
   }
 
   function ver_puntos_venta() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_empresa();
     $this->load->model("Empresa_Model");
     $empresa = $this->Empresa_Model->get($id_empresa);
@@ -2954,9 +2936,7 @@ class Facturas extends REST_Controller {
   
 
   function convertir_factura() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_empresa();
     $id_factura = parent::get_post("id_factura",0);
     $id_punto_venta = parent::get_post("id_punto_venta",0);

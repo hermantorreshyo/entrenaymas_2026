@@ -11,9 +11,7 @@ class Contactos extends REST_Controller {
 
   // Registra cuando el cliente hizo click en un email de interesado
   function registrar_interes_email() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_propiedad = parent::get_get("p",0);
     $id_cliente = parent::get_get("c",0);
     $id_empresa = parent::get_get("e",0);

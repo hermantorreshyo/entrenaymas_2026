@@ -11,9 +11,7 @@ class Presupuestos extends REST_Controller {
 
   function pasar_presupuesto_rio() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     set_time_limit(0);
     $id_presupuesto = 634;
     $id_empresa_miguel = 224;
@@ -110,9 +108,7 @@ class Presupuestos extends REST_Controller {
   }
 
   function procesar_stock($id,$id_sucursal=0) {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_empresa();
     $this->load->model("Stock_Model");
     $res = $this->Stock_Model->procesar_presupuesto($id,array(

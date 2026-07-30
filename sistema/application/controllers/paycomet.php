@@ -11,9 +11,7 @@ class Paycomet extends REST_Controller {
   }
 
   function crear_suscripcion_registro_iframe() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     date_default_timezone_set("Europe/Madrid");
 
     @session_start();
@@ -97,9 +95,7 @@ class Paycomet extends REST_Controller {
   USABA EL METODO JET-ID PERO LO TERMINE DEPRECANDO PORQUE NO PERMITIA PAGO SEGURO
 
   function crear_suscripcion_registro() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     date_default_timezone_set("Europe/Madrid");
 
     @session_start();
@@ -244,9 +240,7 @@ class Paycomet extends REST_Controller {
   // Esta funcion es la IPN cuando se realiza un cobro o suscripcion
   function subscription_ok() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $this->load->model("Log_Model");
     $this->Log_Model->imprimir(array(
@@ -507,9 +501,7 @@ class Paycomet extends REST_Controller {
 
 
   function verificar_perfil_iframe() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     date_default_timezone_set("Europe/Madrid");
 
     $fail_url = URL_BASE."/sistema/app/#pago_rechazado";

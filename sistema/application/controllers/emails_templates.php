@@ -11,9 +11,7 @@ class Emails_Templates extends REST_Controller {
 
   function enviar_plantilla() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     set_time_limit(0);
     $id_empresa = parent::get_post("id_empresa",parent::get_empresa());

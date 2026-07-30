@@ -38,9 +38,7 @@ class Cajas_Movimientos extends REST_Controller {
   
 
   function relacionar_rec() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_caja = 9;
     $id_empresa = 399;
     $sql = "SELECT D.*, C.nombre AS cliente, F.comprobante, F.id_sucursal FROM depositos D ";
@@ -193,9 +191,7 @@ class Cajas_Movimientos extends REST_Controller {
   }    
 
   function resumen_arbol() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_sucursal = parent::get_post("id_sucursal",0);
     $id_padre = parent::get_post("id_padre",0);
     $desde = parent::get_post("desde","");

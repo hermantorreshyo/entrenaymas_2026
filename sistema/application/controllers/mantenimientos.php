@@ -50,9 +50,7 @@ class Mantenimientos extends REST_Controller {
 
   function estadisticas($fecha_desde = "",$fecha_hasta = "") {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     
     @session_start();
     $id_empresa = $this->get_empresa();

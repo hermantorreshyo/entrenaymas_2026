@@ -75,9 +75,7 @@ class Usuarios extends REST_Controller {
     header('Access-Control-Allow-Origin: *');
     header('Content-Type:application/json; charset=UTF-8');
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $email = parent::get_post("email","");
     $id_empresa = parent::get_post("id_empresa",0);
@@ -317,9 +315,7 @@ class Usuarios extends REST_Controller {
 
   function activar_caja(){
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_empresa = 1319;
     $id_usuario = parent::get_post("id_profesional",0);

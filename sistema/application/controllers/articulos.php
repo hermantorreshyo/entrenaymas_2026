@@ -80,9 +80,7 @@ class Articulos extends REST_Controller {
   }
 
   function comparar_precios_maximos() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $excel = parent::get_get("excel",1);
     $id_empresa = parent::get_empresa();
     // Lo traemos de varcreative porque no tomaba el https
@@ -441,9 +439,7 @@ class Articulos extends REST_Controller {
 
   
   function test() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $actualizados = 0;
     $id_empresa = 868;
     $sql = "SELECT * FROM articulos A WHERE A.id_empresa = $id_empresa ";
@@ -3313,9 +3309,7 @@ class Articulos extends REST_Controller {
   }
 
   function importar_fotos_zip() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_empresa();
     $this->load->helper("file_helper");
     $this->load->helper("imagen_helper");
@@ -3364,9 +3358,7 @@ class Articulos extends REST_Controller {
   }
 
   function importar_excel() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $id_empresa = parent::get_empresa();
     $tabla = "articulos";
     try {
@@ -3386,9 +3378,7 @@ class Articulos extends REST_Controller {
   }
 
   function importar_csv() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $file = "../importar/articulos.csv";
     if (!file_exists($file)) {
       echo "No se encuentra el archivo importar/articulos.csv";
@@ -3566,9 +3556,7 @@ class Articulos extends REST_Controller {
 
   function imprimir_por_proveedor() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_empresa = parent::get_empresa();
     $id_sucursal = parent::get_get("id_sucursal",0);
@@ -3611,9 +3599,7 @@ class Articulos extends REST_Controller {
 
 
   function imprimir() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     
     $filter = urldecode(parent::get_post("texto"));
     $id_proveedor = parent::get_post("id_proveedor");
@@ -3813,9 +3799,7 @@ class Articulos extends REST_Controller {
   }
 
   function importar_megacompras() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     set_time_limit(0);
     $id_empresa = 1277;
     $file = "/home/ubuntu/data/sistema/uploads/1277/Ecommerce.csv";
@@ -4054,9 +4038,7 @@ class Articulos extends REST_Controller {
 
   function importar_vultrack($id_empresa = 186) {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $this->load->helper("file_helper");
     $file = "/var/www/vulca2/PRODUTECA_VULTRACK.TXT";
     if (!file_exists($file)) {

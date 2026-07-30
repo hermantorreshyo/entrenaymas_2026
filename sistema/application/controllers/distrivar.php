@@ -257,9 +257,7 @@ class Distrivar extends REST_Controller {
   }
 
   function get_pedido() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     header('Access-Control-Allow-Origin: *');
     $id_empresa = parent::get_post("id_empresa",0);
     $id = parent::get_post("id",0);

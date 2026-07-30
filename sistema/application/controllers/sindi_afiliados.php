@@ -5,9 +5,7 @@ require APPPATH.'libraries/REST_Controller.php';
 class Sindi_Afiliados extends REST_Controller {
 
   function __construct() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     parent::__construct();
     $this->load->model('Sindi_Afiliado_Model', 'modelo');
     $this->load->model("Sindi_Historial_Model");

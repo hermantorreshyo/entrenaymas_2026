@@ -170,9 +170,7 @@ class Pres_Cajas_Movimientos extends REST_Controller {
 
   function imprimir_pago($id,$id_cuota=0,$id_sucursal = 0) {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_empresa = parent::get_empresa();
     $this->load->model("Empresa_Model");

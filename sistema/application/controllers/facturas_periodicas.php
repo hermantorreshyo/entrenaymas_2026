@@ -105,9 +105,7 @@ class Facturas_Periodicas extends REST_Controller {
   // FUNCION DE PRUEBA QUE SOLO ENVIA LOS EMAILS DE LAS FACTURAS SELECCIONADAS
   function enviar_emails() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_empresa = 622;
 
@@ -267,9 +265,7 @@ class Facturas_Periodicas extends REST_Controller {
   function emitir() {
 
     set_time_limit(0);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $test = 0;
     $cantidad_facturas = 0; $total_facturas = 0;

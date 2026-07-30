@@ -30,9 +30,7 @@ class Empresas extends REST_Controller {
   // crea la primer factura periodica y envia el email
   // (el resto de los emails se envian desde la facturacion periodica)
   function controlar_vencimientos() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     $id_empresa_varcreative = 936;
     $this->load->model("Email_Template_Model");
@@ -264,9 +262,7 @@ class Empresas extends REST_Controller {
 
   function get_datos_cuenta() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     $this->load->model("Empresa_Model");
 
     $id_empresa = parent::get_empresa();
@@ -862,9 +858,7 @@ class Empresas extends REST_Controller {
   }  
 
   function exportar($id_empresa,$solo_datos=1) {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     set_time_limit(0);
     $perfil = $_SESSION["perfil"];
     if ($perfil != -1) {

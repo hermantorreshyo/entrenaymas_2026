@@ -45,9 +45,7 @@ class App_Pedidos extends REST_Controller {
   function __construct() {
     /*
     set_time_limit(0);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     */
     parent::__construct();
   }
@@ -232,9 +230,7 @@ class App_Pedidos extends REST_Controller {
   // GUARDA UN NUEVO PEDIDO DESDE EL PANEL DE CONTROL
   function insert() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
     
     $this->db->db_debug = FALSE;
     $id_empresa = parent::get_empresa();
@@ -642,9 +638,7 @@ class App_Pedidos extends REST_Controller {
   }
 
   function get_pedido() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     header('Access-Control-Allow-Origin: *');
 
@@ -804,9 +798,7 @@ class App_Pedidos extends REST_Controller {
   // y comenzamos con la busqueda de repartidores
   function aceptar_pedido_comercio() {
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
     header('Access-Control-Allow-Origin: *');
     $id_pedido = parent::get_get("id",0);
