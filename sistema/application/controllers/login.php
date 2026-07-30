@@ -31,7 +31,7 @@ class Login extends CI_Controller {
 	public function restaurar() {
 		$id = $this->input->get("id");
 		if ($id == FALSE) header("Location: /panel/login/");
-		// Si el usuario inicio el proceso de recupero de contraseña
+		// Si el usuario inicio el proceso de recupero de contraseï¿½a
 		$q = $this->db->query("SELECT * FROM com_usuarios WHERE id = $id AND inicio_recup_pass = 1");
 		if ($q->num_rows() > 0) {
 			// Mostramos la pantalla para restaurar el password
@@ -155,10 +155,6 @@ class Login extends CI_Controller {
 
 	// UTILIZADO EN LOS LOGINS DE LAS PAGINAS CON SUS RESPECTIVOS CLIENTES
 	function check_cliente() {
-
-		ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);
 
 		header('Access-Control-Allow-Origin: *');
 		$email = $this->input->post("email");
