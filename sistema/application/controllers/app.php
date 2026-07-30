@@ -9,9 +9,7 @@ class App extends CI_Controller {
   function index() {
 
     ini_set('memory_limit', '-1');
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen el HTML del panel
     @session_start();
     if (!isset($_SESSION["perfil"])) redirect("/");
     $this->load->helper('url');
@@ -1450,10 +1448,8 @@ class App extends CI_Controller {
   function compress_js($id_proyecto = 0) {
     
     set_time_limit(0);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-    
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen el HTML del panel
+
     $path =  APPPATH.'libraries';
     require_once $path . '/minify/src/Minify.php';
     require_once $path . '/minify/src/JS.php';
@@ -1651,9 +1647,7 @@ class App extends CI_Controller {
   // Sirve para actualizar una caja restaurada y que despues cuando se suban las ventas
   // no se generen conflictos con los IDS
   function get_max_ids() {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta JSON
 
     $id_empresa = $this->input->get("id_empresa");
     $punto_venta = $this->input->get("punto_venta");
@@ -1695,9 +1689,7 @@ class App extends CI_Controller {
   function compress_css() {
     
     set_time_limit(0);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen el HTML del panel
 
     $path =  APPPATH.'libraries';
     require_once $path . '/minify/src/Minify.php';
