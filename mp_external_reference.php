@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 
 include_once("models/mercadopago.php");
 $mp = new MP ("2235221498077246","4N48GNSPtmGdvDzu0f5RAYkkhHuPHTcN");

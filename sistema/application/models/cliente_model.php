@@ -707,14 +707,16 @@ class Cliente_Model extends Abstract_Model {
           $respuesta = $qq->row();
           $row->id_consulta = $respuesta->id;
           $row->respondido = $respuesta->respondido;
-          $row->respondido_por = $respuesta->respondido_por;
-          $row->subtitulo = $respuesta->subtitulo;            
+          $row->subtitulo = $respuesta->subtitulo;
           $row->id_origen = $respuesta->id_origen;
           $row->id_usuario_asignado = $respuesta->id_usuario;
           if ($id_proyecto == 3) {
+            $row->respondido_por = $respuesta->respondido_por;
             $row->propiedad_nombre = $respuesta->propiedad_nombre;
             $row->propiedad_id_tipo_operacion = $respuesta->propiedad_id_tipo_operacion;
             $row->propiedad_tipo_operacion = $respuesta->propiedad_tipo_operacion;
+          } else {
+            $row->respondido_por = "";
           }
         } else {
           $row->respondido = 0;

@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 set_time_limit(0);
 if (function_exists("register_shutdown_function")) {
   register_shutdown_function( "fatal_handler" );

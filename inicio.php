@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta
 if ( extension_loaded( 'zlib' ) ) { ob_start( 'ob_gzhandler' ); }
 ob_start();
 if (session_status() == PHP_SESSION_NONE) {
@@ -12,7 +10,7 @@ include("sistema/params.php");
 @include("sistema/error_handler.php");
 
 // 1) ANALIZAMOS LA URL
-$dominio = strtolower($_SERVER["HTTP_HOST"]);
+$dominio = strtolower($_SERVER["HTTP_HOST"] ?? "");
 //$dominio = str_replace("www.","",$dominio);
 $url = strtolower($_SERVER['REQUEST_URI']);
 $url = str_replace(".php","",$url);
