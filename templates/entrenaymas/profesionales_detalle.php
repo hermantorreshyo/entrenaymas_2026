@@ -693,7 +693,13 @@ function varcreative_registro_clienapp() {
     alert ("Por favor acepte los términos y condiciones");
     return false;
   }
-  
+
+  var captcha = grecaptcha.getResponse(2);
+  if (isEmpty(captcha)) {
+    alert("Por favor complete el captcha.");
+    return false;
+  }
+
   var prefijo = $("#clienapp_checkout_prefijo").val();
   var ps = hex_md5("1");
   clienapp_show_loading();
@@ -772,7 +778,9 @@ function varcreative_validar_clienapp(id_cliente) {
   mensaje += observaciones+"\n\n";
 
   var url = "https://wa.me/<?php echo (strlen($profesional->celular) < 10) ? "34".$profesional->celular : $profesional->celular ?>";
-  url+= "?text="+encodeURIComponent(mensaje);  
+  url+= "?text="+encodeURIComponent(mensaje);
+
+  var captcha = grecaptcha.getResponse(2);
 
   // Primero mandamos para finalizar el carrito
   $.ajax({
@@ -787,9 +795,18 @@ function varcreative_validar_clienapp(id_cliente) {
       "prefijo":prefijo,
       "id_origen":30,
       "mensaje":observaciones,
+      "g-recaptcha-response": captcha,
+      "hp": $("#clienapp_hp").val(),
     },
     "dataType":"json",
     "success":function(r){
+      if (r.error != 0) {
+        alert("Ocurrio un error al enviar su consulta. Disculpe las molestias");
+        clienapp_hide_loading();
+        grecaptcha.reset(2);
+        return;
+      }
+
       // Cuando el carrito fue enviado
       $(".clienapp_paso_1").hide();
       $(".clienapp_paso_2").show();
@@ -806,6 +823,7 @@ function varcreative_validar_clienapp(id_cliente) {
     },
     "error":function() {
       clienapp_hide_loading();
+      grecaptcha.reset(2);
     }
   });
   return false;
@@ -842,7 +860,14 @@ function varcreative_validar_clienapp(id_cliente) {
 
           <label class="clienapp_label" for="clienapp_checkout_observaciones">Mensaje</label>
           <textarea name="clienapp_checkout_observaciones" id="clienapp_checkout_observaciones" class="clienapp_input" placeholder="Escribe tu mensaje o consulta"></textarea>
-          
+
+          <div class="registro-hp" aria-hidden="true">
+            <input type="text" name="direccion_2" id="clienapp_hp" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY ?>"></div>
+          </div>
+
           <div class="custom-control custom-checkbox mb20">
             <input type="checkbox" class="custom-control-input" id="clientapp_condiciones" name="example1">
             <label class="custom-control-label" for="clientapp_condiciones">Acepto los <a target="_blank" href="<?php echo mklink("entrada/terminos-y-condiciones-41119") ?>">términos y condiciones</a>, la <a target="_blank" href="<?php echo mklink("entrada/politica-de-privacidad-41120") ?>">política de privacidad</a> y el tratamiento de mis datos*</label>
