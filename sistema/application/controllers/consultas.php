@@ -256,6 +256,8 @@ class Consultas extends REST_Controller {
   
   function enviar() {
 
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta JSON
+
     header('Access-Control-Allow-Origin: *');
 
     // Honeypot: campo trampa que solo un bot completaria.

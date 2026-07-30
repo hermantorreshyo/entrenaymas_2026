@@ -702,6 +702,8 @@ class Clientes extends REST_Controller {
 
   function registrar() {
 
+    error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta JSON
+
     header('Access-Control-Allow-Origin: *');
     header('Content-Type:application/json; charset=UTF-8');
 

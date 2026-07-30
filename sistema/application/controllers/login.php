@@ -156,6 +156,8 @@ class Login extends CI_Controller {
 	// UTILIZADO EN LOS LOGINS DE LAS PAGINAS CON SUS RESPECTIVOS CLIENTES
 	function check_cliente() {
 
+		error_reporting(0); // Evita que warnings/deprecations de PHP contaminen la respuesta JSON
+
 		header('Access-Control-Allow-Origin: *');
 		$email = $this->input->post("email");
 		$password = $this->input->post("password");
