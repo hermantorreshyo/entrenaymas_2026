@@ -1593,7 +1593,7 @@ class App extends CI_Controller {
     $array[] = 'application/javascript/modules/gastos.js';
     $array[] = 'application/javascript/modules/tipos_gastos.js';
     $array[] = 'application/javascript/modules/config/mi_cuenta.js';
-    $array[] = 'application/javascript/modules/config/categorias_entrena.js';
+    $array[] = 'application/javascript/modules/categorias_entrena.js';
     
     // Modulos especificos por cada proyecto
     
