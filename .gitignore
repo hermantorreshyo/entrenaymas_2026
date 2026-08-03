@@ -1,5 +1,6 @@
 /nbproject/
 /.idea/*
+.env
 *.tmlanguage.cache
 *.tmPreferences.cache
 *.stTheme.cache
