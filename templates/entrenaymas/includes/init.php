@@ -2,9 +2,7 @@
 // REEMPLAZAR ESTO POR UNA CONFIGURACION DE LA EMPRESA
 $portal_id_perfil_profesional = 1357;
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(0); // Evita que warnings/deprecations de PHP contaminen el HTML
 
 include_once("sistema/application/helpers/fecha_helper.php");
 

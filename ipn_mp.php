@@ -23,7 +23,7 @@ $articulo_model = new Articulo_Model($empresa->id,$conx);
 $bcc_emails = (($empresa->id != 571) ? "basile.matias99@gmail.com" : "").((isset($empresa->bcc_email) && !empty($empresa->bcc_email)) ? ",".$empresa->bcc_email : "");
 
 $indice = 0;
-if (strpos($_SERVER["HTTP_HOST"], "centerequipamientos") !== FALSE) {
+if (strpos($dominio, "centerequipamientos") !== FALSE) {
   // Si es centerequipamientos, usamos la segunda configuracin
   $indice = 1;
 }
@@ -53,7 +53,7 @@ file_put_contents("ipn.txt",$salida,FILE_APPEND);
 // Obtenemos el punto de venta utilizado para la web
 $punto_venta = $articulo_model->get_punto_venta_web();
 
-if (isset($merchant_order_info) & $merchant_order_info["status"] == 200) {
+if (isset($merchant_order_info) && $merchant_order_info["status"] == 200) {
 
   include_once("sistema/application/libraries/Mandrill/Mandrill.php");
 
