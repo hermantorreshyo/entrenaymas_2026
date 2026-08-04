@@ -13,7 +13,7 @@ if (!defined("USER_DB")) { DEFINE ("USER_DB",(isset($_SERVER["USER_DB"]) ? $_SER
 if (!defined("PASSWORD_DB")) { DEFINE ("PASSWORD_DB",(isset($_SERVER["PASSWORD_DB"]) ? $_SERVER["PASSWORD_DB"] : "ey+db2026@")); }
 if (!defined("FORCE_HTTPS")) { DEFINE ("FORCE_HTTPS",false); }
 
-if (!defined("URL_BASE")) { DEFINE ("URL_BASE",(isset($_SERVER["URL_BASE"]) ? $_SERVER["URL_BASE"] : "https://test.entrenaymas.com")); }
+if (!defined("URL_BASE")) { DEFINE ("URL_BASE",(isset($_SERVER["URL_BASE"]) ? $_SERVER["URL_BASE"] : "https://entrenaymas.com")); }
 if (!defined("PAYCOMET_TERMINAL")) { DEFINE ("PAYCOMET_TERMINAL",(isset($_SERVER["PAYCOMET_TERMINAL"]) ? $_SERVER["PAYCOMET_TERMINAL"] : "")); }
 if (!defined("PAYCOMET_CODE")) { DEFINE ("PAYCOMET_CODE",(isset($_SERVER["PAYCOMET_CODE"]) ? $_SERVER["PAYCOMET_CODE"] : "")); }
 if (!defined("PAYCOMET_JET_ID")) { DEFINE ("PAYCOMET_JET_ID",(isset($_SERVER["PAYCOMET_JET_ID"]) ? $_SERVER["PAYCOMET_JET_ID"] : "")); }

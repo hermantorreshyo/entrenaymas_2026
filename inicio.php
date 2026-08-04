@@ -54,7 +54,7 @@ function get_empresa_by_dominio($dominio) {
   $sql.= " INNER JOIN web_templates T ON (E.id_web_template = T.id) ";
   $sql.= " LEFT JOIN com_localidades L ON (E.id_localidad = L.id) ";
   $sql.= "WHERE ED.dominio = '$dominio' ";
-  $dominio = "test.entrenaymas.com";
+  $dominio = "entrenaymas.com";
   if ($dominio_con_www != $dominio) $sql.= "OR ED.dominio = '$dominio_con_www' ";
   $q = mysqli_query($conx,$sql);
   if (mysqli_num_rows($q)>0) {
