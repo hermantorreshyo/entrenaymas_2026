@@ -68,6 +68,7 @@ class Emails extends REST_Controller {
 		// Adjuntamos los archivos que son de VERDAD
 		include "resources/php/phpmailer/class.phpmailer.php";
 		$email = new PHPMailer();
+		$email->CharSet = 'UTF-8';
 		$email->From = $array->email_from;
 		$email->FromName = $empresa->nombre;
 		if (!empty($array->email_cc)) $email->AddCC($array->email_cc);
