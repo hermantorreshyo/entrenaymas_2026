@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Entrena y Más 2026 – Prototipo UX</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    :root {
+        --bg: #050816;
+        --bg-soft: #0b1020;
+        --accent: #3cf2a0;
+        --accent-soft: rgba(60, 242, 160, 0.12);
+        --accent-blue: #3bb4ff;
+        --text-main: #f9fafb;
+        --text-muted: #9ca3af;
+        --card-bg: #0f172a;
+        --border-soft: #1f2937;
+        --danger: #fb7185;
+        --success: #22c55e;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+        background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+        color: var(--text-main);
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(16px);
+        background: linear-gradient(to bottom, rgba(15,23,42,0.95), rgba(15,23,42,0.75));
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .navbar-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+    }
+
+    .logo-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 0%, var(--accent) 0, var(--accent-blue) 40%, #0f172a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 800;
+        color: #020617;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 24px;
+        font-size: 14px;
+    }
+
+    .nav-link {
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+
+    .nav-link.active {
+        color: var(--accent);
+    }
+
+    .nav-cta {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .btn {
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: 600;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 0.18s ease;
+    }
+
+    .btn-outline {
+        background: transparent;
+        color: var(--text-main);
+        border-color: var(--border-soft);
+    }
+
+    .btn-outline:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-blue));
+        color: #020617;
+        box-shadow: 0 10px 30px rgba(60, 242, 160, 0.35);
+    }
+
+    .btn-primary:hover {
+        filter: brightness(1.05);
+        transform: translateY(-1px);
+    }
+
+    /* HERO */
+    .hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px 32px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 40px;
+        align-items: center;
+    }
+
+    .hero-kicker {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .hero-title {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 16px;
+    }
+
+    .hero-title span {
+        background: linear-gradient(135deg, var(--accent), var(--accent-blue));
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+        color: var(--text-muted);
+        max-width: 480px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+
+    .badge {
+        font-size: 11px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border-soft);
+        background: rgba(15,23,42,0.8);
+        color: var(--text-muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--accent);
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .hero-note {
+        font-size: 11px;
+        color: var(--text-muted);
+    }
+
+    .hero-note span {
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    /* HERO RIGHT – MOCKUP */
+    .hero-mockup {
+        position: relative;
+        padding: 18px;
+        border-radius: 24px;
+        background: radial-gradient(circle at 0 0, rgba(60, 242, 160, 0.18) 0, rgba(15,23,42,1) 40%, #020617 100%);
+        box-shadow: 0 20px 60px rgba(15,23,42,0.9);
+        border: 1px solid rgba(148,163,184,0.25);
+    }
+
+    .hero-mockup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 14px;
+        font-size: 11px;
+        color: var(--text-muted);
+    }
+
+    .hero-mockup-header span {
+        font-weight: 600;
+        color: var(--accent);
+    }
+
+    .hero-mockup-device {
+        border-radius: 18px;
+        background: #020617;
+        border: 1px solid #1f2937;
+        padding: 14px;
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 12px;
+    }
+
+    .device-left {
+        border-radius: 14px;
+        background: linear-gradient(135deg, #0b1120, #020617);
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .device-title {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .device-subtitle {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+    }
+
+    .input {
+        border-radius: 999px;
+        border: 1px solid #1f2937;
+        background: #020617;
+        padding: 6px 10px;
+        font-size: 11px;
+        color: var(--text-muted);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .input span {
+        color: #4b5563;
+    }
+
+    .social-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 6px;
+    }
+
+    .social-pill {
+        flex: 1;
+        border-radius: 999px;
+        border: 1px solid #1f2937;
+        background: #020617;
+        font-size: 10px;
+        padding: 5px 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        color: var(--text-muted);
+    }
+
+    .social-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent-blue);
+    }
+
+    .device-right {
+        border-radius: 14px;
+        background: #020617;
+        border: 1px solid #1f2937;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 4px;
+    }
+
+    .chip {
+        font-size: 10px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        border: 1px solid #1f2937;
+        background: #0b1120;
+        color: var(--text-muted);
+    }
+
+    .chip.active {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+        color: var(--accent);
+    }
+
+    .trainer-card {
+        border-radius: 12px;
+        background: #020617;
+        border: 1px solid #1f2937;
+        padding: 8px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 4px;
+    }
+
+    .trainer-avatar {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 0%, var(--accent-blue), var(--accent));
+    }
+
+    .trainer-info {
+        flex: 1;
+    }
+
+    .trainer-name {
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .trainer-meta {
+        font-size: 10px;
+        color: var(--text-muted);
+    }
+
+    .trainer-rating {
+        font-size: 10px;
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    .hero-mockup-footer {
+        margin-top: 10px;
+        font-size: 10px;
+        color: var(--text-muted);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hero-mockup-footer span {
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    /* SECTION: FEED + DASHBOARD */
+    .section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px 20px 40px;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 18px;
+        gap: 20px;
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .section-subtitle {
+        font-size: 12px;
+        color: var(--text-muted);
+        max-width: 480px;
+        line-height: 1.5;
+    }
+
+    .section-tag {
+        font-size: 11px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border-soft);
+        background: rgba(15,23,42,0.9);
+        color: var(--accent);
+        font-weight: 500;
+    }
+
+    .layout-two {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 24px;
+    }
+
+    .card {
+        border-radius: 18px;
+        background: var(--card-bg);
+        border: 1px solid var(--border-soft);
+        padding: 14px;
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 11px;
+        color: var(--text-muted);
+    }
+
+    .card-header-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    .pill {
+        font-size: 10px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        border: 1px solid #1f2937;
+        background: #020617;
+        color: var(--text-muted);
+    }
+
+    /* FEED SOCIAL */
+    .feed-post {
+        border-radius: 12px;
+        background: #020617;
+        border: 1px solid #1f2937;
+        padding: 10px;
+        margin-bottom: 8px;
+    }
+
+    .feed-header {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 6px;
+    }
+
+    .feed-avatar {
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 0%, var(--accent-blue), var(--accent));
+    }
+
+    .feed-author {
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .feed-role {
+        font-size: 10px;
+        color: var(--text-muted);
+    }
+
+    .feed-time {
+        font-size: 10px;
+        color: #4b5563;
+        margin-left: auto;
+    }
+
+    .feed-content {
+        font-size: 11px;
+        color: var(--text-main);
+        margin-bottom: 8px;
+    }
+
+    .feed-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 8px;
+    }
+
+    .feed-tag {
+        font-size: 10px;
+        padding: 3px 7px;
+        border-radius: 999px;
+        background: #0b1120;
+        color: var(--accent);
+        border: 1px solid #1f2937;
+    }
+
+    .feed-actions {
+        display: flex;
+        gap: 12px;
+        font-size: 10px;
+        color: var(--text-muted);
+    }
+
+    .feed-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+    }
+
+    .feed-action span {
+        font-size: 11px;
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    /* DASHBOARD CLIENTE */
+    .dashboard-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 10px;
+    }
+
+    .dashboard-block {
+        border-radius: 12px;
+        background: #020617;
+        border: 1px solid #1f2937;
+        padding: 10px;
+        font-size: 11px;
+    }
+
+    .dashboard-block-title {
+        font-size: 11px;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+        font-size: 9px;
+        margin-bottom: 6px;
+    }
+
+    .calendar-day {
+        text-align: center;
+        padding: 4px 0;
+        border-radius: 6px;
+        background: #020617;
+        color: #4b5563;
+    }
+
+    .calendar-date {
+        text-align: center;
+        padding: 4px 0;
+        border-radius: 6px;
+        background: #0b1120;
+        color: var(--text-muted);
+        border: 1px solid #1f2937;
+    }
+
+    .calendar-date.active {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    .slot-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 4px;
+    }
+
+    .slot {
+        font-size: 10px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        border: 1px solid #1f2937;
+        background: #0b1120;
+        color: var(--text-muted);
+    }
+
+    .slot.active {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+        color: var(--accent);
+    }
+
+    .dashboard-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .dashboard-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 10px;
+        padding: 6px 8px;
+        border-radius: 8px;
+        background: #020617;
+        border: 1px solid #1f2937;
+    }
+
+    .dashboard-item-label {
+        color: var(--text-muted);
+    }
+
+    .dashboard-item-value {
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    .dashboard-status {
+        font-size: 10px;
+        padding: 3px 7px;
+        border-radius: 999px;
+        border: 1px solid #1f2937;
+        background: #0b1120;
+        color: var(--accent);
+    }
+
+    /* FOOTER EXECUTIVO */
+    .footer {
+        border-top: 1px solid var(--border-soft);
+        padding: 14px 20px 20px;
+        font-size: 10px;
+        color: var(--text-muted);
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .footer span {
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+        .hero, .layout-two {
+            grid-template-columns: minmax(0, 1fr);
+        }
+        .hero {
+            padding-top: 24px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="page">
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="navbar-inner">
+            <div class="logo">
+                <div class="logo-mark">E</div>
+                <div>
+                    <div>Entrenaymas</div>
+                    <div style="font-size:11px;color:var(--text-muted);">Ecosistema Fitness & Salud</div>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="nav-link active">Inicio 2026</a>
+                <a href="#" class="nav-link">Profesionales</a>
+                <a href="#" class="nav-link">Cajas Regalo</a>
+                <a href="#" class="nav-link">Comunidad</a>
+            </nav>
+            <div class="nav-cta">
+                <button class="btn btn-outline">Acceder</button>
+                <button class="btn btn-primary">Crear cuenta</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO: NUEVA PROPUESTA -->
+    <section class="hero">
+        <div>
+            <div class="hero-kicker">Elemento 3 · Cuenta Única & Red Social Fitness</div>
+            <h1 class="hero-title">
+                De buscador de entrenadores<br>
+                a <span>ecosistema fitness social</span>.
+            </h1>
+            <p class="hero-subtitle">
+                Entrenaymas 2026 convierte un directorio pasivo en una plataforma viva:
+                cuenta única de cliente, feed social, reseñas verificadas y
+                dashboard de objetivos. Más retención, más recurrencia, más datos accionables.
+            </p>
+
+            <div class="hero-badges">
+                <div class="badge">
+                    <div class="badge-dot"></div>
+                    Single Identity · OAuth2 / Social Login
+                </div>
+                <div class="badge">
+                    <div class="badge-dot"></div>
+                    Feed social fitness · Contenido de entrenadores
+                </div>
+                <div class="badge">
+                    <div class="badge-dot"></div>
+                    Reseñas verificadas · Post-servicio
+                </div>
+                <div class="badge">
+                    <div class="badge-dot"></div>
+                    Dashboard cliente · Citas, bonos y progreso
+                </div>
+            </div>
+
+            <div class="hero-actions">
+                <button class="btn btn-primary">Ver experiencia del cliente</button>
+                <button class="btn btn-outline">Comparar con sitio actual</button>
+            </div>
+            <div class="hero-note">
+                <span>Objetivo Junta:</span> aumentar lealtad, trazabilidad y valor percibido sin fricción para el usuario.
+            </div>
+        </div>
+
+        <!-- MOCKUP DISPOSITIVO: REGISTRO + DESCUBRIR ENTRENADORES -->
+        <div class="hero-mockup">
+            <div class="hero-mockup-header">
+                <div>Vista rápida · Flujo inicial</div>
+                <div><span>Crear cuenta</span> → Seleccionar objetivos → Descubrir entrenadores</div>
+            </div>
+            <div class="hero-mockup-device">
+                <div class="device-left">
+                    <div class="device-title">Crear tu cuenta</div>
+                    <div class="device-subtitle">Accede a entrenadores, fisioterapeutas y nutricionistas con una identidad única.</div>
+                    <div class="input">
+                        <span>Email</span>
+                        <span>••••••••@gmail.com</span>
+                    </div>
+                    <div class="input">
+                        <span>Contraseña</span>
+                        <span>••••••••••</span>
+                    </div>
+                    <button class="btn btn-primary" style="width:100%;margin-top:8px;font-size:11px;">Crear cuenta y empezar</button>
+                    <div style="font-size:10px;color:var(--text-muted);margin-top:6px;">O continúa con:</div>
+                    <div class="social-row">
+                        <div class="social-pill">
+                            <div class="social-dot"></div> Google
+                        </div>
+                        <div class="social-pill">
+                            <div class="social-dot" style="background:#3b82f6;"></div> Facebook
+                        </div>
+                        <div class="social-pill">
+                            <div class="social-dot" style="background:#f97316;"></div> Apple ID
+                        </div>
+                    </div>
+                </div>
+                <div class="device-right">
+                    <div class="device-title">Tus objetivos</div>
+                    <div class="device-subtitle">Personalizamos el feed y los profesionales según lo que quieres conseguir.</div>
+                    <div class="chip-row">
+                        <div class="chip active">Perder peso</div>
+                        <div class="chip active">Ganar músculo</div>
+                        <div class="chip">Yoga & bienestar</div>
+                        <div class="chip">Rehabilitación</div>
+                    </div>
+                    <div style="font-size:10px;color:var(--text-muted);margin-top:4px;margin-bottom:4px;">Profesionales recomendados para ti:</div>
+                    <div class="trainer-card">
+                        <div class="trainer-avatar"></div>
+                        <div class="trainer-info">
+                            <div class="trainer-name">Sofía S.</div>
+                            <div class="trainer-meta">Fuerza · Nutrición · Madrid</div>
+                        </div>
+                        <div class="trainer-rating">4.8 ★</div>
+                    </div>
+                    <div class="trainer-card">
+                        <div class="trainer-avatar"></div>
+                        <div class="trainer-info">
+                            <div class="trainer-name">Gabriel Sáez</div>
+                            <div class="trainer-meta">Entrenamiento personal · Dietista</div>
+                        </div>
+                        <div class="trainer-rating">4.9 ★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-mockup-footer">
+                <div>El usuario deja de ser anónimo: cada interacción se atribuye a su cuenta.</div>
+                <div><span>Impacto:</span> más retención, más reseñas, más recurrencia.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: FEED SOCIAL + DASHBOARD CLIENTE -->
+    <section class="section">
+        <div class="section-header">
+            <div>
+                <div class="section-title">Experiencia dentro de la plataforma</div>
+                <div class="section-subtitle">
+                    Una vez creada la cuenta, el cliente entra en un entorno vivo:
+                    feed social con contenido de entrenadores, interacción (likes, comentarios, guardados)
+                    y un panel privado donde gestiona citas, cajas regalo y profesionales favoritos.
+                </div>
+            </div>
+            <div class="section-tag">Vista conceptual · Mockup no funcional</div>
+        </div>
+
+        <div class="layout-two">
+            <!-- FEED SOCIAL FITNESS -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-title">Feed social fitness</div>
+                    <div class="pill">Contenido de entrenadores · Interacción del cliente</div>
+                </div>
+
+                <div class="feed-post">
+                    <div class="feed-header">
+                        <div class="feed-avatar"></div>
+                        <div>
+                            <div class="feed-author">Sofía S. · Entrenadora personal</div>
+                            <div class="feed-role">Fuerza · Nutrición · Madrid</div>
+                        </div>
+                        <div class="feed-time">Hace 2 h</div>
+                    </div>
+                    <div class="feed-content">
+                        Hoy te dejo una rutina de fuerza de 20 minutos para hacer en casa.
+                        Ideal si estás empezando y quieres ganar músculo sin sobrecargar articulaciones.
+                    </div>
+                    <div class="feed-tags">
+                        <div class="feed-tag">#fuerza</div>
+                        <div class="feed-tag">#rutina20min</div>
+                        <div class="feed-tag">#principiantes</div>
+                    </div>
+                    <div class="feed-actions">
+                        <div class="feed-action">❤️ <span>128</span> Me gusta</div>
+                        <div class="feed-action">💬 <span>24</span> Comentarios</div>
+                        <div class="feed-action">📌 Guardar</div>
+                    </div>
+                </div>
+
+                <div class="feed-post">
+                    <div class="feed-header">
+                        <div class="feed-avatar"></div>
+                        <div>
+                            <div class="feed-author">Gabriel Sáez · Entrenador & Dietista</div>
+                            <div class="feed-role">Entrenamiento personal · Nutrición</div>
+                        </div>
+                        <div class="feed-time">Ayer</div>
+                    </div>
+                    <div class="feed-content">
+                        ¿Cuánta proteína necesitas realmente al día? Te explico en 3 puntos
+                        cómo ajustar tu alimentación si tu objetivo es perder grasa manteniendo músculo.
+                    </div>
+                    <div class="feed-tags">
+                        <div class="feed-tag">#nutrición</div>
+                        <div class="feed-tag">#proteína</div>
+                        <div class="feed-tag">#perderpeso</div>
+                    </div>
+                    <div class="feed-actions">
+                        <div class="feed-action">❤️ <span>89</span> Me gusta</div>
+                        <div class="feed-action">💬 <span>15</span> Comentarios</div>
+                        <div class="feed-action">📌 Guardar</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD CLIENTE -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-title">Panel de control del cliente</div>
+                    <div class="pill">Citas · Cajas regalo · Favoritos</div>
+                </div>
+
+                <div class="dashboard-row">
+                    <div class="dashboard-block">
+                        <div class="dashboard-block-title">Próxima cita</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-bottom:6px;">
+                            Viernes 17 de Junio · 11:30 · Sofía S. · Fuerza & Nutrición
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-day">L</div>
+                            <div class="calendar-day">M</div>
+                            <div class="calendar-day">X</div>
+                            <div class="calendar-day">J</div>
+                            <div class="calendar-day">V</div>
+                            <div class="calendar-day">S</div>
+                            <div class="calendar-day">D</div>
+
+                            <div class="calendar-date">13</div>
+                            <div class="calendar-date">14</div>
+                            <div class="calendar-date">15</div>
+                            <div class="calendar-date">16</div>
+                            <div class="calendar-date active">17</div>
+                            <div class="calendar-date">18</div>
+                            <div class="calendar-date">19</div>
+                        </div>
+                        <div class="slot-row">
+                            <div class="slot">10:00</div>
+                            <div class="slot active">11:30</div>
+                            <div class="slot">13:00</div>
+                        </div>
+                        <button class="btn btn-primary" style="width:100%;margin-top:6px;font-size:10px;">
+                            Ver detalles de la sesión
+                        </button>
+                    </div>
+
+                    <div class="dashboard-block">
+                        <div class="dashboard-block-title">Tus bonos y cajas regalo</div>
+                        <div class="dashboard-list">
+                            <div class="dashboard-item">
+                                <div class="dashboard-item-label">Caja Regalo · Fitness Inicio</div>
+                                <div class="dashboard-item-value">Activo</div>
+                            </div>
+                            <div class="dashboard-item">
+                                <div class="dashboard-item-label">Bono 5 sesiones · Sofía S.</div>
+                                <div class="dashboard-item-value">3/5 usadas</div>
+                            </div>
+                            <div class="dashboard-item">
+                                <div class="dashboard-item-label">Código QR de canje</div>
+                                <div class="dashboard-status">Mostrar QR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-block" style="margin-top:10px;">
+                    <div class="dashboard-block-title">Profesionales favoritos</div>
+                    <div class="dashboard-list">
+                        <div class="dashboard-item">
+                            <div class="dashboard-item-label">⭐ Sofía S. · Fuerza & Nutrición</div>
+                            <div class="dashboard-item-value">4.8 ★</div>
+                        </div>
+                        <div class="dashboard-item">
+                            <div class="dashboard-item-label">⭐ Gabriel Sáez · Entrenador & Dietista</div>
+                            <div class="dashboard-item-value">4.9 ★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER EJECUTIVO -->
+    <footer class="footer">
+        <div>
+            Entrenaymas 2026 · Prototipo UX/UI conceptual.<br>
+            <span>Mensaje para Junta:</span> este diseño muestra la transición de “buscador” a “plataforma con cuenta única y comunidad”.
+        </div>
+        <div>
+            Elemento 3 · Autenticación, Feed Social, Reseñas Verificadas, Dashboard Cliente.<br>
+            <span>Impacto esperado:</span> +retención, +recomendaciones, +valor de marca.
+        </div>
+    </footer>
+</div>
+</body>
+</html>

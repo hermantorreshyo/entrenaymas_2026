@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Entrena y Más 2026 — Prototipo Interactivo</title>
+<style>
+  :root{
+    --bg:#0b0f1a;
+    --card:#0f1724;
+    --muted:#9aa4b2;
+    --accent:#00bfa5;
+    --accent-2:#3bb4ff;
+    --glass: rgba(255,255,255,0.04);
+    --radius:14px;
+    --glass-2: rgba(255,255,255,0.02);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#e6eef6;background:
+    radial-gradient(1200px 400px at 10% 10%, rgba(59,180,255,0.06), transparent 8%),
+    linear-gradient(180deg,#02040a 0%, #071026 40%, #071026 100%);}
+  .wrap{max-width:1200px;margin:28px auto;padding:28px;display:grid;grid-template-columns:1fr 420px;gap:28px}
+  header{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+  .logo-mark{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#021018;font-size:20px;box-shadow:0 8px 30px rgba(59,180,255,0.08)}
+  h1{font-size:20px;margin:0;font-weight:800}
+  p.lead{color:var(--muted);margin:6px 0 0;font-size:13px}
+
+  /* MAIN CARD */
+  .main-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:18px;padding:22px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(2,6,23,0.6)}
+  .hero{display:flex;gap:18px;align-items:center}
+  .hero-left{flex:1}
+  .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--accent);font-weight:700;font-size:12px;margin-bottom:12px}
+  .title{font-size:28px;color:#eaf6f4;line-height:1.05;margin:0 0 12px;font-weight:900}
+  .title .accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;color:transparent}
+  .subtitle{color:var(--muted);font-size:14px;margin-bottom:18px;max-width:56ch}
+
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{
+    border:0;padding:10px 16px;border-radius:12px;font-weight:700;cursor:pointer;font-size:14px;transition:transform .14s ease,box-shadow .14s ease;
+    box-shadow:0 8px 30px rgba(2,6,23,0.6);
+  }
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021018}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+  .btn:active{transform:translateY(1px)}
+  .note{font-size:12px;color:var(--muted);margin-top:12px}
+
+  /* MOCKUP DEVICE */
+  .device{
+    width:420px;border-radius:18px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .device-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}
+  .device-screen{background:linear-gradient(180deg,#021018 0%, #041428 100%);border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.03);display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.02)}
+  .panel h4{margin:0;font-size:12px;color:var(--accent);font-weight:800}
+  .panel p{margin:8px 0 0;color:var(--muted);font-size:12px}
+  .input-pill{background:var(--glass);padding:8px;border-radius:999px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+  .social-row{display:flex;gap:8px;margin-top:8px}
+  .social-pill{flex:1;padding:8px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px;justify-content:center}
+  .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--muted);font-weight:700;font-size:12px;margin:4px 6px 0 0}
+  .chip.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021018}
+
+  /* RIGHT COLUMN: panels */
+  .side{display:flex;flex-direction:column;gap:18px}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.03)}
+  .card h3{margin:0;font-size:14px;color:var(--accent);font-weight:900}
+  .card p{color:var(--muted);font-size:13px;margin-top:8px}
+
+  /* FEED + DASHBOARD */
+  .section{max-width:1200px;margin:28px auto;padding:0 28px 60px;display:grid;grid-template-columns:1fr 420px;gap:28px}
+  .feed{display:flex;flex-direction:column;gap:12px}
+  .post{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+  .post .meta{display:flex;gap:10px;align-items:center}
+  .avatar{width:40px;height:40px;border-radius:999px;background:linear-gradient(135deg,var(--accent-2),var(--accent))}
+  .post h4{margin:6px 0 0;font-size:13px}
+  .post p{color:var(--muted);font-size:13px;margin:8px 0 0}
+  .post .actions{display:flex;gap:12px;margin-top:10px;color:var(--muted);font-weight:700}
+
+  /* DASHBOARD */
+  .dash .block{background:var(--card);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
+  .calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px}
+  .day{background:var(--glass-2);padding:8px;border-radius:8px;text-align:center;font-size:12px}
+  .day.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021018;font-weight:800}
+
+  /* MODAL */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;z-index:60}
+  .modal{width:920px;max-width:94%;background:linear-gradient(180deg,#021018,#041428);border-radius:16px;padding:18px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 30px 80px rgba(2,6,23,0.8);color:#e6eef6}
+  .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .modal h2{margin:0;font-size:18px;color:var(--accent);font-weight:900}
+  .modal p{color:var(--muted);font-size:13px}
+  .close{background:transparent;border:0;color:var(--muted);font-weight:800;cursor:pointer}
+
+  /* ICONS & ILLUSTRATIONS */
+  .illus{width:100%;height:160px;border-radius:12px;background:linear-gradient(135deg, rgba(59,180,255,0.06), rgba(0,191,165,0.04));display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:800;font-size:14px}
+
+  /* micro interactions */
+  .btn[data-target]:hover{transform:translateY(-4px);box-shadow:0 18px 50px rgba(59,180,255,0.12)}
+  .trainer-card{display:flex;gap:12px;align-items:center;padding:10px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02)}
+  .trainer-avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+  .trainer-info{flex:1}
+  .trainer-info h5{margin:0;font-size:14px}
+  .trainer-info p{margin:6px 0 0;color:var(--muted);font-size:12px}
+
+  @media (max-width:980px){
+    .wrap{grid-template-columns:1fr; padding:18px}
+    .section{grid-template-columns:1fr; padding:0 18px}
+    .device{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="logo-mark">E</div>
+    <div>
+      <h1>Entrena y Más 2026</h1>
+      <p class="lead">Ecosistema fitness social · Cuenta única · Reseñas verificadas</p>
+    </div>
+  </header>
+
+  <main class="main-card">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="kicker">Elemento 3 · UX / Autenticación</div>
+        <h2 class="title">De directorio a <span class="accent">ecosistema fitness social</span></h2>
+        <p class="subtitle">Cuenta única, feed social, reseñas verificadas y dashboard personal. Presentamos la experiencia que retiene usuarios y convierte interacciones en valor.</p>
+
+        <div class="cta-row">
+          <button class="btn btn-primary" data-target="modal-onboarding">Ver flujo completo</button>
+          <button class="btn btn-ghost" data-target="modal-beneficios">Impacto para la junta</button>
+          <button class="btn btn-ghost" data-target="modal-security">Seguridad & Sanitización</button>
+        </div>
+        <div class="note">Los botones abren paneles ilustrativos que muestran cada elemento del flujo (onboarding, feed, perfil, reserva, confirmación).</div>
+      </div>
+
+      <aside class="device" aria-hidden="false">
+        <div class="device-top"><div style="font-weight:800;color:var(--accent)">Vista rápida · Flujo inicial</div><div style="font-size:12px;color:var(--muted)">Mockup conceptual</div></div>
+
+        <div class="device-screen">
+          <div class="panel">
+            <h4>Crear cuenta</h4>
+            <p>Single Identity · OAuth2 · Social Login</p>
+            <div style="height:8px"></div>
+            <div class="input-pill"><span>Email</span><strong style="color:var(--accent)">usuario@correo.com</strong></div>
+            <div style="height:8px"></div>
+            <div class="social-row">
+              <div class="social-pill">Google</div>
+              <div class="social-pill">Facebook</div>
+              <div class="social-pill">Apple</div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h4>Tus objetivos</h4>
+            <p>Personaliza tu feed y recomendaciones</p>
+            <div style="margin-top:8px">
+              <span class="chip active">Perder peso</span>
+              <span class="chip active">Ganar músculo</span>
+              <span class="chip">Yoga</span>
+              <span class="chip">Rehabilitación</span>
+            </div>
+            <div style="height:8px"></div>
+            <div style="font-size:12px;color:var(--muted)">Profesionales recomendados</div>
+            <div style="height:8px"></div>
+            <div class="trainer-card">
+              <div class="trainer-avatar"></div>
+              <div class="trainer-info">
+                <h5>Sofía S.</h5>
+                <p>Fuerza · Nutrición · 4.8 ★</p>
+              </div>
+              <div style="font-weight:800;color:var(--accent)">Ver</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center;justify-content:space-between">
+          <div style="font-size:12px;color:var(--muted)">Interacciones seguras · Contenido verificado</div>
+          <div style="font-size:12px;color:var(--accent);font-weight:800">Impacto: +retención</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <aside class="side">
+    <div class="card">
+      <h3>Resumen ejecutivo</h3>
+      <p>Cuenta única, feed social, reseñas verificadas y dashboard. Este prototipo muestra cómo cada elemento contribuye a retención y monetización.</p>
+    </div>
+
+    <div class="card">
+      <h3>Acciones rápidas</h3>
+      <p style="margin:8px 0 12px;color:var(--muted)">Prueba las interacciones para ver contenido ilustrativo de cada módulo.</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button class="btn btn-primary" data-target="modal-onboarding">Onboarding (Crear cuenta)</button>
+        <button class="btn btn-ghost" data-target="modal-feed">Feed social</button>
+        <button class="btn btn-ghost" data-target="modal-profile">Ficha del profesional</button>
+        <button class="btn btn-ghost" data-target="modal-booking">Reserva de cita</button>
+        <button class="btn btn-ghost" data-target="modal-confirm">Confirmación & Retención</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- SECTION: FEED + DASHBOARD -->
+<section class="section" aria-label="Experiencia dentro de la plataforma">
+  <div class="feed">
+    <div class="post">
+      <div class="meta">
+        <div class="avatar" aria-hidden="true"></div>
+        <div>
+          <strong style="display:block">Sofía S. · Entrenadora</strong>
+          <small style="color:var(--muted)">Fuerza · Nutrición · Madrid</small>
+        </div>
+      </div>
+      <h4>Rutina de fuerza de 20 minutos</h4>
+      <p>Ejercicios con progresión y variantes para principiantes. Incluye vídeo corto y checklist.</p>
+      <div class="actions">
+        <span>❤️ 128</span>
+        <span>💬 24</span>
+        <span>📌 Guardar</span>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="meta">
+        <div class="avatar" aria-hidden="true"></div>
+        <div>
+          <strong style="display:block">Gabriel Sáez · Dietista</strong>
+          <small style="color:var(--muted)">Nutrición · Entrenamiento</small>
+        </div>
+      </div>
+      <h4>¿Cuánta proteína necesitas?</h4>
+      <p>3 puntos clave para ajustar tu ingesta según objetivo y actividad.</p>
+      <div class="actions">
+        <span>❤️ 89</span>
+        <span>💬 15</span>
+        <span>📌 Guardar</span>
+      </div>
+    </div>
+  </div>
+
+  <aside class="dash">
+    <div class="card block">
+      <strong>Próxima cita</strong>
+      <div style="margin-top:8px;color:var(--muted)">Viernes 17 de Junio · 11:30 · Sofía S.</div>
+      <div class="calendar" aria-hidden="true" style="margin-top:12px">
+        <div class="day">L</div><div class="day">M</div><div class="day">X</div><div class="day">J</div><div class="day active">V</div><div class="day">S</div><div class="day">D</div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <div class="chip active">11:30</div>
+        <div class="chip">13:00</div>
+        <div class="chip">15:00</div>
+      </div>
+    </div>
+
+    <div class="card block">
+      <strong>Bonos y Cajas regalo</strong>
+      <div style="margin-top:8px;color:var(--muted)">Caja regalo · Fitness Inicio · Activa</div>
+      <div style="margin-top:10px;color:var(--muted)">Bono 5 sesiones · 3/5 usadas</div>
+      <div style="margin-top:10px"><button class="btn btn-primary" data-target="modal-bono">Ver bono</button></div>
+    </div>
+  </aside>
+</section>
+
+<!-- MODALS (illustrative content) -->
+<div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-hidden="true">
+  <div class="modal" role="document" aria-modal="true">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <div>
+        <h2 id="modalTitle">Título</h2>
+        <p id="modalSubtitle">Subtítulo ilustrativo</p>
+      </div>
+      <div><button class="close" id="closeModal">Cerrar ✕</button></div>
+    </div>
+
+    <div class="modal-grid">
+      <div>
+        <div class="illus" id="modalIllus">Ilustración</div>
+        <div style="margin-top:12px;color:var(--muted)" id="modalBody">
+          Contenido explicativo del módulo. Aquí se muestra un ejemplo visual y copy ejecutivo para la junta.
+        </div>
+      </div>
+
+      <div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="card" style="padding:12px">
+            <strong>Beneficio clave</strong>
+            <p style="color:var(--muted);margin-top:6px" id="modalBenefit">Aumenta retención y reduce leads falsos.</p>
+          </div>
+
+          <div class="card" style="padding:12px">
+            <strong>Cómo funciona</strong>
+            <p style="color:var(--muted);margin-top:6px" id="modalHow">Descripción breve del flujo y la interacción.</p>
+          </div>
+
+          <div style="display:flex;gap:8px;margin-top:6px">
+            <button class="btn btn-primary" id="modalAction">Ver demo</button>
+            <button class="btn btn-ghost" id="modalSecondary">Exportar resumen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Modal content map
+  const modals = {
+    "modal-onboarding": {
+      title: "Onboarding · Crear cuenta",
+      subtitle: "Cuenta única, OAuth2, Social Login y Magic Links",
+      illus: "Onboarding · registro rápido y social login",
+      body: "El usuario crea su cuenta en 3 pasos: registro, selección de objetivos y recomendaciones personalizadas. Esto permite atribución y seguimiento post-servicio.",
+      benefit: "Atribución completa; reducción de leads falsos; mejor retención.",
+      how: "OAuth2/OIDC + Magic Links; migración de usuarios históricos con invitación por email."
+    },
+    "modal-feed": {
+      title: "Feed social fitness",
+      subtitle: "Contenido de entrenadores y comunidad",
+      illus: "Feed con posts, vídeos cortos y rutinas",
+      body: "Entrenadores publican contenido educativo; los clientes interactúan con likes, comentarios y guardados. Esto genera engagement y tráfico recurrente.",
+      benefit: "Mayor tiempo en plataforma; oportunidades de monetización.",
+      how: "Posts en JSON AST; render seguro en frontend; moderación y verificación."
+    },
+    "modal-profile": {
+      title: "Ficha del profesional",
+      subtitle: "Reseñas verificadas y contenido",
+      illus: "Perfil con reseñas verificadas y galería",
+      body: "Solo usuarios con cita completada pueden dejar reseñas públicas. La ficha muestra historial, certificaciones y contenido multimedia.",
+      benefit: "Reputación confiable; mejor conversión para reservas.",
+      how: "Verificación post-servicio; control de spam y fraude."
+    },
+    "modal-booking": {
+      title: "Reserva de cita",
+      subtitle: "Calendario integrado y slots en tiempo real",
+      illus: "Calendario con slots y confirmación",
+      body: "Calendario con estados (Pendiente, Confirmada, Finalizada). Integración con pasarelas y códigos QR para canje de bonos.",
+      benefit: "Menos no-shows; trazabilidad de servicios.",
+      how: "Sincronización en tiempo real; notificaciones y recordatorios."
+    },
+    "modal-confirm": {
+      title: "Confirmación y Retención",
+      subtitle: "Dashboard y loop de retención",
+      illus: "Confirmación + panel con bonos y progreso",
+      body: "Tras la sesión, el usuario recibe seguimiento: encuestas, recomendaciones y ofertas personalizadas para fomentar recurrencia.",
+      benefit: "Aumento de LTV y recomendaciones orgánicas.",
+      how: "Automatizaciones y triggers basados en eventos."
+    },
+    "modal-beneficios": {
+      title: "Impacto para la Junta",
+      subtitle: "KPIs y resultados esperados",
+      illus: "KPIs: retención, conversión, LTV",
+      body: "Proyección: +retención, +reseñas verificadas, reducción de leads falsos y mayor monetización por bonos y suscripciones.",
+      benefit: "Mejor ROI y posicionamiento de marca.",
+      how: "Roadmap de 3 fases: autenticación, feed, monetización."
+    },
+    "modal-security": {
+      title: "Seguridad y Sanitización",
+      subtitle: "Protección contra XSS e inyección",
+      illus: "Sanitización de contenido y render seguro",
+      body: "Rich text en JSON AST; render seguro en React/Next.js; prohibición de HTML crudo en BD; validaciones server-side.",
+      benefit: "Menor riesgo de ataques y mayor confianza del usuario.",
+      how: "ProseMirror/TipTap + sanitización y CSP."
+    },
+    "modal-bono": {
+      title: "Bono · Caja regalo",
+      subtitle: "Gestión y canje con QR",
+      illus: "Bono con QR y historial",
+      body: "Visualiza el estado del bono, historial de usos y opción de transferir o regalar. Código QR para canje en sesión.",
+      benefit: "Facilita regalos corporativos y retención.",
+      how: "Generación de QR y control de redenciones."
+    }
+  };
+
+  // Open modal
+  document.querySelectorAll('[data-target]').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      const key = e.currentTarget.getAttribute('data-target');
+      openModal(key);
+    });
+  });
+
+  const backdrop = document.getElementById('modalBackdrop');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSubtitle = document.getElementById('modalSubtitle');
+  const modalIllus = document.getElementById('modalIllus');
+  const modalBody = document.getElementById('modalBody');
+  const modalBenefit = document.getElementById('modalBenefit');
+  const modalHow = document.getElementById('modalHow');
+  const modalAction = document.getElementById('modalAction');
+  const modalSecondary = document.getElementById('modalSecondary');
+
+  function openModal(key){
+    const data = modals[key] || {};
+    modalTitle.textContent = data.title || 'Módulo';
+    modalSubtitle.textContent = data.subtitle || '';
+    modalIllus.textContent = data.illus || 'Ilustración';
+    modalBody.textContent = data.body || '';
+    modalBenefit.textContent = data.benefit || '';
+    modalHow.textContent = data.how || '';
+    modalAction.onclick = ()=>{ alert('Demo ilustrativo: ' + (data.title || 'Módulo')); };
+    modalSecondary.onclick = ()=>{ alert('Resumen exportado (simulado)'); };
+    backdrop.style.display = 'flex';
+    backdrop.setAttribute('aria-hidden','false');
+  }
+
+  document.getElementById('closeModal').addEventListener('click', closeModal);
+  backdrop.addEventListener('click', (e)=>{ if(e.target===backdrop) closeModal(); });
+
+  function closeModal(){
+    backdrop.style.display = 'none';
+    backdrop.setAttribute('aria-hidden','true');
+  }
+
+  // Keyboard: Esc to close
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+  // Small enhancement: animate chips on load
+  document.addEventListener('DOMContentLoaded', ()=>{
+    document.querySelectorAll('.chip.active').forEach((c,i)=>{
+      c.style.transform = 'translateY(8px)';
+      c.style.opacity = '0';
+      setTimeout(()=>{ c.style.transition='all .45s cubic-bezier(.2,.9,.2,1)'; c.style.transform='translateY(0)'; c.style.opacity='1'; }, 120 + i*80);
+    });
+  });
+</script>
+</body>
+</html>

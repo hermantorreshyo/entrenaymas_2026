@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrena y Más 2026 – Ecosistema Fitness</title>
+<style>
+:root {
+  --primary: #00bfa5;
+  --secondary: #00796b;
+  --accent: #ffca28;
+  --bg: #f9fafb;
+  --text: #212121;
+  --muted: #757575;
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+}
+header {
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+  color: white;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 24px;
+  font-weight: 500;
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  padding: 60px 40px;
+  align-items: center;
+}
+.hero-text h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--secondary);
+  margin-bottom: 12px;
+}
+.hero-text p {
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+}
+.btn {
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: var(--shadow);
+}
+.btn-primary:hover {
+  background: var(--secondary);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+}
+.mockup {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+.mockup h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 12px;
+}
+.mockup input {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.mockup .btn-login {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+.section {
+  padding: 60px 40px;
+}
+.section h3 {
+  font-size: 24px;
+  color: var(--secondary);
+  margin-bottom: 20px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.card h4 {
+  font-size: 18px;
+  color: var(--secondary);
+  margin-bottom: 8px;
+}
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+}
+footer {
+  background: var(--secondary);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Entrena y Más 2026</h1>
+  <nav>
+    <a href="#">Inicio</a>
+    <a href="#">Profesionales</a>
+    <a href="#">Comunidad</a>
+    <a href="#">Bonos</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>Tu red social fitness</h2>
+    <p>Conecta con entrenadores, comparte tus avances y gestiona tus citas desde un único panel. Entrena, aprende y crece en comunidad.</p>
+    <div class="hero-buttons">
+      <button class="btn btn-primary">Crear cuenta</button>
+      <button class="btn btn-outline">Explorar comunidad</button>
+    </div>
+  </div>
+  <div class="mockup">
+    <h3>Inicio de sesión</h3>
+    <input type="email" placeholder="Correo electrónico">
+    <input type="password" placeholder="Contraseña">
+    <button class="btn-login">Acceder</button>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;">O inicia sesión con Google o Apple ID</p>
+  </div>
+</section>
+
+<section class="section">
+  <h3>Experiencia del usuario</h3>
+  <div class="cards">
+    <div class="card">
+      <h4>Feed social</h4>
+      <p>Publicaciones de entrenadores y deportistas con consejos, rutinas y logros compartidos.</p>
+    </div>
+    <div class="card">
+      <h4>Reseñas verificadas</h4>
+      <p>Solo usuarios con citas completadas pueden dejar valoraciones, garantizando autenticidad.</p>
+    </div>
+    <div class="card">
+      <h4>Dashboard personal</h4>
+      <p>Gestiona tus citas, bonos y progreso desde un panel intuitivo y seguro.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Entrena y Más · Ecosistema Fitness · Prototipo UX/UI para Junta Directiva
+</footer>
+
+</body>
+</html>
