@@ -461,14 +461,14 @@ class App_Pedidos extends REST_Controller {
     if (!empty($total)) $template->texto = str_replace("{{total}}", $total, $template->texto);
     if (!empty($total_con_envio)) $template->texto = str_replace("{{total_con_envio}}", $total_con_envio, $template->texto);
     $template->texto = str_replace("{{costo_envio}}", $costo_envio, $template->texto);
-    if (!empty($cliente)) $template->texto = str_replace("{{cliente}}", mb_convert_encoding($cliente, 'ISO-8859-1', 'UTF-8'), $template->texto);
-    $template->texto = str_replace("{{observaciones}}", mb_convert_encoding($observaciones, 'ISO-8859-1', 'UTF-8'), $template->texto);
+    if (!empty($cliente)) $template->texto = str_replace("{{cliente}}", $cliente, $template->texto);
+    $template->texto = str_replace("{{observaciones}}", $observaciones, $template->texto);
     if (!empty($usuario)) {
       $template->texto = str_replace("{{usuario}}", $usuario, $template->texto);
       $template->texto = str_replace("{{comercio}}", $usuario, $template->texto);
     }
-    if (!empty($direccion)) $template->texto = str_replace("{{direccion}}", mb_convert_encoding($direccion, 'ISO-8859-1', 'UTF-8'), $template->texto);
-    if (!empty($comercio_direccion)) $template->texto = str_replace("{{comercio_direccion}}", mb_convert_encoding($comercio_direccion, 'ISO-8859-1', 'UTF-8'), $template->texto);
+    if (!empty($direccion)) $template->texto = str_replace("{{direccion}}", $direccion, $template->texto);
+    if (!empty($comercio_direccion)) $template->texto = str_replace("{{comercio_direccion}}", $comercio_direccion, $template->texto);
     if (!empty($forma_pago)) $template->texto = str_replace("{{forma_pago}}", $forma_pago, $template->texto);
     if (!empty($numero)) $template->texto = str_replace("{{numero}}", $numero, $template->texto);
     if (!empty($fecha)) $template->texto = str_replace("{{fecha}}", $fecha, $template->texto);
@@ -1411,7 +1411,7 @@ class App_Pedidos extends REST_Controller {
     }
     $body = $temp->texto;
     $body = str_replace("{{id_cliente}}", $id_cliente, $body);
-    $body = str_replace("{{nombre}}", mb_convert_encoding($nombre, 'UTF-8', 'ISO-8859-1'), $body);
+    $body = str_replace("{{nombre}}", $nombre, $body);
     $body = str_replace("{{email}}", $email, $body);
     $body = str_replace("{{saldo}}", $saldo, $body);
     mandrill_send(array(

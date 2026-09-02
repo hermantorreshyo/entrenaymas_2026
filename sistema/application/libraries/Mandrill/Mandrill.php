@@ -17,7 +17,8 @@ function mandrill_send($conf = array()) {
 
   $subject = isset($conf["subject"]) ? $conf["subject"] : "";
   $body = isset($conf["body"]) ? $conf["body"] : "";
-  $body = mb_convert_encoding(str_replace("'", "\"", $body), 'UTF-8', 'ISO-8859-1');
+  $body = str_replace("'", "\"", $body);
+  if (!mb_check_encoding($body, 'UTF-8')) $body = mb_convert_encoding($body, 'UTF-8', 'ISO-8859-1');
 
   $from = isset($conf["from"]) ? $conf["from"] : MAIL_FROM_ADDRESS;
   $from_name = isset($conf["from_name"]) ? $conf["from_name"] : "Entrenaymas";
